@@ -1,0 +1,22 @@
+# BasicTrainingProgramFlow
+
+main: kit: flow: BasicTrainingProgramFlow:
+{
+  entity: "training_program",
+  kind: "basic",
+  name: "BasicTrainingProgramFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "training_program_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTrainingProgramFlow"
+}

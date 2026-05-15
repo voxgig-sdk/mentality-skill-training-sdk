@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "training_program": {
+      "TRAINING_PROGRAM00": {
+        "description": "s50",
+        "duration": "s51",
+        "exercis": [],
+        "id": "TRAINING_PROGRAM00",
+        "level": "s54",
+        "name": "s55",
+        "objectif": [],
+        "sport": "s57"
+      },
+      "TRAINING_PROGRAM01": {
+        "description": "sa0",
+        "duration": "sa1",
+        "exercis": [],
+        "id": "TRAINING_PROGRAM01",
+        "level": "sa4",
+        "name": "sa5",
+        "objectif": [],
+        "sport": "sa7"
+      },
+      "TRAINING_PROGRAM02": {
+        "description": "sf0",
+        "duration": "sf1",
+        "exercis": [],
+        "id": "TRAINING_PROGRAM02",
+        "level": "sf4",
+        "name": "sf5",
+        "objectif": [],
+        "sport": "sf7"
+      }
+    }
+  },
+  "new": {
+    "training_program": {
+      "training_program_ref01": {
+        "description": "s140",
+        "duration": "s141",
+        "exercis": [],
+        "level": "s144",
+        "name": "s145",
+        "objectif": [],
+        "sport": "s147"
+      }
+    }
+  }
+}

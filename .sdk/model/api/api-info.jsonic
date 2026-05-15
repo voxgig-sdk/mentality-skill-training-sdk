@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://melodious-squirrel-e72cff.netlify.app/"
+      }
+      description: "This API provides resources and tools focused on improving mental skills and techniques for athletes. It offers structured training methods that cater specifically to enhancing cognitive abilities in sports."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://melodious-squirrel-e72cff.netlify.app"
+        }
+      ]
+      title: "Mentality Skill Training"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

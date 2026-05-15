@@ -1,0 +1,249 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Mentality Skill Training",
+    "description": "This API provides resources and tools focused on improving mental skills and techniques for athletes. It offers structured training methods that cater specifically to enhancing cognitive abilities in sports.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://melodious-squirrel-e72cff.netlify.app/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://melodious-squirrel-e72cff.netlify.app",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/training-programs": {
+      "get": {
+        "summary": "Get training programs",
+        "description": "Retrieve a list of mental skill training programs available for athletes",
+        "operationId": "getTrainingPrograms",
+        "tags": [
+          "Training Programs"
+        ],
+        "parameters": [
+          {
+            "name": "sport",
+            "in": "query",
+            "description": "Filter programs by sport type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "level",
+            "in": "query",
+            "description": "Filter programs by skill level (beginner, intermediate, advanced)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "beginner",
+                "intermediate",
+                "advanced"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of training programs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TrainingProgram"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/exercises": {
+      "get": {
+        "summary": "Get mental exercises",
+        "description": "Retrieve mental skill exercises and techniques designed to enhance cognitive abilities in sports",
+        "operationId": "getExercises",
+        "tags": [
+          "Exercises"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter exercises by category (focus, visualization, confidence, stress-management)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "focus",
+                "visualization",
+                "confidence",
+                "stress-management"
+              ]
+            }
+          },
+          {
+            "name": "duration",
+            "in": "query",
+            "description": "Filter exercises by duration in minutes",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of exercises",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Exercise"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TrainingProgram": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the training program"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the training program"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the program"
+          },
+          "sport": {
+            "type": "string",
+            "description": "Sport type the program is designed for"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "beginner",
+              "intermediate",
+              "advanced"
+            ],
+            "description": "Skill level required for the program"
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Program duration in weeks"
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of learning objectives"
+          },
+          "exercises": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Exercise IDs included in the program"
+          }
+        }
+      },
+      "Exercise": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the exercise"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the exercise"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the exercise"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "focus",
+              "visualization",
+              "confidence",
+              "stress-management"
+            ],
+            "description": "Category of mental skill"
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Exercise duration in minutes"
+          },
+          "instructions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Step-by-step instructions"
+          },
+          "benefits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Benefits of performing this exercise"
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": [
+              "easy",
+              "moderate",
+              "challenging"
+            ],
+            "description": "Difficulty level of the exercise"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Training Programs",
+      "description": "Operations related to mental skill training programs"
+    },
+    {
+      "name": "Exercises",
+      "description": "Operations related to mental skill exercises"
+    }
+  ]
+}

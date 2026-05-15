@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// MentalitySkillTraining SDK base feature
+
+class MentalitySkillTrainingBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(MentalitySkillTrainingContext $ctx, array $options): void {}
+    public function PostConstruct(MentalitySkillTrainingContext $ctx): void {}
+    public function PostConstructEntity(MentalitySkillTrainingContext $ctx): void {}
+    public function SetData(MentalitySkillTrainingContext $ctx): void {}
+    public function GetData(MentalitySkillTrainingContext $ctx): void {}
+    public function GetMatch(MentalitySkillTrainingContext $ctx): void {}
+    public function SetMatch(MentalitySkillTrainingContext $ctx): void {}
+    public function PrePoint(MentalitySkillTrainingContext $ctx): void {}
+    public function PreSpec(MentalitySkillTrainingContext $ctx): void {}
+    public function PreRequest(MentalitySkillTrainingContext $ctx): void {}
+    public function PreResponse(MentalitySkillTrainingContext $ctx): void {}
+    public function PreResult(MentalitySkillTrainingContext $ctx): void {}
+    public function PreDone(MentalitySkillTrainingContext $ctx): void {}
+    public function PreUnexpected(MentalitySkillTrainingContext $ctx): void {}
+}
