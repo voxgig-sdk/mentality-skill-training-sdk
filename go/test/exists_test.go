@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/mentality-skill-training-sdk"
+	sdk "github.com/voxgig-sdk/mentality-skill-training-sdk/go"
 )
 
 func TestExists(t *testing.T) {

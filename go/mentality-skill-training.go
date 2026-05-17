@@ -1,10 +1,10 @@
 package voxgigmentalityskilltrainingsdk
 
 import (
-	"github.com/voxgig-sdk/mentality-skill-training-sdk/core"
-	"github.com/voxgig-sdk/mentality-skill-training-sdk/entity"
-	"github.com/voxgig-sdk/mentality-skill-training-sdk/feature"
-	_ "github.com/voxgig-sdk/mentality-skill-training-sdk/utility"
+	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/core"
+	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/entity"
+	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/feature"
+	_ "github.com/voxgig-sdk/mentality-skill-training-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

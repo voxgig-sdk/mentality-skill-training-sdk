@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/mentality-skill-training-sdk/core"
+	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/mentality-skill-training-sdk/go/utility/struct"
 )
 
 type TrainingProgramEntity struct {

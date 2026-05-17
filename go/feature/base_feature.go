@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/mentality-skill-training-sdk/core"
+	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/core"
 )
 
 type BaseFeature struct {

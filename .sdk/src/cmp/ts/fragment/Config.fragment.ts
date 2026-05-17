@@ -29,7 +29,7 @@ class Config {
 
 
   options = {
-    base: 'https://melodious-squirrel-e72cff.netlify.app',
+    base: '$$main.kit.info.servers.0.url$$',
 
     'AUTHBLOCK'headers: 'HEADERS',
 

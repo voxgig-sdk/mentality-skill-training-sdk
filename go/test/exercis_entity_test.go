@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/mentality-skill-training-sdk"
-	"github.com/voxgig-sdk/mentality-skill-training-sdk/core"
+	sdk "github.com/voxgig-sdk/mentality-skill-training-sdk/go"
+	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/mentality-skill-training-sdk/go/utility/struct"
 )
 
 func TestExercisEntity(t *testing.T) {

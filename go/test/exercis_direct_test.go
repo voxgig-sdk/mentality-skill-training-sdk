@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/mentality-skill-training-sdk"
-	"github.com/voxgig-sdk/mentality-skill-training-sdk/core"
+	sdk "github.com/voxgig-sdk/mentality-skill-training-sdk/go"
+	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/core"
 )
 
 func TestExercisDirect(t *testing.T) {
