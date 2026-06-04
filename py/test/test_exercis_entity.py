@@ -92,7 +92,6 @@ def _exercis_basic_setup(extra):
         "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID": idmap,
         "MENTALITYSKILLTRAINING_TEST_LIVE": "FALSE",
         "MENTALITYSKILLTRAINING_TEST_EXPLAIN": "FALSE",
-        "MENTALITYSKILLTRAINING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _exercis_basic_setup(extra):
     if env.get("MENTALITYSKILLTRAINING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MENTALITYSKILLTRAINING_APIKEY"),
             },
             extra or {},
         ])

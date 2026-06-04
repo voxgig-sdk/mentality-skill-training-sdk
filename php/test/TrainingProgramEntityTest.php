@@ -86,7 +86,6 @@ function training_program_basic_setup($extra)
         "MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID" => $idmap,
         "MENTALITYSKILLTRAINING_TEST_LIVE" => "FALSE",
         "MENTALITYSKILLTRAINING_TEST_EXPLAIN" => "FALSE",
-        "MENTALITYSKILLTRAINING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function training_program_basic_setup($extra)
     if ($env["MENTALITYSKILLTRAINING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MENTALITYSKILLTRAINING_APIKEY"],
             ],
             $extra ?? [],
         ]);

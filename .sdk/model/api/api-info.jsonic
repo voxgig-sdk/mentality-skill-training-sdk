@@ -16,8 +16,22 @@ main: {
       ]
       title: "Mentality Skill Training"
       version: "1.0.0"
+      tagline: "Mental skills training resources and structured programs for athletes"
+      homepage: "https://melodious-squirrel-e72cff.netlify.app"
+      docs_url: "https://freepublicapis.com/mentality-skill-training"
+      about_md: `The Mentality Skill Training API exposes resources focused on improving the mental side of athletic performance — concentration, composure, visualisation, and other cognitive skills that complement physical training. It is catalogued on [Free Public APIs](https://freepublicapis.com/mentality-skill-training) and served from a small Netlify-hosted backend.
+
+What you get from the API:
+
+- A library of mental-skills **exercises** an athlete can practise.
+- Curated **training programs** that group exercises into structured routines.
+
+The service is a lightweight public endpoint with no documented authentication. CORS behaviour and rate limits are not published; treat it as a best-effort community API and cache responses where practical.`
+      entity_desc: {
+        exercis: "An individual mental-skills exercise that an athlete can perform (e.g. focus, visualisation, or composure drills)."
+        training_program: "A structured program that organises multiple exercises into a coherent mental-training routine."
+      }
+      auth: false
     }
   }
-}
-
 }

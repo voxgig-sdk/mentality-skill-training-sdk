@@ -119,7 +119,6 @@ func training_programBasicSetup(extra map[string]any) *entityTestSetup {
 		"MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID": idmap,
 		"MENTALITYSKILLTRAINING_TEST_LIVE":      "FALSE",
 		"MENTALITYSKILLTRAINING_TEST_EXPLAIN":   "FALSE",
-		"MENTALITYSKILLTRAINING_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID"])
@@ -130,7 +129,6 @@ func training_programBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["MENTALITYSKILLTRAINING_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["MENTALITYSKILLTRAINING_APIKEY"],
 			},
 			extra,
 		})
