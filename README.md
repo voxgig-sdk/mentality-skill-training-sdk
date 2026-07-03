@@ -1,19 +1,8 @@
 # MentalitySkillTraining SDK
 
-Mental skills training resources and structured programs for athletes
+Mentality Skill Training client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Mentality Skill Training
-
-The Mentality Skill Training API exposes resources focused on improving the mental side of athletic performance — concentration, composure, visualisation, and other cognitive skills that complement physical training. It is catalogued on [Free Public APIs](https://freepublicapis.com/mentality-skill-training) and served from a small Netlify-hosted backend.
-
-What you get from the API:
-
-- A library of mental-skills **exercises** an athlete can practise.
-- Curated **training programs** that group exercises into structured routines.
-
-The service is a lightweight public endpoint with no documented authentication. CORS behaviour and rate limits are not published; treat it as a best-effort community API and cache responses where practical.
 
 ## Try it
 
@@ -47,29 +36,31 @@ gem install mentality-skill-training-sdk
 luarocks install mentality-skill-training-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { MentalitySkillTrainingSDK } from 'mentality-skill-training'
 
-const client = new MentalitySkillTrainingSDK({})
+const client = new MentalitySkillTrainingSDK({
+  apikey: process.env.MENTALITY-SKILL-TRAINING_APIKEY,
+})
 
 // List all exerciss
 const exerciss = await client.Exercis().list()
+console.log(exerciss.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Exercis** | An individual mental-skills exercise that an athlete can perform (e.g. focus, visualisation, or composure drills). | `/api/exercises` |
-| **TrainingProgram** | A structured program that organises multiple exercises into a coherent mental-training routine. | `/api/training-programs` |
+| **Exercis** |  | `/api/exercises` |
+| **TrainingProgram** |  | `/api/training-programs` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
 
-client = MentalitySkillTrainingSDK({})
+client = MentalitySkillTrainingSDK({
+    "apikey": os.environ.get("MENTALITY-SKILL-TRAINING_APIKEY"),
+})
 
 # List all exerciss
-exerciss, err = client.Exercis(None).list(None, None)
+exerciss, err = client.Exercis().list()
+print(exerciss)
 ```
 
 ### PHP
@@ -124,10 +119,13 @@ exerciss, err = client.Exercis(None).list(None, None)
 <?php
 require_once 'mentalityskilltraining_sdk.php';
 
-$client = new MentalitySkillTrainingSDK([]);
+$client = new MentalitySkillTrainingSDK([
+    "apikey" => getenv("MENTALITY-SKILL-TRAINING_APIKEY"),
+]);
 
 // List all exerciss
-[$exerciss, $err] = $client->Exercis(null)->list(null, null);
+[$exerciss, $err] = $client->Exercis()->list();
+print_r($exerciss);
 ```
 
 ### Golang
@@ -135,10 +133,13 @@ $client = new MentalitySkillTrainingSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/mentality-skill-training-sdk/go"
 
-client := sdk.NewMentalitySkillTrainingSDK(map[string]any{})
+client := sdk.NewMentalitySkillTrainingSDK(map[string]any{
+    "apikey": os.Getenv("MENTALITY-SKILL-TRAINING_APIKEY"),
+})
 
 // List all exerciss
 exerciss, err := client.Exercis(nil).List(nil, nil)
+fmt.Println(exerciss)
 ```
 
 ### Ruby
@@ -146,10 +147,13 @@ exerciss, err := client.Exercis(nil).List(nil, nil)
 ```ruby
 require_relative "MentalitySkillTraining_sdk"
 
-client = MentalitySkillTrainingSDK.new({})
+client = MentalitySkillTrainingSDK.new({
+  "apikey" => ENV["MENTALITY-SKILL-TRAINING_APIKEY"],
+})
 
 # List all exerciss
-exerciss, err = client.Exercis(nil).list(nil, nil)
+exerciss, err = client.Exercis().list
+puts exerciss
 ```
 
 ### Lua
@@ -157,10 +161,13 @@ exerciss, err = client.Exercis(nil).list(nil, nil)
 ```lua
 local sdk = require("mentality-skill-training_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("MENTALITY-SKILL-TRAINING_APIKEY"),
+})
 
 -- List all exerciss
-local exerciss, err = client:Exercis(nil):list(nil, nil)
+local exerciss, err = client:Exercis():list()
+print(exerciss)
 ```
 
 ## Unit testing in offline mode
@@ -179,25 +186,21 @@ const result = await client.Exercis().load({ id: 'test01' })
 ### Python
 
 ```python
-client = MentalitySkillTrainingSDK.test(None, None)
-result, err = client.Exercis(None).load(
-    {"id": "test01"}, None
-)
+client = MentalitySkillTrainingSDK.test()
+result, err = client.Exercis().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = MentalitySkillTrainingSDK::test(null, null);
-[$result, $err] = $client->Exercis(null)->load(
-    ["id" => "test01"], null
-);
+$client = MentalitySkillTrainingSDK::test();
+[$result, $err] = $client->Exercis()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Exercis(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -206,19 +209,15 @@ result, err := client.Exercis(nil).Load(
 ### Ruby
 
 ```ruby
-client = MentalitySkillTrainingSDK.test(nil, nil)
-result, err = client.Exercis(nil).load(
-  { "id" => "test01" }, nil
-)
+client = MentalitySkillTrainingSDK.test
+result, err = client.Exercis().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Exercis(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Exercis():load({ id = "test01" })
 ```
 
 ## How it works
@@ -322,11 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Mentality Skill Training
-
-- Upstream: [https://melodious-squirrel-e72cff.netlify.app](https://melodious-squirrel-e72cff.netlify.app)
-- API docs: [https://freepublicapis.com/mentality-skill-training](https://freepublicapis.com/mentality-skill-training)
 
 ---
 

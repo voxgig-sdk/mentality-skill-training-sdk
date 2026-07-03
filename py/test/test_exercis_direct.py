@@ -61,12 +61,14 @@ def _exercis_direct_setup(mockres):
     env = runner.env_override({
         "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID": {},
         "MENTALITYSKILLTRAINING_TEST_LIVE": "FALSE",
+        "MENTALITYSKILLTRAINING_APIKEY": "NONE",
     })
 
     live = env.get("MENTALITYSKILLTRAINING_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("MENTALITYSKILLTRAINING_APIKEY"),
         }
         client = MentalitySkillTrainingSDK(merged_opts)
         return {

@@ -62,12 +62,14 @@ def exercis_direct_setup(mockres)
   env = Runner.env_override({
     "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID" => {},
     "MENTALITYSKILLTRAINING_TEST_LIVE" => "FALSE",
+    "MENTALITYSKILLTRAINING_APIKEY" => "NONE",
   })
 
   live = env["MENTALITYSKILLTRAINING_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["MENTALITYSKILLTRAINING_APIKEY"],
     }
     client = MentalitySkillTrainingSDK.new(merged_opts)
     return {
