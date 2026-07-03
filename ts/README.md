@@ -10,7 +10,7 @@ The TypeScript SDK for the MentalitySkillTraining API — a type-safe, entity-or
 
 ## Install
 ```bash
-npm install mentality-skill-training
+npm install @voxgig-sdk/mentality-skill-training
 ```
 ## Tutorial: your first API call
 

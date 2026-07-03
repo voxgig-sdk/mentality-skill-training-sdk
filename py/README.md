@@ -10,7 +10,7 @@ The Python SDK for the MentalitySkillTraining API — an entity-oriented client 
 
 ## Install
 ```bash
-pip install mentality-skill-training-sdk
+pip install voxgig-sdk-mentality-skill-training
 ```
 
 Or install from source:

@@ -10,13 +10,13 @@ The Ruby SDK for the MentalitySkillTraining API — an entity-oriented client us
 
 ## Install
 ```bash
-gem install mentality-skill-training-sdk
+gem install voxgig-sdk-mentality-skill-training
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "mentality-skill-training-sdk"
+gem "voxgig-sdk-mentality-skill-training"
 ```
 
 Then run:

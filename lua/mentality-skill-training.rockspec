@@ -8,12 +8,14 @@ source = {
   dir = "mentality-skill-training-sdk/lua"
 }
 description = {
-  summary = "MentalitySkillTraining SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Mentality Skill Training public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/mentality-skill-training-sdk",
+  issues_url = "https://github.com/voxgig-sdk/mentality-skill-training-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "mentality-skill-training" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

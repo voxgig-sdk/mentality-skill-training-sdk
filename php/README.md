@@ -10,7 +10,7 @@ The PHP SDK for the MentalitySkillTraining API — an entity-oriented client usi
 
 ## Install
 ```bash
-composer require voxgig/mentality-skill-training-sdk
+composer require voxgig-sdk/mentality-skill-training
 ```
 
 
