@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'MENTALITY_SKILL_TRAINING_TEST_TRAINING_PROGRAM_ENTID': idmap,
     'MENTALITY_SKILL_TRAINING_TEST_LIVE': 'FALSE',
     'MENTALITY_SKILL_TRAINING_TEST_EXPLAIN': 'FALSE',
-    'MENTALITY_SKILL_TRAINING_APIKEY': 'NONE',
   })
 
   idmap = env['MENTALITY_SKILL_TRAINING_TEST_TRAINING_PROGRAM_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new MentalitySkillTrainingSDK(merge([
       {
-        apikey: env.MENTALITY_SKILL_TRAINING_APIKEY,
       },
       extra
     ]))

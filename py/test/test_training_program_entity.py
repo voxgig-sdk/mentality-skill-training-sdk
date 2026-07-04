@@ -50,8 +50,7 @@ class TestTrainingProgramEntity:
         training_program_ref01_ent = client.TrainingProgram(None)
         training_program_ref01_match = {}
 
-        training_program_ref01_list_result, err = training_program_ref01_ent.list(training_program_ref01_match, None)
-        assert err is None
+        training_program_ref01_list_result = training_program_ref01_ent.list(training_program_ref01_match, None)
         assert isinstance(training_program_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _training_program_basic_setup(extra):
         "MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID": idmap,
         "MENTALITYSKILLTRAINING_TEST_LIVE": "FALSE",
         "MENTALITYSKILLTRAINING_TEST_EXPLAIN": "FALSE",
-        "MENTALITYSKILLTRAINING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _training_program_basic_setup(extra):
     if env.get("MENTALITYSKILLTRAINING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MENTALITYSKILLTRAINING_APIKEY"),
             },
             extra or {},
         ])

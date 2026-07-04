@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID': {},
     'MENTALITYSKILLTRAINING_TEST_LIVE': 'FALSE',
-    'MENTALITYSKILLTRAINING_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.MENTALITYSKILLTRAINING_TEST_LIVE
 
   if (live) {
     const client = new MentalitySkillTrainingSDK({
-      apikey: env.MENTALITYSKILLTRAINING_APIKEY,
     })
 
     let idmap: any = env['MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID']

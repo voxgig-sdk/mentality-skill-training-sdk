@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -58,9 +57,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -73,11 +72,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -85,7 +84,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## ExercisEntity
 
 ```python
-exercis = client.Exercis()
+exercis = client.exercis
 ```
 
 ### Fields
@@ -103,12 +102,12 @@ exercis = client.Exercis()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Exercis().list({})
+results = client.exercis.list({})
 ```
 
 ### Common Methods
@@ -143,7 +142,7 @@ Return the entity name.
 ## TrainingProgramEntity
 
 ```python
-training_program = client.TrainingProgram()
+training_program = client.training_program
 ```
 
 ### Fields
@@ -161,12 +160,12 @@ training_program = client.TrainingProgram()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.TrainingProgram().list({})
+results = client.training_program.list({})
 ```
 
 ### Common Methods

@@ -9,9 +9,12 @@ The TypeScript SDK for the MentalitySkillTraining API — a type-safe, entity-or
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/mentality-skill-training
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MentalitySkillTrainingSDK } from 'mentality-skill-training'
+import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training'
 
-const client = new MentalitySkillTrainingSDK({
-  apikey: process.env.MENTALITY-SKILL-TRAINING_APIKEY,
-})
+const client = new MentalitySkillTrainingSDK()
 ```
 
 ### 2. List exerciss
 
 ```ts
-const result = await client.Exercis().list()
+const result = await client.exercis.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MentalitySkillTrainingSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.exercis.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new MentalitySkillTrainingSDK({ apikey: '...' })
+const client = new MentalitySkillTrainingSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.exercis
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new MentalitySkillTrainingSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new MentalitySkillTrainingSDK({
 Create a `.env.local` file at the project root:
 
 ```
-MENTALITY-SKILL-TRAINING_TEST_LIVE=TRUE
-MENTALITY-SKILL-TRAINING_APIKEY=<your-key>
+MENTALITY_SKILL_TRAINING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new MentalitySkillTrainingSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new MentalitySkillTrainingSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -293,7 +290,7 @@ API path: `/api/training-programs`
 
 ### Exercis
 
-Create an instance: `const exercis = client.Exercis()`
+Create an instance: `const exercis = client.exercis`
 
 #### Operations
 
@@ -317,13 +314,13 @@ Create an instance: `const exercis = client.Exercis()`
 #### Example: List
 
 ```ts
-const exerciss = await client.Exercis().list()
+const exerciss = await client.exercis.list()
 ```
 
 
 ### TrainingProgram
 
-Create an instance: `const training_program = client.TrainingProgram()`
+Create an instance: `const training_program = client.training_program`
 
 #### Operations
 
@@ -347,7 +344,7 @@ Create an instance: `const training_program = client.TrainingProgram()`
 #### Example: List
 
 ```ts
-const training_programs = await client.TrainingProgram().list()
+const training_programs = await client.training_program.list()
 ```
 
 
@@ -408,7 +405,7 @@ mentality-skill-training/
 Import the SDK from the package root:
 
 ```ts
-import { MentalitySkillTrainingSDK } from 'mentality-skill-training'
+import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training'
 ```
 
 ### Entity state
@@ -418,11 +415,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const exercis = client.exercis
+await exercis.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// exercis.data() now returns the loaded exercis data
+// exercis.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -245,11 +245,17 @@ func (sdk *MentalitySkillTrainingSDK) Direct(fetchargs map[string]any) (map[stri
 }
 
 
+// Exercis returns a Exercis entity bound to this client.
+// Idiomatic usage: client.Exercis(nil).List(nil, nil) or
+// client.Exercis(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MentalitySkillTrainingSDK) Exercis(data map[string]any) MentalitySkillTrainingEntity {
 	return NewExercisEntityFunc(sdk, data)
 }
 
 
+// TrainingProgram returns a TrainingProgram entity bound to this client.
+// Idiomatic usage: client.TrainingProgram(nil).List(nil, nil) or
+// client.TrainingProgram(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MentalitySkillTrainingSDK) TrainingProgram(data map[string]any) MentalitySkillTrainingEntity {
 	return NewTrainingProgramEntityFunc(sdk, data)
 }

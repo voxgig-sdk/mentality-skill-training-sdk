@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## ExercisEntity
 
 ```lua
-local exercis = client:Exercis(nil)
+local exercis = client:exercis(nil)
 ```
 
 ### Fields
@@ -111,7 +110,7 @@ local exercis = client:Exercis(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Exercis():list()
+local results, err = client:exercis():list()
 ```
 
 ### Common Methods
@@ -147,7 +146,7 @@ Return the entity name.
 ## TrainingProgramEntity
 
 ```lua
-local training_program = client:TrainingProgram(nil)
+local training_program = client:training_program(nil)
 ```
 
 ### Fields
@@ -170,7 +169,7 @@ local training_program = client:TrainingProgram(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:TrainingProgram():list()
+local results, err = client:training_program():list()
 ```
 
 ### Common Methods

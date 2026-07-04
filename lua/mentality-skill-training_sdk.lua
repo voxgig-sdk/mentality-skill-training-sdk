@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:exercis():list() / client:exercis():load({ id = ... })
+function MentalitySkillTrainingSDK:exercis(data)
+  local EntityMod = require("entity.exercis_entity")
+  if data == nil then
+    if self._exercis == nil then
+      self._exercis = EntityMod.new(self, nil)
+    end
+    return self._exercis
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:exercis() instead.
 function MentalitySkillTrainingSDK:Exercis(data)
   local EntityMod = require("entity.exercis_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:training_program():list() / client:training_program():load({ id = ... })
+function MentalitySkillTrainingSDK:training_program(data)
+  local EntityMod = require("entity.training_program_entity")
+  if data == nil then
+    if self._training_program == nil then
+      self._training_program = EntityMod.new(self, nil)
+    end
+    return self._training_program
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:training_program() instead.
 function MentalitySkillTrainingSDK:TrainingProgram(data)
   local EntityMod = require("entity.training_program_entity")
   return EntityMod.new(self, data)

@@ -50,8 +50,7 @@ class TestExercisEntity:
         exercis_ref01_ent = client.Exercis(None)
         exercis_ref01_match = {}
 
-        exercis_ref01_list_result, err = exercis_ref01_ent.list(exercis_ref01_match, None)
-        assert err is None
+        exercis_ref01_list_result = exercis_ref01_ent.list(exercis_ref01_match, None)
         assert isinstance(exercis_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _exercis_basic_setup(extra):
         "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID": idmap,
         "MENTALITYSKILLTRAINING_TEST_LIVE": "FALSE",
         "MENTALITYSKILLTRAINING_TEST_EXPLAIN": "FALSE",
-        "MENTALITYSKILLTRAINING_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _exercis_basic_setup(extra):
     if env.get("MENTALITYSKILLTRAINING_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MENTALITYSKILLTRAINING_APIKEY"),
             },
             extra or {},
         ])

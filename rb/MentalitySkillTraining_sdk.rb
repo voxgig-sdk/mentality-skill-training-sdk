@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'MentalitySkillTraining_types'
+
 
 class MentalitySkillTrainingSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class MentalitySkillTrainingSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class MentalitySkillTrainingSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue MentalitySkillTrainingError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = MentalitySkillTrainingHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class MentalitySkillTrainingSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,22 +198,36 @@ class MentalitySkillTrainingSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.exercis.list / client.exercis.load({ "id" => ... })
+  def exercis
+    require_relative 'entity/exercis_entity'
+    @exercis ||= ExercisEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.exercis instead.
   def Exercis(data = nil)
     require_relative 'entity/exercis_entity'
     ExercisEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.training_program.list / client.training_program.load({ "id" => ... })
+  def training_program
+    require_relative 'entity/training_program_entity'
+    @training_program ||= TrainingProgramEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.training_program instead.
   def TrainingProgram(data = nil)
     require_relative 'entity/training_program_entity'
     TrainingProgramEntity.new(self, data)

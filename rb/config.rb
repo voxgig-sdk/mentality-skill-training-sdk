@@ -15,9 +15,6 @@ module MentalitySkillTrainingConfig
       },
       "options" => {
         "base" => "https://melodious-squirrel-e72cff.netlify.app",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

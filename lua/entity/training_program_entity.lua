@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch TrainingProgramListMatch
+---@param ctrl? table
+---@return TrainingProgram[]
+---@return string? err
 function TrainingProgramEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

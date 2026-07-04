@@ -63,14 +63,12 @@ function exercis_direct_setup(mockres)
   local env = runner.env_override({
     ["MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID"] = {},
     ["MENTALITYSKILLTRAINING_TEST_LIVE"] = "FALSE",
-    ["MENTALITYSKILLTRAINING_APIKEY"] = "NONE",
   })
 
   local live = env["MENTALITYSKILLTRAINING_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["MENTALITYSKILLTRAINING_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

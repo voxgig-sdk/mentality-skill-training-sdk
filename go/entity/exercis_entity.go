@@ -85,6 +85,27 @@ func (e *ExercisEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Exercis; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ExercisEntity) DataTyped(data ...Exercis) Exercis {
+	if len(data) > 0 {
+		return typedFrom[Exercis](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Exercis](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Exercis (all fields
+// optional at the wire level).
+func (e *ExercisEntity) MatchTyped(match ...Exercis) Exercis {
+	if len(match) > 0 {
+		return typedFrom[Exercis](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Exercis](e.Match())
+}
+
 func (e *ExercisEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *ExercisEntity) List(reqmatch map[string]any, ctrl map[string]any) (any,
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// ExercisListMatch and returns []Exercis. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *ExercisEntity) ListTyped(reqmatch ExercisListMatch, ctrl map[string]any) ([]Exercis, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Exercis](res), nil
 }
 
 

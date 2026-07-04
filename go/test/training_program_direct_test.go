@@ -93,14 +93,12 @@ func training_programDirectSetup(mockres any) *training_programDirectSetupResult
 	env := envOverride(map[string]any{
 		"MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID": map[string]any{},
 		"MENTALITYSKILLTRAINING_TEST_LIVE":    "FALSE",
-		"MENTALITYSKILLTRAINING_APIKEY":       "NONE",
 	})
 
 	live := env["MENTALITYSKILLTRAINING_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["MENTALITYSKILLTRAINING_APIKEY"],
 		}
 		client := sdk.NewMentalitySkillTrainingSDK(mergedOpts)
 

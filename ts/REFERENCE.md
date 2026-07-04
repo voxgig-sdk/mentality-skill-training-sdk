@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `MentalitySkillTrainingSDK.test()`.
 ## ExercisEntity
 
 ```ts
-const exercis = client.Exercis()
+const exercis = client.exercis
 ```
 
 ### Fields
@@ -145,7 +144,7 @@ const exercis = client.Exercis()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Exercis().list()
+const results = await client.exercis.list()
 ```
 
 ### Common Methods
@@ -179,7 +178,7 @@ Return a copy of the entity options.
 ## TrainingProgramEntity
 
 ```ts
-const training_program = client.TrainingProgram()
+const training_program = client.training_program
 ```
 
 ### Fields
@@ -202,7 +201,7 @@ const training_program = client.TrainingProgram()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.TrainingProgram().list()
+const results = await client.training_program.list()
 ```
 
 ### Common Methods

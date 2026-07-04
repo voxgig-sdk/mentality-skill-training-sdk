@@ -9,12 +9,9 @@ The Lua SDK for the MentalitySkillTraining API — an entity-oriented client usi
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-mentality-skill-training
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("mentality-skill-training_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("MENTALITY-SKILL-TRAINING_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List exerciss
 
 ```lua
-local result, err = client:Exercis():list()
+local result, err = client:exercis():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +88,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:MentalitySkillTraining():load({ id = "test01" })
+local result, err = client:exercis():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -126,8 +121,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-MENTALITY-SKILL-TRAINING_TEST_LIVE=TRUE
-MENTALITY-SKILL-TRAINING_APIKEY=<your-key>
+MENTALITY_SKILL_TRAINING_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -150,7 +144,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -252,7 +245,7 @@ API path: `/api/training-programs`
 
 ### Exercis
 
-Create an instance: `const exercis = client.Exercis()`
+Create an instance: `const exercis = client.exercis`
 
 #### Operations
 
@@ -276,13 +269,13 @@ Create an instance: `const exercis = client.Exercis()`
 #### Example: List
 
 ```ts
-const exerciss = await client.Exercis().list()
+const exerciss = await client.exercis.list()
 ```
 
 
 ### TrainingProgram
 
-Create an instance: `const training_program = client.TrainingProgram()`
+Create an instance: `const training_program = client.training_program`
 
 #### Operations
 
@@ -306,7 +299,7 @@ Create an instance: `const training_program = client.TrainingProgram()`
 #### Example: List
 
 ```ts
-const training_programs = await client.TrainingProgram().list()
+const training_programs = await client.training_program.list()
 ```
 
 
@@ -381,11 +374,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local exercis = client:exercis()
+exercis:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- exercis:data_get() now returns the loaded exercis data
+-- exercis:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

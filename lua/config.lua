@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://melodious-squirrel-e72cff.netlify.app",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },

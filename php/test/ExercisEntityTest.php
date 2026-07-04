@@ -50,8 +50,7 @@ class ExercisEntityTest extends TestCase
         $exercis_ref01_ent = $client->Exercis(null);
         $exercis_ref01_match = [];
 
-        [$exercis_ref01_list_result, $err] = $exercis_ref01_ent->list($exercis_ref01_match, null);
-        $this->assertNull($err);
+        $exercis_ref01_list_result = $exercis_ref01_ent->list($exercis_ref01_match, null);
         $this->assertIsArray($exercis_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function exercis_basic_setup($extra)
         "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID" => $idmap,
         "MENTALITYSKILLTRAINING_TEST_LIVE" => "FALSE",
         "MENTALITYSKILLTRAINING_TEST_EXPLAIN" => "FALSE",
-        "MENTALITYSKILLTRAINING_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function exercis_basic_setup($extra)
     if ($env["MENTALITYSKILLTRAINING_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MENTALITYSKILLTRAINING_APIKEY"],
             ],
             $extra ?? [],
         ]);

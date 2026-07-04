@@ -10,26 +10,24 @@ This is an unofficial SDK for the Mentality Skill Training public API, generated
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/mentality-skill-training` | `npm install @voxgig-sdk/mentality-skill-training` |
-| Python | `voxgig-sdk-mentality-skill-training` | `pip install voxgig-sdk-mentality-skill-training` |
-| PHP | `voxgig-sdk/mentality-skill-training` | `composer require voxgig-sdk/mentality-skill-training` |
-| Golang | `github.com/voxgig-sdk/mentality-skill-training-sdk/go` | `go get github.com/voxgig-sdk/mentality-skill-training-sdk/go` |
-| Ruby | `voxgig-sdk-mentality-skill-training` | `gem install voxgig-sdk-mentality-skill-training` |
-| Lua | `voxgig-sdk-mentality-skill-training` | `luarocks install voxgig-sdk-mentality-skill-training` |
+| TypeScript | `@voxgig-sdk/mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
+| Python | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
+| PHP | `voxgig-sdk/mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/mentality-skill-training-sdk/go` | `go get github.com/voxgig-sdk/mentality-skill-training-sdk/go@latest` |
+| Ruby | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
+| Lua | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { MentalitySkillTrainingSDK } from 'mentality-skill-training'
+import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training'
 
-const client = new MentalitySkillTrainingSDK({
-  apikey: process.env.MENTALITY-SKILL-TRAINING_APIKEY,
-})
+const client = new MentalitySkillTrainingSDK()
 
 // List all exerciss
-const exerciss = await client.Exercis().list()
+const exerciss = await client.exercis.list()
 console.log(exerciss.data)
 ```
 
@@ -71,8 +69,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Exercis** |  | `/api/exercises` |
-| **TrainingProgram** |  | `/api/training-programs` |
+| **Exercis** | The Exercis entity (list). | `/api/exercises` |
+| **TrainingProgram** | The TrainingProgram entity (list). | `/api/training-programs` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -82,15 +80,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
 
-client = MentalitySkillTrainingSDK({
-    "apikey": os.environ.get("MENTALITY-SKILL-TRAINING_APIKEY"),
-})
+client = MentalitySkillTrainingSDK()
 
 # List all exerciss
-exerciss, err = client.Exercis().list()
+exerciss = client.exercis.list()
 print(exerciss)
 ```
 
@@ -100,12 +95,10 @@ print(exerciss)
 <?php
 require_once 'mentalityskilltraining_sdk.php';
 
-$client = new MentalitySkillTrainingSDK([
-    "apikey" => getenv("MENTALITY-SKILL-TRAINING_APIKEY"),
-]);
+$client = new MentalitySkillTrainingSDK();
 
-// List all exerciss
-[$exerciss, $err] = $client->Exercis()->list();
+// List all exerciss (throws on error)
+$exerciss = $client->exercis()->list();
 print_r($exerciss);
 ```
 
@@ -114,9 +107,7 @@ print_r($exerciss);
 ```go
 import sdk "github.com/voxgig-sdk/mentality-skill-training-sdk/go"
 
-client := sdk.NewMentalitySkillTrainingSDK(map[string]any{
-    "apikey": os.Getenv("MENTALITY-SKILL-TRAINING_APIKEY"),
-})
+client := sdk.New()
 
 // List all exerciss
 exerciss, err := client.Exercis(nil).List(nil, nil)
@@ -128,12 +119,10 @@ fmt.Println(exerciss)
 ```ruby
 require_relative "MentalitySkillTraining_sdk"
 
-client = MentalitySkillTrainingSDK.new({
-  "apikey" => ENV["MENTALITY-SKILL-TRAINING_APIKEY"],
-})
+client = MentalitySkillTrainingSDK.new
 
 # List all exerciss
-exerciss, err = client.Exercis().list
+exerciss = client.exercis.list
 puts exerciss
 ```
 
@@ -142,12 +131,10 @@ puts exerciss
 ```lua
 local sdk = require("mentality-skill-training_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("MENTALITY-SKILL-TRAINING_APIKEY"),
-})
+local client = sdk.new()
 
 -- List all exerciss
-local exerciss, err = client:Exercis():list()
+local exerciss, err = client:exercis():list()
 print(exerciss)
 ```
 
@@ -160,7 +147,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = MentalitySkillTrainingSDK.test()
-const result = await client.Exercis().load({ id: 'test01' })
+const result = await client.exercis.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -168,14 +155,14 @@ const result = await client.Exercis().load({ id: 'test01' })
 
 ```python
 client = MentalitySkillTrainingSDK.test()
-result, err = client.Exercis().load({"id": "test01"})
+result = client.exercis.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = MentalitySkillTrainingSDK::test();
-[$result, $err] = $client->Exercis()->load(["id" => "test01"]);
+$result = $client->exercis()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -191,14 +178,14 @@ result, err := client.Exercis(nil).Load(
 
 ```ruby
 client = MentalitySkillTrainingSDK.test
-result, err = client.Exercis().load({ "id" => "test01" })
+result = client.exercis.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Exercis():load({ id = "test01" })
+local result, err = client:exercis():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,7 +238,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -260,7 +247,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -278,7 +265,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

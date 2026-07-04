@@ -45,6 +45,7 @@ class TrainingProgramEntity
     end
   end
 
+  # @return [TrainingProgram, Hash] the current TrainingProgram data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class TrainingProgramEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of TrainingProgram fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class TrainingProgramEntity
   
 
   
+  # List TrainingProgram items matching the given filter.
+  #
+  # @param reqmatch [TrainingProgramListMatch, Hash, nil] match filter (any subset of TrainingProgram fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<TrainingProgram>, Array] the matching TrainingProgram items; raises MentalitySkillTrainingError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

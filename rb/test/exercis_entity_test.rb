@@ -43,8 +43,7 @@ class ExercisEntityTest < Minitest::Test
     exercis_ref01_ent = client.Exercis(nil)
     exercis_ref01_match = {}
 
-    exercis_ref01_list_result, err = exercis_ref01_ent.list(exercis_ref01_match, nil)
-    assert_nil err
+    exercis_ref01_list_result = exercis_ref01_ent.list(exercis_ref01_match, nil)
     assert exercis_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def exercis_basic_setup(extra)
     "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID" => idmap,
     "MENTALITYSKILLTRAINING_TEST_LIVE" => "FALSE",
     "MENTALITYSKILLTRAINING_TEST_EXPLAIN" => "FALSE",
-    "MENTALITYSKILLTRAINING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def exercis_basic_setup(extra)
   if env["MENTALITYSKILLTRAINING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MENTALITYSKILLTRAINING_APIKEY"],
       },
       extra || {},
     ])

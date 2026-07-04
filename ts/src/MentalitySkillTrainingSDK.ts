@@ -3,6 +3,8 @@
 import { ExercisEntity } from './entity/ExercisEntity'
 import { TrainingProgramEntity } from './entity/TrainingProgramEntity'
 
+export type * from './MentalitySkillTrainingTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class MentalitySkillTrainingSDK {
 
 
 
+  _exercis?: ExercisEntity
+
+  // Idiomatic facade: `client.exercis.list()` / `client.exercis.load({ id })`.
+  get exercis(): ExercisEntity {
+    return (this._exercis ??= new ExercisEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.exercis` instead. */
   Exercis(data?: any) {
     const self = this
     return new ExercisEntity(self,data)
   }
 
 
+  _training_program?: TrainingProgramEntity
+
+  // Idiomatic facade: `client.training_program.list()` / `client.training_program.load({ id })`.
+  get training_program(): TrainingProgramEntity {
+    return (this._training_program ??= new TrainingProgramEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.training_program` instead. */
   TrainingProgram(data?: any) {
     const self = this
     return new TrainingProgramEntity(self,data)

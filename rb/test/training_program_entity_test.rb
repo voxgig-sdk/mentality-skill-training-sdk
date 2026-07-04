@@ -43,8 +43,7 @@ class TrainingProgramEntityTest < Minitest::Test
     training_program_ref01_ent = client.TrainingProgram(nil)
     training_program_ref01_match = {}
 
-    training_program_ref01_list_result, err = training_program_ref01_ent.list(training_program_ref01_match, nil)
-    assert_nil err
+    training_program_ref01_list_result = training_program_ref01_ent.list(training_program_ref01_match, nil)
     assert training_program_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def training_program_basic_setup(extra)
     "MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID" => idmap,
     "MENTALITYSKILLTRAINING_TEST_LIVE" => "FALSE",
     "MENTALITYSKILLTRAINING_TEST_EXPLAIN" => "FALSE",
-    "MENTALITYSKILLTRAINING_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def training_program_basic_setup(extra)
   if env["MENTALITYSKILLTRAINING_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MENTALITYSKILLTRAINING_APIKEY"],
       },
       extra || {},
     ])
