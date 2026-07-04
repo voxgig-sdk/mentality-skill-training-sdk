@@ -29,18 +29,16 @@ require_once 'mentalityskilltraining_sdk.php';
 $client = new MentalitySkillTrainingSDK();
 ```
 
-### 2. List exerciss
+### 2. List exercis records
 
 ```php
 try {
-    $result = $client->exercis()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Exercis records — iterate directly.
+    $exerciss = $client->Exercis()->list();
+    foreach ($exerciss as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = MentalitySkillTrainingSDK::test();
+$client = MentalitySkillTrainingSDK::test([
+    "entity" => ["exercis" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->exercis()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$exercis = $client->Exercis()->load(["id" => "test01"]);
+print_r($exercis);
 ```
 
 ### Use a custom fetch function
@@ -171,7 +173,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Exercis` | `($data): ExercisEntity` | Create a Exercis entity instance. |
+| `Exercis` | `($data): ExercisEntity` | Create an Exercis entity instance. |
 | `TrainingProgram` | `($data): TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface
@@ -253,7 +255,7 @@ API path: `/api/training-programs`
 
 ### Exercis
 
-Create an instance: `const exercis = client.exercis`
+Create an instance: `$exercis = $client->Exercis();`
 
 #### Operations
 
@@ -276,14 +278,15 @@ Create an instance: `const exercis = client.exercis`
 
 #### Example: List
 
-```ts
-const exerciss = await client.exercis.list()
+```php
+// list() returns an array of Exercis records (throws on error).
+$exerciss = $client->Exercis()->list();
 ```
 
 
 ### TrainingProgram
 
-Create an instance: `const training_program = client.training_program`
+Create an instance: `$training_program = $client->TrainingProgram();`
 
 #### Operations
 
@@ -306,8 +309,9 @@ Create an instance: `const training_program = client.training_program`
 
 #### Example: List
 
-```ts
-const training_programs = await client.training_program.list()
+```php
+// list() returns an array of TrainingProgram records (throws on error).
+$training_programs = $client->TrainingProgram()->list();
 ```
 
 
@@ -382,7 +386,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$exercis = $client->exercis();
+$exercis = $client->Exercis();
 $exercis->load(["id" => "example_id"]);
 
 // $exercis->dataGet() now returns the loaded exercis data

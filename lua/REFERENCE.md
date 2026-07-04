@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## ExercisEntity
 
 ```lua
-local exercis = client:exercis(nil)
+local exercis = client:Exercis(nil)
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ local exercis = client:exercis(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:exercis():list()
+local results, err = client:Exercis():list()
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## TrainingProgramEntity
 
 ```lua
-local training_program = client:training_program(nil)
+local training_program = client:TrainingProgram(nil)
 ```
 
 ### Fields
@@ -169,7 +169,7 @@ local training_program = client:training_program(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:training_program():list()
+local results, err = client:TrainingProgram():list()
 ```
 
 ### Common Methods

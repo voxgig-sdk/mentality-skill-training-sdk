@@ -220,41 +220,21 @@ class MentalitySkillTrainingSDK:
         }
 
 
-    @property
-    def exercis(self):
-        """Idiomatic facade: client.exercis.list() / client.exercis.load({"id": ...})."""
-        from entity.exercis_entity import ExercisEntity
-        cached = getattr(self, "_exercis", None)
-        if cached is None:
-            cached = ExercisEntity(self, None)
-            self._exercis = cached
-        return cached
-
-    def Exercis(self, data=None):
-        # Deprecated: use client.exercis instead.
+    def Exercis(self, data=None) -> "ExercisEntity":
+        """Entity factory: client.Exercis().list({}) / client.Exercis().load({"id": ...})."""
         from entity.exercis_entity import ExercisEntity
         return ExercisEntity(self, data)
 
 
-    @property
-    def training_program(self):
-        """Idiomatic facade: client.training_program.list() / client.training_program.load({"id": ...})."""
-        from entity.training_program_entity import TrainingProgramEntity
-        cached = getattr(self, "_training_program", None)
-        if cached is None:
-            cached = TrainingProgramEntity(self, None)
-            self._training_program = cached
-        return cached
-
-    def TrainingProgram(self, data=None):
-        # Deprecated: use client.training_program instead.
+    def TrainingProgram(self, data=None) -> "TrainingProgramEntity":
+        """Entity factory: client.TrainingProgram().list({}) / client.TrainingProgram().load({"id": ...})."""
         from entity.training_program_entity import TrainingProgramEntity
         return TrainingProgramEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "MentalitySkillTrainingSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class MentalitySkillTrainingSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.exercis_entity import ExercisEntity
+    from entity.training_program_entity import TrainingProgramEntity

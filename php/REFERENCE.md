@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ExercisEntity
 
 ```php
-$exercis = $client->exercis();
+$exercis = $client->Exercis();
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ $exercis = $client->exercis();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->exercis()->list([]);
+$results = $client->Exercis()->list([]);
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## TrainingProgramEntity
 
 ```php
-$training_program = $client->training_program();
+$training_program = $client->TrainingProgram();
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ $training_program = $client->training_program();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->training_program()->list([]);
+$results = $client->TrainingProgram()->list([]);
 ```
 
 ### Common Methods

@@ -28,16 +28,14 @@ require_relative "MentalitySkillTraining_sdk"
 client = MentalitySkillTrainingSDK.new
 ```
 
-### 2. List exerciss
+### 2. List exercis records
 
 ```ruby
 begin
-  result = client.exercis.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Exercis records — iterate directly.
+  exerciss = client.Exercis.list
+  exerciss.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = MentalitySkillTrainingSDK.test
+client = MentalitySkillTrainingSDK.test({
+  "entity" => { "exercis" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.exercis.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+exercis = client.Exercis.load({ "id" => "test01" })
+puts exercis
 ```
 
 ### Use a custom fetch function
@@ -167,7 +169,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Exercis` | `(data) -> ExercisEntity` | Create a Exercis entity instance. |
+| `Exercis` | `(data) -> ExercisEntity` | Create an Exercis entity instance. |
 | `TrainingProgram` | `(data) -> TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface
@@ -248,7 +250,7 @@ API path: `/api/training-programs`
 
 ### Exercis
 
-Create an instance: `const exercis = client.exercis`
+Create an instance: `exercis = client.Exercis`
 
 #### Operations
 
@@ -271,14 +273,15 @@ Create an instance: `const exercis = client.exercis`
 
 #### Example: List
 
-```ts
-const exerciss = await client.exercis.list()
+```ruby
+# list returns an Array of Exercis records (raises on error).
+exerciss = client.Exercis.list
 ```
 
 
 ### TrainingProgram
 
-Create an instance: `const training_program = client.training_program`
+Create an instance: `training_program = client.TrainingProgram`
 
 #### Operations
 
@@ -301,8 +304,9 @@ Create an instance: `const training_program = client.training_program`
 
 #### Example: List
 
-```ts
-const training_programs = await client.training_program.list()
+```ruby
+# list returns an Array of TrainingProgram records (raises on error).
+training_programs = client.TrainingProgram.list
 ```
 
 
@@ -377,7 +381,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-exercis = client.exercis
+exercis = client.Exercis
 exercis.load({ "id" => "example_id" })
 
 # exercis.data_get now returns the loaded exercis data

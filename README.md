@@ -26,9 +26,11 @@ import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training'
 
 const client = new MentalitySkillTrainingSDK()
 
-// List all exerciss
-const exerciss = await client.exercis.list()
-console.log(exerciss.data)
+// List all exerciss (returns Exercis[])
+const exerciss = await client.Exercis().list()
+for (const exercis of exerciss) {
+  console.log(exercis)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
 
 client = MentalitySkillTrainingSDK()
 
-# List all exerciss
-exerciss = client.exercis.list()
-print(exerciss)
+# List all exerciss (returns a list, raises on error)
+exerciss = client.Exercis().list({})
+for exercis in exerciss:
+    print(exercis)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'mentalityskilltraining_sdk.php';
 
 $client = new MentalitySkillTrainingSDK();
 
-// List all exerciss (throws on error)
-$exerciss = $client->exercis()->list();
+// List all exerciss (returns an array; throws on error)
+$exerciss = $client->Exercis()->list();
 print_r($exerciss);
 ```
 
@@ -121,8 +124,8 @@ require_relative "MentalitySkillTraining_sdk"
 
 client = MentalitySkillTrainingSDK.new
 
-# List all exerciss
-exerciss = client.exercis.list
+# List all exerciss (returns an Array; raises on error)
+exerciss = client.Exercis.list
 puts exerciss
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("mentality-skill-training_sdk")
 local client = sdk.new()
 
 -- List all exerciss
-local exerciss, err = client:exercis():list()
+local exerciss, err = client:Exercis():list()
 print(exerciss)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = MentalitySkillTrainingSDK.test()
-const result = await client.exercis.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const exercis = await client.Exercis().load({ id: 'test01' })
+// exercis is a bare Exercis populated with mock data
+console.log(exercis)
 ```
 
 ### Python
 
 ```python
 client = MentalitySkillTrainingSDK.test()
-result = client.exercis.load({"id": "test01"})
+exercis = client.Exercis().load({"id": "test01"})
+print(exercis)
 ```
 
 ### PHP
 
 ```php
-$client = MentalitySkillTrainingSDK::test();
-$result = $client->exercis()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = MentalitySkillTrainingSDK::test([
+    "entity" => ["exercis" => ["test01" => ["id" => "test01"]]],
+]);
+$exercis = $client->Exercis()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.Exercis(nil).Load(
 ### Ruby
 
 ```ruby
-client = MentalitySkillTrainingSDK.test
-result = client.exercis.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = MentalitySkillTrainingSDK.test({
+  "entity" => { "exercis" => { "test01" => { "id" => "test01" } } },
+})
+exercis = client.Exercis.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:exercis():load({ id = "test01" })
+local result, err = client:Exercis():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

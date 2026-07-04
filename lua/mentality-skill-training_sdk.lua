@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:exercis():list() / client:exercis():load({ id = ... })
-function MentalitySkillTrainingSDK:exercis(data)
+-- Idiomatic facade: client:Exercis():list() / client:Exercis():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MentalitySkillTrainingSDK:Exercis(data)
   local EntityMod = require("entity.exercis_entity")
   if data == nil then
     if self._exercis == nil then
@@ -256,15 +257,10 @@ function MentalitySkillTrainingSDK:exercis(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:exercis() instead.
-function MentalitySkillTrainingSDK:Exercis(data)
-  local EntityMod = require("entity.exercis_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:training_program():list() / client:training_program():load({ id = ... })
-function MentalitySkillTrainingSDK:training_program(data)
+-- Idiomatic facade: client:TrainingProgram():list() / client:TrainingProgram():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MentalitySkillTrainingSDK:TrainingProgram(data)
   local EntityMod = require("entity.training_program_entity")
   if data == nil then
     if self._training_program == nil then
@@ -272,12 +268,6 @@ function MentalitySkillTrainingSDK:training_program(data)
     end
     return self._training_program
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:training_program() instead.
-function MentalitySkillTrainingSDK:TrainingProgram(data)
-  local EntityMod = require("entity.training_program_entity")
   return EntityMod.new(self, data)
 end
 

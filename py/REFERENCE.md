@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ExercisEntity
 
 ```python
-exercis = client.exercis
+exercis = client.Exercis()
 ```
 
 ### Fields
@@ -107,7 +107,9 @@ exercis = client.exercis
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.exercis.list({})
+results = client.Exercis().list({})
+for exercis in results:
+    print(exercis)
 ```
 
 ### Common Methods
@@ -142,7 +144,7 @@ Return the entity name.
 ## TrainingProgramEntity
 
 ```python
-training_program = client.training_program
+training_program = client.TrainingProgram()
 ```
 
 ### Fields
@@ -165,7 +167,9 @@ training_program = client.training_program
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.training_program.list({})
+results = client.TrainingProgram().list({})
+for training_program in results:
+    print(training_program)
 ```
 
 ### Common Methods

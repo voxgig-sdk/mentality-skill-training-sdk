@@ -233,10 +233,10 @@ class MentalitySkillTrainingSDK
 
     private $_exercis = null;
 
-    // Idiomatic facade: $client->exercis()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Exercis() (PHP method
-    // names are case-insensitive).
-    public function exercis($data = null)
+    // Canonical facade: $client->Exercis()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->exercis()
+    // resolves here too.
+    public function Exercis($data = null)
     {
         require_once __DIR__ . '/entity/exercis_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class MentalitySkillTrainingSDK
 
     private $_training_program = null;
 
-    // Idiomatic facade: $client->training_program()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias TrainingProgram() (PHP method
-    // names are case-insensitive).
-    public function training_program($data = null)
+    // Canonical facade: $client->TrainingProgram()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->training_program()
+    // resolves here too.
+    public function TrainingProgram($data = null)
     {
         require_once __DIR__ . '/entity/training_program_entity.php';
         if ($data === null) {

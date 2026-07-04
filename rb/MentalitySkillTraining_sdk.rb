@@ -208,26 +208,14 @@ class MentalitySkillTrainingSDK
   end
 
 
-  # Idiomatic facade: client.exercis.list / client.exercis.load({ "id" => ... })
-  def exercis
-    require_relative 'entity/exercis_entity'
-    @exercis ||= ExercisEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.exercis instead.
+  # Canonical facade: client.Exercis.list / client.Exercis.load({ "id" => ... })
   def Exercis(data = nil)
     require_relative 'entity/exercis_entity'
     ExercisEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.training_program.list / client.training_program.load({ "id" => ... })
-  def training_program
-    require_relative 'entity/training_program_entity'
-    @training_program ||= TrainingProgramEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.training_program instead.
+  # Canonical facade: client.TrainingProgram.list / client.TrainingProgram.load({ "id" => ... })
   def TrainingProgram(data = nil)
     require_relative 'entity/training_program_entity'
     TrainingProgramEntity.new(self, data)

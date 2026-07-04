@@ -31,14 +31,16 @@ from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
 client = MentalitySkillTrainingSDK()
 ```
 
-### 2. List exerciss
+### 2. List exercis records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.exercis.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    exerciss = client.Exercis().list({})
+    for exercis in exerciss:
+        print(exercis)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MentalitySkillTrainingSDK.test()
 
-result = client.exercis.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+exercis = client.Exercis().load({"id": "test01"})
+# exercis contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -163,7 +166,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Exercis` | `(data) -> ExercisEntity` | Create a Exercis entity instance. |
+| `Exercis` | `(data) -> ExercisEntity` | Create an Exercis entity instance. |
 | `TrainingProgram` | `(data) -> TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface
@@ -245,7 +248,7 @@ API path: `/api/training-programs`
 
 ### Exercis
 
-Create an instance: `const exercis = client.exercis`
+Create an instance: `exercis = client.Exercis()`
 
 #### Operations
 
@@ -268,14 +271,14 @@ Create an instance: `const exercis = client.exercis`
 
 #### Example: List
 
-```ts
-const exerciss = await client.exercis.list()
+```python
+exerciss = client.Exercis().list({})
 ```
 
 
 ### TrainingProgram
 
-Create an instance: `const training_program = client.training_program`
+Create an instance: `training_program = client.TrainingProgram()`
 
 #### Operations
 
@@ -298,8 +301,8 @@ Create an instance: `const training_program = client.training_program`
 
 #### Example: List
 
-```ts
-const training_programs = await client.training_program.list()
+```python
+training_programs = client.TrainingProgram().list({})
 ```
 
 
@@ -373,7 +376,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-exercis = client.exercis
+exercis = client.Exercis()
 exercis.load({"id": "example_id"})
 
 # exercis.data_get() now returns the loaded exercis data

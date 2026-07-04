@@ -121,7 +121,7 @@ Alias for `MentalitySkillTrainingSDK.test()`.
 ## ExercisEntity
 
 ```ts
-const exercis = client.exercis
+const exercis = client.Exercis()
 ```
 
 ### Fields
@@ -144,7 +144,7 @@ const exercis = client.exercis
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.exercis.list()
+const results = await client.Exercis().list()
 ```
 
 ### Common Methods
@@ -178,7 +178,7 @@ Return a copy of the entity options.
 ## TrainingProgramEntity
 
 ```ts
-const training_program = client.training_program
+const training_program = client.TrainingProgram()
 ```
 
 ### Fields
@@ -201,7 +201,7 @@ const training_program = client.training_program
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.training_program.list()
+const results = await client.TrainingProgram().list()
 ```
 
 ### Common Methods

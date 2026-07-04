@@ -4,57 +4,57 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Exercis:
-    benefit: Optional[list] = None
-    category: Optional[str] = None
-    description: Optional[str] = None
-    difficulty: Optional[str] = None
-    duration: Optional[int] = None
-    id: Optional[str] = None
-    instruction: Optional[list] = None
-    name: Optional[str] = None
+class Exercis(TypedDict, total=False):
+    benefit: list
+    category: str
+    description: str
+    difficulty: str
+    duration: int
+    id: str
+    instruction: list
+    name: str
 
 
-@dataclass
-class ExercisListMatch:
-    benefit: Optional[list] = None
-    category: Optional[str] = None
-    description: Optional[str] = None
-    difficulty: Optional[str] = None
-    duration: Optional[int] = None
-    id: Optional[str] = None
-    instruction: Optional[list] = None
-    name: Optional[str] = None
+class ExercisListMatch(TypedDict, total=False):
+    benefit: list
+    category: str
+    description: str
+    difficulty: str
+    duration: int
+    id: str
+    instruction: list
+    name: str
 
 
-@dataclass
-class TrainingProgram:
-    description: Optional[str] = None
-    duration: Optional[int] = None
-    exercis: Optional[list] = None
-    id: Optional[str] = None
-    level: Optional[str] = None
-    name: Optional[str] = None
-    objectif: Optional[list] = None
-    sport: Optional[str] = None
+class TrainingProgram(TypedDict, total=False):
+    description: str
+    duration: int
+    exercis: list
+    id: str
+    level: str
+    name: str
+    objectif: list
+    sport: str
 
 
-@dataclass
-class TrainingProgramListMatch:
-    description: Optional[str] = None
-    duration: Optional[int] = None
-    exercis: Optional[list] = None
-    id: Optional[str] = None
-    level: Optional[str] = None
-    name: Optional[str] = None
-    objectif: Optional[list] = None
-    sport: Optional[str] = None
-
+class TrainingProgramListMatch(TypedDict, total=False):
+    description: str
+    duration: int
+    exercis: list
+    id: str
+    level: str
+    name: str
+    objectif: list
+    sport: str
