@@ -17,8 +17,6 @@ go build -o mentality-skill-training-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./mentality-skill-training-cli list exercis
-./mentality-skill-training-cli load 1 exercis
-./mentality-skill-training-cli load '{id:1}' exercis
 
 # REPL
 ./mentality-skill-training-cli
@@ -29,8 +27,6 @@ go build -o mentality-skill-training-cli ./...
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
 | `list`   | `[entity]` · `[query entity]`                | List records               |
-| `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

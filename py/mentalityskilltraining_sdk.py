@@ -221,13 +221,13 @@ class MentalitySkillTrainingSDK:
 
 
     def Exercis(self, data=None) -> "ExercisEntity":
-        """Entity factory: client.Exercis().list({}) / client.Exercis().load({"id": ...})."""
+        """Entity factory: client.Exercis().list() / client.Exercis().load({"id": ...})."""
         from entity.exercis_entity import ExercisEntity
         return ExercisEntity(self, data)
 
 
     def TrainingProgram(self, data=None) -> "TrainingProgramEntity":
-        """Entity factory: client.TrainingProgram().list({}) / client.TrainingProgram().load({"id": ...})."""
+        """Entity factory: client.TrainingProgram().list() / client.TrainingProgram().load({"id": ...})."""
         from entity.training_program_entity import TrainingProgramEntity
         return TrainingProgramEntity(self, data)
 

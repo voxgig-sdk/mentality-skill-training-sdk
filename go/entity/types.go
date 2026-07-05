@@ -20,8 +20,7 @@ type Exercis struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// ExercisListMatch mirrors the exercis fields as an all-optional match
-// filter (Go analog of Partial<Exercis>).
+// ExercisListMatch is the typed request payload for Exercis.ListTyped.
 type ExercisListMatch struct {
 	Benefit *[]any `json:"benefit,omitempty"`
 	Category *string `json:"category,omitempty"`
@@ -45,8 +44,7 @@ type TrainingProgram struct {
 	Sport *string `json:"sport,omitempty"`
 }
 
-// TrainingProgramListMatch mirrors the training_program fields as an all-optional match
-// filter (Go analog of Partial<TrainingProgram>).
+// TrainingProgramListMatch is the typed request payload for TrainingProgram.ListTyped.
 type TrainingProgramListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Duration *int `json:"duration,omitempty"`

@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the MentalitySkillTraining API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Exercis()` — each with a small set of operations (`list`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -37,6 +42,35 @@ const exerciss = await client.Exercis().list()
 
 for (const exercis of exerciss) {
   console.log(exercis)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const exerciss = await client.Exercis().list()
+  console.log(exerciss)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -85,7 +119,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MentalitySkillTrainingSDK.test()
 
-const exercis = await client.Exercis().load({ id: 'test01' })
+const exercis = await client.Exercis().list()
 // exercis is a bare entity populated with mock response data
 console.log(exercis)
 ```
@@ -104,12 +138,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Exercis()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -198,13 +232,9 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): MentalitySkillTrainingSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -214,10 +244,8 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -306,14 +334,14 @@ Create an instance: `const exercis = client.Exercis()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefit` | ``$ARRAY`` |  |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `difficulty` | ``$STRING`` |  |
-| `duration` | ``$INTEGER`` |  |
-| `id` | ``$STRING`` |  |
-| `instruction` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
+| `benefit` | `any[]` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `difficulty` | `string` |  |
+| `duration` | `number` |  |
+| `id` | `string` |  |
+| `instruction` | `any[]` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -336,14 +364,14 @@ Create an instance: `const training_program = client.TrainingProgram()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `duration` | ``$INTEGER`` |  |
-| `exercis` | ``$ARRAY`` |  |
-| `id` | ``$STRING`` |  |
-| `level` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `objectif` | ``$ARRAY`` |  |
-| `sport` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `duration` | `number` |  |
+| `exercis` | `any[]` |  |
+| `id` | `string` |  |
+| `level` | `string` |  |
+| `name` | `string` |  |
+| `objectif` | `any[]` |  |
+| `sport` | `string` |  |
 
 #### Example: List
 
@@ -352,12 +380,16 @@ const training_programs = await client.TrainingProgram().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -374,11 +406,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -414,16 +444,16 @@ import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const exercis = client.Exercis()
-await exercis.load({ id: "example_id" })
+await exercis.list()
 
-// exercis.data() now returns the loaded exercis data
-// exercis.match() returns { id: "example_id" }
+// exercis.data() now returns the exercis data from the last `list`
+// exercis.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

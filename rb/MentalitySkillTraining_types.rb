@@ -45,7 +45,7 @@ Exercis = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Exercis#list (any subset of Exercis fields).
+# Request payload for Exercis#list.
 #
 # @!attribute [rw] benefit
 #   @return [Array, nil]
@@ -119,7 +119,7 @@ TrainingProgram = Struct.new(
   keyword_init: true
 )
 
-# Match filter for TrainingProgram#list (any subset of TrainingProgram fields).
+# Request payload for TrainingProgram#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]

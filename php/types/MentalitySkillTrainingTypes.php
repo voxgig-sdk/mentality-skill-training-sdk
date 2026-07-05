@@ -25,7 +25,7 @@ class Exercis
     public ?string $name = null;
 }
 
-/** Match filter for Exercis#list (any subset of Exercis fields). */
+/** Request payload for Exercis#list. */
 class ExercisListMatch
 {
     public ?array $benefit = null;
@@ -51,7 +51,7 @@ class TrainingProgram
     public ?string $sport = null;
 }
 
-/** Match filter for TrainingProgram#list (any subset of TrainingProgram fields). */
+/** Request payload for TrainingProgram#list. */
 class TrainingProgramListMatch
 {
     public ?string $description = null;

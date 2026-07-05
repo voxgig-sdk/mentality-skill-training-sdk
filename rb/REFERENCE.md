@@ -8,7 +8,7 @@ Complete API reference for the MentalitySkillTraining Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'mentality-skill-training_sdk'
+require_relative 'MentalitySkillTraining_sdk'
 
 client = MentalitySkillTrainingSDK.new(options)
 ```
@@ -97,23 +97,23 @@ exercis = client.Exercis
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | ``$ARRAY`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `difficulty` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `instruction` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `benefit` | `Array` | No |  |
+| `category` | `String` | No |  |
+| `description` | `String` | No |  |
+| `difficulty` | `String` | No |  |
+| `duration` | `Integer` | No |  |
+| `id` | `String` | No |  |
+| `instruction` | `Array` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Exercis.list(nil)
+results = client.Exercis.list
 ```
 
 ### Common Methods
@@ -156,23 +156,23 @@ training_program = client.TrainingProgram
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `exercis` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `objectif` | ``$ARRAY`` | No |  |
-| `sport` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `duration` | `Integer` | No |  |
+| `exercis` | `Array` | No |  |
+| `id` | `String` | No |  |
+| `level` | `String` | No |  |
+| `name` | `String` | No |  |
+| `objectif` | `Array` | No |  |
+| `sport` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.TrainingProgram.list(nil)
+results = client.TrainingProgram.list
 ```
 
 ### Common Methods

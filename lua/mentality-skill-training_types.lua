@@ -17,6 +17,14 @@
 ---@field name? string
 
 ---@class ExercisListMatch
+---@field benefit? table
+---@field category? string
+---@field description? string
+---@field difficulty? string
+---@field duration? number
+---@field id? string
+---@field instruction? table
+---@field name? string
 
 ---@class TrainingProgram
 ---@field description? string
@@ -29,6 +37,14 @@
 ---@field sport? string
 
 ---@class TrainingProgramListMatch
+---@field description? string
+---@field duration? number
+---@field exercis? table
+---@field id? string
+---@field level? string
+---@field name? string
+---@field objectif? table
+---@field sport? string
 
 local M = {}
 

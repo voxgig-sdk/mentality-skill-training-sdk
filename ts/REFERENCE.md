@@ -128,14 +128,14 @@ const exercis = client.Exercis()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | ``$ARRAY`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `difficulty` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `instruction` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `benefit` | `any[]` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `difficulty` | `string` | No |  |
+| `duration` | `number` | No |  |
+| `id` | `string` | No |  |
+| `instruction` | `any[]` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -185,14 +185,14 @@ const training_program = client.TrainingProgram()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `exercis` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `objectif` | ``$ARRAY`` | No |  |
-| `sport` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `duration` | `number` | No |  |
+| `exercis` | `any[]` | No |  |
+| `id` | `string` | No |  |
+| `level` | `string` | No |  |
+| `name` | `string` | No |  |
+| `objectif` | `any[]` | No |  |
+| `sport` | `string` | No |  |
 
 ### Operations
 

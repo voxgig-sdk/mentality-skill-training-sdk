@@ -94,14 +94,14 @@ local exercis = client:Exercis(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | ``$ARRAY`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `difficulty` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `instruction` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `benefit` | `table` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `difficulty` | `string` | No |  |
+| `duration` | `number` | No |  |
+| `id` | `string` | No |  |
+| `instruction` | `table` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -153,14 +153,14 @@ local training_program = client:TrainingProgram(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `exercis` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `objectif` | ``$ARRAY`` | No |  |
-| `sport` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `duration` | `number` | No |  |
+| `exercis` | `table` | No |  |
+| `id` | `string` | No |  |
+| `level` | `string` | No |  |
+| `name` | `string` | No |  |
+| `objectif` | `table` | No |  |
+| `sport` | `string` | No |  |
 
 ### Operations
 

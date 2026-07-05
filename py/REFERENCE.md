@@ -8,7 +8,7 @@ Complete API reference for the MentalitySkillTraining Python SDK.
 ### Constructor
 
 ```python
-from mentality-skill-training_sdk import MentalitySkillTrainingSDK
+from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
 
 client = MentalitySkillTrainingSDK(options)
 ```
@@ -91,23 +91,23 @@ exercis = client.Exercis()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | ``$ARRAY`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `difficulty` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `instruction` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `benefit` | `list` | No |  |
+| `category` | `str` | No |  |
+| `description` | `str` | No |  |
+| `difficulty` | `str` | No |  |
+| `duration` | `int` | No |  |
+| `id` | `str` | No |  |
+| `instruction` | `list` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Exercis().list({})
+results = client.Exercis().list()
 for exercis in results:
     print(exercis)
 ```
@@ -151,23 +151,23 @@ training_program = client.TrainingProgram()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `duration` | ``$INTEGER`` | No |  |
-| `exercis` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `objectif` | ``$ARRAY`` | No |  |
-| `sport` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `duration` | `int` | No |  |
+| `exercis` | `list` | No |  |
+| `id` | `str` | No |  |
+| `level` | `str` | No |  |
+| `name` | `str` | No |  |
+| `objectif` | `list` | No |  |
+| `sport` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.TrainingProgram().list({})
+results = client.TrainingProgram().list()
 for training_program in results:
     print(training_program)
 ```

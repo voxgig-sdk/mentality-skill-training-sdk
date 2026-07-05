@@ -16,7 +16,16 @@ export interface Exercis {
   name?: string
 }
 
-export type ExercisListMatch = Partial<Exercis>
+export interface ExercisListMatch {
+  benefit?: any[]
+  category?: string
+  description?: string
+  difficulty?: string
+  duration?: number
+  id?: string
+  instruction?: any[]
+  name?: string
+}
 
 export interface TrainingProgram {
   description?: string
@@ -29,5 +38,14 @@ export interface TrainingProgram {
   sport?: string
 }
 
-export type TrainingProgramListMatch = Partial<TrainingProgram>
+export interface TrainingProgramListMatch {
+  description?: string
+  duration?: number
+  exercis?: any[]
+  id?: string
+  level?: string
+  name?: string
+  objectif?: any[]
+  sport?: string
+}
 
