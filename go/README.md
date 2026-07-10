@@ -332,7 +332,7 @@ fmt.Println(exerciss) // the array of records
 
 ### TrainingProgram
 
-Create an instance: `training_program := client.TrainingProgram(nil)`
+Create an instance: `trainingProgram := client.TrainingProgram(nil)`
 
 #### Operations
 
@@ -356,11 +356,11 @@ Create an instance: `training_program := client.TrainingProgram(nil)`
 #### Example: List
 
 ```go
-training_programs, err := client.TrainingProgram(nil).List(nil, nil)
+trainingPrograms, err := client.TrainingProgram(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(training_programs) // the array of records
+fmt.Println(trainingPrograms) // the array of records
 ```
 
 

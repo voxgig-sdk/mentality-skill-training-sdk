@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -398,14 +395,17 @@
           "url": "https://melodious-squirrel-e72cff.netlify.app/"
         },
         "description": "This API provides resources and tools focused on improving mental skills and techniques for athletes. It offers structured training methods that cater specifically to enhancing cognitive abilities in sports.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://melodious-squirrel-e72cff.netlify.app"
           }
         ],
+        "summary": "This API provides resources and tools focused on improving mental skills and techniques for athletes.",
         "title": "Mentality Skill Training",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://melodious-squirrel-e72cff.netlify.app"
       },
       "option": {},
       "target": {
@@ -458,6 +458,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -508,6 +511,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

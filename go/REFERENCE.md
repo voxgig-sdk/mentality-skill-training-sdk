@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 exercis := client.Exercis(nil)
+fmt.Println(exercis.GetName()) // "exercis"
 ```
 
 ### Fields
@@ -118,6 +119,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Exercis(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -147,7 +152,8 @@ Return the entity name.
 ## TrainingProgramEntity
 
 ```go
-training_program := client.TrainingProgram(nil)
+trainingProgram := client.TrainingProgram(nil)
+fmt.Println(trainingProgram.GetName()) // "training_program"
 ```
 
 ### Fields
@@ -171,6 +177,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.TrainingProgram(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

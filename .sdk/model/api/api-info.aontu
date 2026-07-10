@@ -15,9 +15,9 @@ main: {
           url: "https://melodious-squirrel-e72cff.netlify.app"
         }
       ]
+      summary: "This API provides resources and tools focused on improving mental skills and techniques for athletes."
       title: "Mentality Skill Training"
       version: "1.0.0"
+      website: "https://melodious-squirrel-e72cff.netlify.app"
     }
   }
-}
-
