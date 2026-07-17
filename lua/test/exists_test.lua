@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- MentalitySkillTraining SDK exists test
 
 local sdk = require("mentality-skill-training_sdk")
 
