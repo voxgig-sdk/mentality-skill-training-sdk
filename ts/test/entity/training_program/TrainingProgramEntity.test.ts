@@ -26,8 +26,8 @@ import {
 describe('TrainingProgramEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when MENTALITYSKILLTRAINING_TEST_LIVE=TRUE.
-  afterEach(liveDelay('MENTALITYSKILLTRAINING_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when MENTALITY_SKILL_TRAINING_TEST_LIVE=TRUE.
+  afterEach(liveDelay('MENTALITY_SKILL_TRAINING_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = MentalitySkillTrainingSDK.test()
@@ -63,7 +63,7 @@ describe('TrainingProgramEntity', async () => {
     const training_program_ref01_ent = client.TrainingProgram()
     const training_program_ref01_match: any = {}
 
-    const training_program_ref01_list = await training_program_ref01_ent.list(training_program_ref01_match)
+    const training_program_ref01_list = (await training_program_ref01_ent.list(training_program_ref01_match)).map((e: any) => e.data())
 
 
   })

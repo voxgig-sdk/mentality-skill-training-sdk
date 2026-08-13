@@ -37,7 +37,7 @@ begin
   # list returns an Array of Exercis records — iterate directly.
   exerciss = client.Exercis.list
   exerciss.each do |item|
-    puts "#{item["id"]} #{item["benefit"]}"
+    puts "#{item["id"]} #{item["benefits"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = MentalitySkillTrainingSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 exercis = client.Exercis.list()
 puts exercis
 ```
@@ -237,13 +238,13 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `benefit` |  |
+| `benefits` |  |
 | `category` |  |
 | `description` |  |
 | `difficulty` |  |
 | `duration` |  |
 | `id` |  |
-| `instruction` |  |
+| `instructions` |  |
 | `name` |  |
 
 Operations: List.
@@ -256,11 +257,11 @@ API path: `/api/exercises`
 | --- | --- |
 | `description` |  |
 | `duration` |  |
-| `exercis` |  |
+| `exercises` |  |
 | `id` |  |
 | `level` |  |
 | `name` |  |
-| `objectif` |  |
+| `objectives` |  |
 | `sport` |  |
 
 Operations: List.
@@ -286,13 +287,13 @@ Create an instance: `exercis = client.Exercis`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefit` | `Array` |  |
+| `benefits` | `Array` |  |
 | `category` | `String` |  |
 | `description` | `String` |  |
 | `difficulty` | `String` |  |
 | `duration` | `Integer` |  |
 | `id` | `String` |  |
-| `instruction` | `Array` |  |
+| `instructions` | `Array` |  |
 | `name` | `String` |  |
 
 #### Example: List
@@ -319,11 +320,11 @@ Create an instance: `training_program = client.TrainingProgram`
 | --- | --- | --- |
 | `description` | `String` |  |
 | `duration` | `Integer` |  |
-| `exercis` | `Array` |  |
+| `exercises` | `Array` |  |
 | `id` | `String` |  |
 | `level` | `String` |  |
 | `name` | `String` |  |
-| `objectif` | `Array` |  |
+| `objectives` | `Array` |  |
 | `sport` | `String` |  |
 
 #### Example: List

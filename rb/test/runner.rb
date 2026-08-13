@@ -23,8 +23,8 @@ module MentalitySkillTrainingTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("MENTALITYSKILLTRAINING_TEST_LIVE")
-    override = getenv("MENTALITYSKILLTRAINING_TEST_OVERRIDE")
+    live = getenv("MENTALITY_SKILL_TRAINING_TEST_LIVE")
+    override = getenv("MENTALITY_SKILL_TRAINING_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module MentalitySkillTrainingTestRunner
       end
     end
 
-    explain = getenv("MENTALITYSKILLTRAINING_TEST_EXPLAIN")
-    m["MENTALITYSKILLTRAINING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("MENTALITY_SKILL_TRAINING_TEST_EXPLAIN")
+    m["MENTALITY_SKILL_TRAINING_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

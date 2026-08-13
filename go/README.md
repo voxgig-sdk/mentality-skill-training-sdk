@@ -261,13 +261,13 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"benefit"` |  |
+| `"benefits"` |  |
 | `"category"` |  |
 | `"description"` |  |
 | `"difficulty"` |  |
 | `"duration"` |  |
 | `"id"` |  |
-| `"instruction"` |  |
+| `"instructions"` |  |
 | `"name"` |  |
 
 Operations: List.
@@ -280,11 +280,11 @@ API path: `/api/exercises`
 | --- | --- |
 | `"description"` |  |
 | `"duration"` |  |
-| `"exercis"` |  |
+| `"exercises"` |  |
 | `"id"` |  |
 | `"level"` |  |
 | `"name"` |  |
-| `"objectif"` |  |
+| `"objectives"` |  |
 | `"sport"` |  |
 
 Operations: List.
@@ -310,13 +310,13 @@ Create an instance: `exercis := client.Exercis(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefit` | `[]any` |  |
+| `benefits` | `[]any` |  |
 | `category` | `string` |  |
 | `description` | `string` |  |
 | `difficulty` | `string` |  |
 | `duration` | `int` |  |
 | `id` | `string` |  |
-| `instruction` | `[]any` |  |
+| `instructions` | `[]any` |  |
 | `name` | `string` |  |
 
 #### Example: List
@@ -346,11 +346,11 @@ Create an instance: `trainingProgram := client.TrainingProgram(nil)`
 | --- | --- | --- |
 | `description` | `string` |  |
 | `duration` | `int` |  |
-| `exercis` | `[]any` |  |
+| `exercises` | `[]any` |  |
 | `id` | `string` |  |
 | `level` | `string` |  |
 | `name` | `string` |  |
-| `objectif` | `[]any` |  |
+| `objectives` | `[]any` |  |
 | `sport` | `string` |  |
 
 #### Example: List

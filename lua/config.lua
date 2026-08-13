@@ -27,7 +27,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "benefit",
+            ["name"] = "benefits",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -69,7 +69,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "instruction",
+            ["name"] = "instructions",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 6,
@@ -110,6 +110,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/exercises",
                 ["parts"] = {
@@ -154,7 +155,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "exercis",
+            ["name"] = "exercises",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -182,7 +183,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "objectif",
+            ["name"] = "objectives",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 6,
@@ -223,6 +224,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/training-programs",
                 ["parts"] = {

@@ -7,43 +7,43 @@
 -- edit by hand.
 
 ---@class Exercis
----@field benefit? table
+---@field benefits? table
 ---@field category? string
 ---@field description? string
 ---@field difficulty? string
 ---@field duration? number
 ---@field id? string
----@field instruction? table
+---@field instructions? table
 ---@field name? string
 
 ---@class ExercisListMatch
----@field benefit? table
+---@field benefits? table
 ---@field category? string
 ---@field description? string
 ---@field difficulty? string
 ---@field duration? number
 ---@field id? string
----@field instruction? table
+---@field instructions? table
 ---@field name? string
 
 ---@class TrainingProgram
 ---@field description? string
 ---@field duration? number
----@field exercis? table
+---@field exercises? table
 ---@field id? string
 ---@field level? string
 ---@field name? string
----@field objectif? table
+---@field objectives? table
 ---@field sport? string
 
 ---@class TrainingProgramListMatch
 ---@field description? string
 ---@field duration? number
----@field exercis? table
+---@field exercises? table
 ---@field id? string
 ---@field level? string
 ---@field name? string
----@field objectif? table
+---@field objectives? table
 ---@field sport? string
 
 local M = {}

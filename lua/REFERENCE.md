@@ -94,13 +94,13 @@ local exercis = client:Exercis(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | `table` | No |  |
+| `benefits` | `table` | No |  |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
 | `difficulty` | `string` | No |  |
 | `duration` | `number` | No |  |
 | `id` | `string` | No |  |
-| `instruction` | `table` | No |  |
+| `instructions` | `table` | No |  |
 | `name` | `string` | No |  |
 
 ### Operations
@@ -155,11 +155,11 @@ local training_program = client:TrainingProgram(nil)
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `duration` | `number` | No |  |
-| `exercis` | `table` | No |  |
+| `exercises` | `table` | No |  |
 | `id` | `string` | No |  |
 | `level` | `string` | No |  |
 | `name` | `string` | No |  |
-| `objectif` | `table` | No |  |
+| `objectives` | `table` | No |  |
 | `sport` | `string` | No |  |
 
 ### Operations

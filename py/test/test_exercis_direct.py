@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from mentalityskilltraining_sdk.utility.voxgig_struct import voxgig_struct as vs
 from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
-from core import helpers
+from mentalityskilltraining_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _exercis_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID": {},
-        "MENTALITYSKILLTRAINING_TEST_LIVE": "FALSE",
+        "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID": {},
+        "MENTALITY_SKILL_TRAINING_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("MENTALITYSKILLTRAINING_TEST_LIVE") == "TRUE"
+    live = env.get("MENTALITY_SKILL_TRAINING_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

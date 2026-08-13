@@ -10,7 +10,7 @@
 
 # Exercis entity data model.
 #
-# @!attribute [rw] benefit
+# @!attribute [rw] benefits
 #   @return [Array, nil]
 #
 # @!attribute [rw] category
@@ -28,26 +28,26 @@
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] instruction
+# @!attribute [rw] instructions
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 Exercis = Struct.new(
-  :benefit,
+  :benefits,
   :category,
   :description,
   :difficulty,
   :duration,
   :id,
-  :instruction,
+  :instructions,
   :name,
   keyword_init: true
 )
 
 # Request payload for Exercis#list.
 #
-# @!attribute [rw] benefit
+# @!attribute [rw] benefits
 #   @return [Array, nil]
 #
 # @!attribute [rw] category
@@ -65,19 +65,19 @@ Exercis = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] instruction
+# @!attribute [rw] instructions
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 ExercisListMatch = Struct.new(
-  :benefit,
+  :benefits,
   :category,
   :description,
   :difficulty,
   :duration,
   :id,
-  :instruction,
+  :instructions,
   :name,
   keyword_init: true
 )
@@ -90,7 +90,7 @@ ExercisListMatch = Struct.new(
 # @!attribute [rw] duration
 #   @return [Integer, nil]
 #
-# @!attribute [rw] exercis
+# @!attribute [rw] exercises
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -102,7 +102,7 @@ ExercisListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] objectif
+# @!attribute [rw] objectives
 #   @return [Array, nil]
 #
 # @!attribute [rw] sport
@@ -110,11 +110,11 @@ ExercisListMatch = Struct.new(
 TrainingProgram = Struct.new(
   :description,
   :duration,
-  :exercis,
+  :exercises,
   :id,
   :level,
   :name,
-  :objectif,
+  :objectives,
   :sport,
   keyword_init: true
 )
@@ -127,7 +127,7 @@ TrainingProgram = Struct.new(
 # @!attribute [rw] duration
 #   @return [Integer, nil]
 #
-# @!attribute [rw] exercis
+# @!attribute [rw] exercises
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -139,7 +139,7 @@ TrainingProgram = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] objectif
+# @!attribute [rw] objectives
 #   @return [Array, nil]
 #
 # @!attribute [rw] sport
@@ -147,11 +147,11 @@ TrainingProgram = Struct.new(
 TrainingProgramListMatch = Struct.new(
   :description,
   :duration,
-  :exercis,
+  :exercises,
   :id,
   :level,
   :name,
-  :objectif,
+  :objectives,
   :sport,
   keyword_init: true
 )

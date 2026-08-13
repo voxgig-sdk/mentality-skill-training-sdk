@@ -35,7 +35,9 @@ const client = new MentalitySkillTrainingSDK()
 
 ### 2. List exercis records
 
-`list()` resolves to an array of Exercis objects — iterate it directly:
+`list()` resolves to an array of Exercis ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const exerciss = await client.Exercis().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = MentalitySkillTrainingSDK.test()
 
 const exercis = await client.Exercis().list()
-// exercis is a bare entity populated with mock response data
+// exercis is the entity, populated with mock response data
+// — call exercis.data() for the record itself
 console.log(exercis)
 ```
 
@@ -285,13 +288,13 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `benefit` |  |
+| `benefits` |  |
 | `category` |  |
 | `description` |  |
 | `difficulty` |  |
 | `duration` |  |
 | `id` |  |
-| `instruction` |  |
+| `instructions` |  |
 | `name` |  |
 
 Operations: list.
@@ -304,11 +307,11 @@ API path: `/api/exercises`
 | --- | --- |
 | `description` |  |
 | `duration` |  |
-| `exercis` |  |
+| `exercises` |  |
 | `id` |  |
 | `level` |  |
 | `name` |  |
-| `objectif` |  |
+| `objectives` |  |
 | `sport` |  |
 
 Operations: list.
@@ -334,13 +337,13 @@ Create an instance: `const exercis = client.Exercis()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefit` | `any[]` |  |
+| `benefits` | `any[]` |  |
 | `category` | `string` |  |
 | `description` | `string` |  |
 | `difficulty` | `string` |  |
 | `duration` | `number` |  |
 | `id` | `string` |  |
-| `instruction` | `any[]` |  |
+| `instructions` | `any[]` |  |
 | `name` | `string` |  |
 
 #### Example: List
@@ -366,11 +369,11 @@ Create an instance: `const training_program = client.TrainingProgram()`
 | --- | --- | --- |
 | `description` | `string` |  |
 | `duration` | `number` |  |
-| `exercis` | `any[]` |  |
+| `exercises` | `any[]` |  |
 | `id` | `string` |  |
 | `level` | `string` |  |
 | `name` | `string` |  |
-| `objectif` | `any[]` |  |
+| `objectives` | `any[]` |  |
 | `sport` | `string` |  |
 
 #### Example: List

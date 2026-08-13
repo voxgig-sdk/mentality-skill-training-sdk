@@ -128,13 +128,13 @@ const exercis = client.Exercis()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | `any[]` | No |  |
+| `benefits` | `any[]` | No |  |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
 | `difficulty` | `string` | No |  |
 | `duration` | `number` | No |  |
 | `id` | `string` | No |  |
-| `instruction` | `any[]` | No |  |
+| `instructions` | `any[]` | No |  |
 | `name` | `string` | No |  |
 
 ### Operations
@@ -187,11 +187,11 @@ const training_program = client.TrainingProgram()
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `duration` | `number` | No |  |
-| `exercis` | `any[]` | No |  |
+| `exercises` | `any[]` | No |  |
 | `id` | `string` | No |  |
 | `level` | `string` | No |  |
 | `name` | `string` | No |  |
-| `objectif` | `any[]` | No |  |
+| `objectives` | `any[]` | No |  |
 | `sport` | `string` | No |  |
 
 ### Operations

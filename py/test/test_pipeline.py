@@ -16,11 +16,11 @@
 import pytest
 
 from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
-from core.error import MentalitySkillTrainingError
-from core.result import MentalitySkillTrainingResult
-from core.response import MentalitySkillTrainingResponse
-from core.spec import MentalitySkillTrainingSpec
-from feature.base_feature import MentalitySkillTrainingBaseFeature
+from mentalityskilltraining_sdk.core.error import MentalitySkillTrainingError
+from mentalityskilltraining_sdk.core.result import MentalitySkillTrainingResult
+from mentalityskilltraining_sdk.core.response import MentalitySkillTrainingResponse
+from mentalityskilltraining_sdk.core.spec import MentalitySkillTrainingSpec
+from mentalityskilltraining_sdk.feature.base_feature import MentalitySkillTrainingBaseFeature
 
 
 def _client():

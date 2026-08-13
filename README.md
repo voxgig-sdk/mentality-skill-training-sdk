@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = MentalitySkillTrainingSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = MentalitySkillTrainingSDK.test({
+  entity: {
+    exercis: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const exerciss = await client.Exercis().list()
-// exerciss is an array of bare Exercis records populated with mock data
+// exerciss is an array of Exercis entities, populated with mock data
+// — call exerciss[0].data() for the record itself
 console.log(exerciss)
 ```
 
@@ -110,7 +119,7 @@ import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training'
 
 const client = new MentalitySkillTrainingSDK()
 
-// List all exerciss (returns Exercis[])
+// List all exerciss (returns ExercisEntity[] — .data() for the record)
 const exerciss = await client.Exercis().list()
 for (const exercis of exerciss) {
   console.log(exercis)
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://melodious-squirrel-e72cff.netlify.app/](https://melodious-squirrel-e72cff.netlify.app/)
 

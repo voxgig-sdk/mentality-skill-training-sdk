@@ -96,13 +96,13 @@ $exercis = $client->Exercis();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | `array` | No |  |
+| `benefits` | `array` | No |  |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
 | `difficulty` | `string` | No |  |
 | `duration` | `int` | No |  |
 | `id` | `string` | No |  |
-| `instruction` | `array` | No |  |
+| `instructions` | `array` | No |  |
 | `name` | `string` | No |  |
 
 ### Operations
@@ -157,11 +157,11 @@ $training_program = $client->TrainingProgram();
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `duration` | `int` | No |  |
-| `exercis` | `array` | No |  |
+| `exercises` | `array` | No |  |
 | `id` | `string` | No |  |
 | `level` | `string` | No |  |
 | `name` | `string` | No |  |
-| `objectif` | `array` | No |  |
+| `objectives` | `array` | No |  |
 | `sport` | `string` | No |  |
 
 ### Operations

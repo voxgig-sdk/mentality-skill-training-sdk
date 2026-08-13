@@ -6,46 +6,46 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Exercis {
-  benefit?: any[]
+  benefits?: any[]
   category?: string
   description?: string
   difficulty?: string
   duration?: number
   id?: string
-  instruction?: any[]
+  instructions?: any[]
   name?: string
 }
 
 export interface ExercisListMatch {
-  benefit?: any[]
+  benefits?: any[]
   category?: string
   description?: string
   difficulty?: string
   duration?: number
   id?: string
-  instruction?: any[]
+  instructions?: any[]
   name?: string
 }
 
 export interface TrainingProgram {
   description?: string
   duration?: number
-  exercis?: any[]
+  exercises?: any[]
   id?: string
   level?: string
   name?: string
-  objectif?: any[]
+  objectives?: any[]
   sport?: string
 }
 
 export interface TrainingProgramListMatch {
   description?: string
   duration?: number
-  exercis?: any[]
+  exercises?: any[]
   id?: string
   level?: string
   name?: string
-  objectif?: any[]
+  objectives?: any[]
   sport?: string
 }
 

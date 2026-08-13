@@ -15,26 +15,26 @@ declare(strict_types=1);
 /** Exercis entity data model. */
 class Exercis
 {
-    public ?array $benefit = null;
+    public ?array $benefits = null;
     public ?string $category = null;
     public ?string $description = null;
     public ?string $difficulty = null;
     public ?int $duration = null;
     public ?string $id = null;
-    public ?array $instruction = null;
+    public ?array $instructions = null;
     public ?string $name = null;
 }
 
 /** Request payload for Exercis#list. */
 class ExercisListMatch
 {
-    public ?array $benefit = null;
+    public ?array $benefits = null;
     public ?string $category = null;
     public ?string $description = null;
     public ?string $difficulty = null;
     public ?int $duration = null;
     public ?string $id = null;
-    public ?array $instruction = null;
+    public ?array $instructions = null;
     public ?string $name = null;
 }
 
@@ -43,11 +43,11 @@ class TrainingProgram
 {
     public ?string $description = null;
     public ?int $duration = null;
-    public ?array $exercis = null;
+    public ?array $exercises = null;
     public ?string $id = null;
     public ?string $level = null;
     public ?string $name = null;
-    public ?array $objectif = null;
+    public ?array $objectives = null;
     public ?string $sport = null;
 }
 
@@ -56,11 +56,11 @@ class TrainingProgramListMatch
 {
     public ?string $description = null;
     public ?int $duration = null;
-    public ?array $exercis = null;
+    public ?array $exercises = null;
     public ?string $id = null;
     public ?string $level = null;
     public ?string $name = null;
-    public ?array $objectif = null;
+    public ?array $objectives = null;
     public ?string $sport = null;
 }
 

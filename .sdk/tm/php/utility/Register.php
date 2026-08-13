@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ MentalitySkillTrainingUtility::setRegistrar(function (MentalitySkillTrainingUtil
     $u->prepare_params = [MentalitySkillTrainingPrepareParams::class, 'call'];
     $u->prepare_path = [MentalitySkillTrainingPreparePath::class, 'call'];
     $u->prepare_query = [MentalitySkillTrainingPrepareQuery::class, 'call'];
+    $u->graphql_body = [MentalitySkillTrainingGraphql::class, 'body'];
+    $u->graphql_errors = [MentalitySkillTrainingGraphql::class, 'errors'];
     $u->result_basic = [MentalitySkillTrainingResultBasic::class, 'call'];
     $u->result_body = [MentalitySkillTrainingResultBody::class, 'call'];
     $u->result_headers = [MentalitySkillTrainingResultHeaders::class, 'call'];

@@ -27,7 +27,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "benefit",
+						"name": "benefits",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -69,7 +69,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "instruction",
+						"name": "instructions",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 6,
@@ -110,6 +110,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/exercises",
 								"parts": []any{
@@ -129,7 +130,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -154,7 +154,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "exercis",
+						"name": "exercises",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -182,7 +182,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "objectif",
+						"name": "objectives",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 6,
@@ -223,6 +223,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/training-programs",
 								"parts": []any{
@@ -242,7 +243,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

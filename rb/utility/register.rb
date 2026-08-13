@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ MentalitySkillTrainingUtility.registrar = ->(u) {
   u.prepare_params = MentalitySkillTrainingUtilities::PrepareParams
   u.prepare_path = MentalitySkillTrainingUtilities::PreparePath
   u.prepare_query = MentalitySkillTrainingUtilities::PrepareQuery
+  u.graphql_body = MentalitySkillTrainingUtilities::GraphqlBody
+  u.graphql_errors = MentalitySkillTrainingUtilities::GraphqlErrors
   u.result_basic = MentalitySkillTrainingUtilities::ResultBasic
   u.result_body = MentalitySkillTrainingUtilities::ResultBody
   u.result_headers = MentalitySkillTrainingUtilities::ResultHeaders

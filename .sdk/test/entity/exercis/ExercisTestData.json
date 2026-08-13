@@ -2,33 +2,33 @@
   "existing": {
     "exercis": {
       "EXERCIS00": {
-        "benefit": [],
+        "benefits": [],
         "category": "s51",
         "description": "s52",
         "difficulty": "s53",
         "duration": "s54",
         "id": "EXERCIS00",
-        "instruction": [],
+        "instructions": [],
         "name": "s57"
       },
       "EXERCIS01": {
-        "benefit": [],
+        "benefits": [],
         "category": "sa1",
         "description": "sa2",
         "difficulty": "sa3",
         "duration": "sa4",
         "id": "EXERCIS01",
-        "instruction": [],
+        "instructions": [],
         "name": "sa7"
       },
       "EXERCIS02": {
-        "benefit": [],
+        "benefits": [],
         "category": "sf1",
         "description": "sf2",
         "difficulty": "sf3",
         "duration": "sf4",
         "id": "EXERCIS02",
-        "instruction": [],
+        "instructions": [],
         "name": "sf7"
       }
     }
@@ -36,12 +36,12 @@
   "new": {
     "exercis": {
       "exercis_ref01": {
-        "benefit": [],
+        "benefits": [],
         "category": "s141",
         "description": "s142",
         "difficulty": "s143",
         "duration": "s144",
-        "instruction": [],
+        "instructions": [],
         "name": "s147"
       }
     }

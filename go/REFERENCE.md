@@ -102,13 +102,13 @@ fmt.Println(exercis.GetName()) // "exercis"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | `[]any` | No |  |
+| `benefits` | `[]any` | No |  |
 | `category` | `string` | No |  |
 | `description` | `string` | No |  |
 | `difficulty` | `string` | No |  |
 | `duration` | `int` | No |  |
 | `id` | `string` | No |  |
-| `instruction` | `[]any` | No |  |
+| `instructions` | `[]any` | No |  |
 | `name` | `string` | No |  |
 
 ### Operations
@@ -162,11 +162,11 @@ fmt.Println(trainingProgram.GetName()) // "training_program"
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
 | `duration` | `int` | No |  |
-| `exercis` | `[]any` | No |  |
+| `exercises` | `[]any` | No |  |
 | `id` | `string` | No |  |
 | `level` | `string` | No |  |
 | `name` | `string` | No |  |
-| `objectif` | `[]any` | No |  |
+| `objectives` | `[]any` | No |  |
 | `sport` | `string` | No |  |
 
 ### Operations

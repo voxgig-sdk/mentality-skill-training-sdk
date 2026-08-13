@@ -91,13 +91,13 @@ exercis = client.Exercis()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefit` | `list` | No |  |
+| `benefits` | `list` | No |  |
 | `category` | `str` | No |  |
 | `description` | `str` | No |  |
 | `difficulty` | `str` | No |  |
 | `duration` | `int` | No |  |
 | `id` | `str` | No |  |
-| `instruction` | `list` | No |  |
+| `instructions` | `list` | No |  |
 | `name` | `str` | No |  |
 
 ### Operations
@@ -153,11 +153,11 @@ training_program = client.TrainingProgram()
 | --- | --- | --- | --- |
 | `description` | `str` | No |  |
 | `duration` | `int` | No |  |
-| `exercis` | `list` | No |  |
+| `exercises` | `list` | No |  |
 | `id` | `str` | No |  |
 | `level` | `str` | No |  |
 | `name` | `str` | No |  |
-| `objectif` | `list` | No |  |
+| `objectives` | `list` | No |  |
 | `sport` | `str` | No |  |
 
 ### Operations

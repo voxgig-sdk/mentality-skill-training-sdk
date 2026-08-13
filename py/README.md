@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MentalitySkillTrainingSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 exercis = client.Exercis().list()
 # exercis contains the mock response record
 ```
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -243,13 +244,13 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `benefit` |  |
+| `benefits` |  |
 | `category` |  |
 | `description` |  |
 | `difficulty` |  |
 | `duration` |  |
 | `id` |  |
-| `instruction` |  |
+| `instructions` |  |
 | `name` |  |
 
 Operations: List.
@@ -262,11 +263,11 @@ API path: `/api/exercises`
 | --- | --- |
 | `description` |  |
 | `duration` |  |
-| `exercis` |  |
+| `exercises` |  |
 | `id` |  |
 | `level` |  |
 | `name` |  |
-| `objectif` |  |
+| `objectives` |  |
 | `sport` |  |
 
 Operations: List.
@@ -292,13 +293,13 @@ Create an instance: `exercis = client.Exercis()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefit` | `list` |  |
+| `benefits` | `list` |  |
 | `category` | `str` |  |
 | `description` | `str` |  |
 | `difficulty` | `str` |  |
 | `duration` | `int` |  |
 | `id` | `str` |  |
-| `instruction` | `list` |  |
+| `instructions` | `list` |  |
 | `name` | `str` |  |
 
 #### Example: List
@@ -324,11 +325,11 @@ Create an instance: `training_program = client.TrainingProgram()`
 | --- | --- | --- |
 | `description` | `str` |  |
 | `duration` | `int` |  |
-| `exercis` | `list` |  |
+| `exercises` | `list` |  |
 | `id` | `str` |  |
 | `level` | `str` |  |
 | `name` | `str` |  |
-| `objectif` | `list` |  |
+| `objectives` | `list` |  |
 | `sport` | `str` |  |
 
 #### Example: List

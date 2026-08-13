@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# MentalitySkillTraining SDK exists test
 
 import pytest
 from mentalityskilltraining_sdk import MentalitySkillTrainingSDK

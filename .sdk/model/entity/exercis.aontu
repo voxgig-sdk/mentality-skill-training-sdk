@@ -6,7 +6,7 @@ main: kit: entity: exercis: {
 
   fields: [
     {
-      name: "benefit"
+      name: "benefits"
       req: false
       type: "`$ARRAY`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: exercis: {
       type: "`$STRING`"
     }
     {
-      name: "instruction"
+      name: "instructions"
       req: false
       type: "`$ARRAY`"
     }

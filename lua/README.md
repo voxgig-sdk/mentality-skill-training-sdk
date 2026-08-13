@@ -219,9 +219,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local exercis, err = client:Exercis():load()
+    local exercis, err = client:Exercis():list()
     if err then error(err) end
-    -- exercis is the loaded record
+    -- exercis is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -232,13 +232,13 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `benefit` |  |
+| `benefits` |  |
 | `category` |  |
 | `description` |  |
 | `difficulty` |  |
 | `duration` |  |
 | `id` |  |
-| `instruction` |  |
+| `instructions` |  |
 | `name` |  |
 
 Operations: List.
@@ -251,11 +251,11 @@ API path: `/api/exercises`
 | --- | --- |
 | `description` |  |
 | `duration` |  |
-| `exercis` |  |
+| `exercises` |  |
 | `id` |  |
 | `level` |  |
 | `name` |  |
-| `objectif` |  |
+| `objectives` |  |
 | `sport` |  |
 
 Operations: List.
@@ -281,13 +281,13 @@ Create an instance: `local exercis = client:Exercis(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefit` | `table` |  |
+| `benefits` | `table` |  |
 | `category` | `string` |  |
 | `description` | `string` |  |
 | `difficulty` | `string` |  |
 | `duration` | `number` |  |
 | `id` | `string` |  |
-| `instruction` | `table` |  |
+| `instructions` | `table` |  |
 | `name` | `string` |  |
 
 #### Example: List
@@ -313,11 +313,11 @@ Create an instance: `local training_program = client:TrainingProgram(nil)`
 | --- | --- | --- |
 | `description` | `string` |  |
 | `duration` | `number` |  |
-| `exercis` | `table` |  |
+| `exercises` | `table` |  |
 | `id` | `string` |  |
 | `level` | `string` |  |
 | `name` | `string` |  |
-| `objectif` | `table` |  |
+| `objectives` | `table` |  |
 | `sport` | `string` |  |
 
 #### Example: List

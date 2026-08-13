@@ -61,11 +61,11 @@ function training_program_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["MENTALITYSKILLTRAINING_TEST_TRAINING_PROGRAM_ENTID"] = {},
-    ["MENTALITYSKILLTRAINING_TEST_LIVE"] = "FALSE",
+    ["MENTALITY_SKILL_TRAINING_TEST_TRAINING_PROGRAM_ENTID"] = {},
+    ["MENTALITY_SKILL_TRAINING_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["MENTALITYSKILLTRAINING_TEST_LIVE"] == "TRUE"
+  local live = env["MENTALITY_SKILL_TRAINING_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

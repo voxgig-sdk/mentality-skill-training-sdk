@@ -66,11 +66,11 @@ function exercis_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "MENTALITYSKILLTRAINING_TEST_EXERCIS_ENTID" => [],
-        "MENTALITYSKILLTRAINING_TEST_LIVE" => "FALSE",
+        "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID" => [],
+        "MENTALITY_SKILL_TRAINING_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["MENTALITYSKILLTRAINING_TEST_LIVE"] === "TRUE";
+    $live = $env["MENTALITY_SKILL_TRAINING_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

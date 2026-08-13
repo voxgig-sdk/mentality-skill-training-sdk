@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import MentalitySkillTrainingControl
-from core.error import MentalitySkillTrainingError
-from core.result import MentalitySkillTrainingResult
-from core.spec import MentalitySkillTrainingSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import MentalitySkillTrainingControl
+from projectname_sdk.core.error import MentalitySkillTrainingError
+from projectname_sdk.core.result import MentalitySkillTrainingResult
+from projectname_sdk.core.spec import MentalitySkillTrainingSpec
 
 
 # True when this SDK was generated with the named feature.

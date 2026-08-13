@@ -37,7 +37,7 @@ class ExercisEntity extends MentalitySkillTrainingEntityBase<Exercis> {
 
 
 
-  async list(this: any, reqmatch?: ExercisListMatch, ctrl?: Control): Promise<Exercis[]> {
+  async list(this: any, reqmatch?: ExercisListMatch, ctrl?: Control): Promise<ExercisEntity[]> {
 
     const utility = this._utility
 
