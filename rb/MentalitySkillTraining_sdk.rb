@@ -28,7 +28,7 @@ class MentalitySkillTrainingSDK
     utility = MentalitySkillTrainingUtility.new
     @_utility = utility
 
-    config = MentalitySkillTrainingConfig.make_config
+    config = MentalitySkillTrainingConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

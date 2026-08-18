@@ -40,7 +40,7 @@ class MentalitySkillTrainingSDK
         $utility = new MentalitySkillTrainingUtility();
         $this->_utility = $utility;
 
-        $config = MentalitySkillTrainingConfig::make_config();
+        $config = MentalitySkillTrainingConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
