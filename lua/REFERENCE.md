@@ -94,14 +94,14 @@ local exercis = client:Exercis(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefits` | `table` | No |  |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `difficulty` | `string` | No |  |
-| `duration` | `number` | No |  |
-| `id` | `string` | No |  |
-| `instructions` | `table` | No |  |
-| `name` | `string` | No |  |
+| `benefits` | `table` | No | Benefits of performing this exercise |
+| `category` | `string` | No | Category of mental skill |
+| `description` | `string` | No | Detailed description of the exercise |
+| `difficulty` | `string` | No | Difficulty level of the exercise |
+| `duration` | `number` | No | Exercise duration in minutes |
+| `id` | `string` | No | Unique identifier for the exercise |
+| `instructions` | `table` | No | Step-by-step instructions |
+| `name` | `string` | No | Name of the exercise |
 
 ### Operations
 
@@ -153,14 +153,14 @@ local training_program = client:TrainingProgram(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `duration` | `number` | No |  |
-| `exercises` | `table` | No |  |
-| `id` | `string` | No |  |
-| `level` | `string` | No |  |
-| `name` | `string` | No |  |
-| `objectives` | `table` | No |  |
-| `sport` | `string` | No |  |
+| `description` | `string` | No | Detailed description of the program |
+| `duration` | `number` | No | Program duration in weeks |
+| `exercises` | `table` | No | Exercise IDs included in the program |
+| `id` | `string` | No | Unique identifier for the training program |
+| `level` | `string` | No | Skill level required for the program |
+| `name` | `string` | No | Name of the training program |
+| `objectives` | `table` | No | List of learning objectives |
+| `sport` | `string` | No | Sport type the program is designed for |
 
 ### Operations
 

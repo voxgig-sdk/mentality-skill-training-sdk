@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -288,14 +288,14 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `benefits` |  |
-| `category` |  |
-| `description` |  |
-| `difficulty` |  |
-| `duration` |  |
-| `id` |  |
-| `instructions` |  |
-| `name` |  |
+| `benefits` | Benefits of performing this exercise |
+| `category` | Category of mental skill |
+| `description` | Detailed description of the exercise |
+| `difficulty` | Difficulty level of the exercise |
+| `duration` | Exercise duration in minutes |
+| `id` | Unique identifier for the exercise |
+| `instructions` | Step-by-step instructions |
+| `name` | Name of the exercise |
 
 Operations: list.
 
@@ -305,14 +305,14 @@ API path: `/api/exercises`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `duration` |  |
-| `exercises` |  |
-| `id` |  |
-| `level` |  |
-| `name` |  |
-| `objectives` |  |
-| `sport` |  |
+| `description` | Detailed description of the program |
+| `duration` | Program duration in weeks |
+| `exercises` | Exercise IDs included in the program |
+| `id` | Unique identifier for the training program |
+| `level` | Skill level required for the program |
+| `name` | Name of the training program |
+| `objectives` | List of learning objectives |
+| `sport` | Sport type the program is designed for |
 
 Operations: list.
 
@@ -337,14 +337,14 @@ Create an instance: `const exercis = client.Exercis()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefits` | `any[]` |  |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `difficulty` | `string` |  |
-| `duration` | `number` |  |
-| `id` | `string` |  |
-| `instructions` | `any[]` |  |
-| `name` | `string` |  |
+| `benefits` | `any[]` | Benefits of performing this exercise |
+| `category` | `string` | Category of mental skill |
+| `description` | `string` | Detailed description of the exercise |
+| `difficulty` | `string` | Difficulty level of the exercise |
+| `duration` | `number` | Exercise duration in minutes |
+| `id` | `string` | Unique identifier for the exercise |
+| `instructions` | `any[]` | Step-by-step instructions |
+| `name` | `string` | Name of the exercise |
 
 #### Example: List
 
@@ -367,14 +367,14 @@ Create an instance: `const training_program = client.TrainingProgram()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `duration` | `number` |  |
-| `exercises` | `any[]` |  |
-| `id` | `string` |  |
-| `level` | `string` |  |
-| `name` | `string` |  |
-| `objectives` | `any[]` |  |
-| `sport` | `string` |  |
+| `description` | `string` | Detailed description of the program |
+| `duration` | `number` | Program duration in weeks |
+| `exercises` | `any[]` | Exercise IDs included in the program |
+| `id` | `string` | Unique identifier for the training program |
+| `level` | `string` | Skill level required for the program |
+| `name` | `string` | Name of the training program |
+| `objectives` | `any[]` | List of learning objectives |
+| `sport` | `string` | Sport type the program is designed for |
 
 #### Example: List
 

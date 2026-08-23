@@ -91,14 +91,14 @@ exercis = client.Exercis()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefits` | `list` | No |  |
-| `category` | `str` | No |  |
-| `description` | `str` | No |  |
-| `difficulty` | `str` | No |  |
-| `duration` | `int` | No |  |
-| `id` | `str` | No |  |
-| `instructions` | `list` | No |  |
-| `name` | `str` | No |  |
+| `benefits` | `list` | No | Benefits of performing this exercise |
+| `category` | `str` | No | Category of mental skill |
+| `description` | `str` | No | Detailed description of the exercise |
+| `difficulty` | `str` | No | Difficulty level of the exercise |
+| `duration` | `int` | No | Exercise duration in minutes |
+| `id` | `str` | No | Unique identifier for the exercise |
+| `instructions` | `list` | No | Step-by-step instructions |
+| `name` | `str` | No | Name of the exercise |
 
 ### Operations
 
@@ -151,14 +151,14 @@ training_program = client.TrainingProgram()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `duration` | `int` | No |  |
-| `exercises` | `list` | No |  |
-| `id` | `str` | No |  |
-| `level` | `str` | No |  |
-| `name` | `str` | No |  |
-| `objectives` | `list` | No |  |
-| `sport` | `str` | No |  |
+| `description` | `str` | No | Detailed description of the program |
+| `duration` | `int` | No | Program duration in weeks |
+| `exercises` | `list` | No | Exercise IDs included in the program |
+| `id` | `str` | No | Unique identifier for the training program |
+| `level` | `str` | No | Skill level required for the program |
+| `name` | `str` | No | Name of the training program |
+| `objectives` | `list` | No | List of learning objectives |
+| `sport` | `str` | No | Sport type the program is designed for |
 
 ### Operations
 

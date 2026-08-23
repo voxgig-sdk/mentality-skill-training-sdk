@@ -244,14 +244,14 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `benefits` |  |
-| `category` |  |
-| `description` |  |
-| `difficulty` |  |
-| `duration` |  |
-| `id` |  |
-| `instructions` |  |
-| `name` |  |
+| `benefits` | Benefits of performing this exercise |
+| `category` | Category of mental skill |
+| `description` | Detailed description of the exercise |
+| `difficulty` | Difficulty level of the exercise |
+| `duration` | Exercise duration in minutes |
+| `id` | Unique identifier for the exercise |
+| `instructions` | Step-by-step instructions |
+| `name` | Name of the exercise |
 
 Operations: List.
 
@@ -261,14 +261,14 @@ API path: `/api/exercises`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `duration` |  |
-| `exercises` |  |
-| `id` |  |
-| `level` |  |
-| `name` |  |
-| `objectives` |  |
-| `sport` |  |
+| `description` | Detailed description of the program |
+| `duration` | Program duration in weeks |
+| `exercises` | Exercise IDs included in the program |
+| `id` | Unique identifier for the training program |
+| `level` | Skill level required for the program |
+| `name` | Name of the training program |
+| `objectives` | List of learning objectives |
+| `sport` | Sport type the program is designed for |
 
 Operations: List.
 
@@ -293,14 +293,14 @@ Create an instance: `exercis = client.Exercis()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefits` | `list` |  |
-| `category` | `str` |  |
-| `description` | `str` |  |
-| `difficulty` | `str` |  |
-| `duration` | `int` |  |
-| `id` | `str` |  |
-| `instructions` | `list` |  |
-| `name` | `str` |  |
+| `benefits` | `list` | Benefits of performing this exercise |
+| `category` | `str` | Category of mental skill |
+| `description` | `str` | Detailed description of the exercise |
+| `difficulty` | `str` | Difficulty level of the exercise |
+| `duration` | `int` | Exercise duration in minutes |
+| `id` | `str` | Unique identifier for the exercise |
+| `instructions` | `list` | Step-by-step instructions |
+| `name` | `str` | Name of the exercise |
 
 #### Example: List
 
@@ -323,14 +323,14 @@ Create an instance: `training_program = client.TrainingProgram()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `str` |  |
-| `duration` | `int` |  |
-| `exercises` | `list` |  |
-| `id` | `str` |  |
-| `level` | `str` |  |
-| `name` | `str` |  |
-| `objectives` | `list` |  |
-| `sport` | `str` |  |
+| `description` | `str` | Detailed description of the program |
+| `duration` | `int` | Program duration in weeks |
+| `exercises` | `list` | Exercise IDs included in the program |
+| `id` | `str` | Unique identifier for the training program |
+| `level` | `str` | Skill level required for the program |
+| `name` | `str` | Name of the training program |
+| `objectives` | `list` | List of learning objectives |
+| `sport` | `str` | Sport type the program is designed for |
 
 #### Example: List
 

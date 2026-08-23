@@ -96,14 +96,14 @@ $exercis = $client->Exercis();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefits` | `array` | No |  |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `difficulty` | `string` | No |  |
-| `duration` | `int` | No |  |
-| `id` | `string` | No |  |
-| `instructions` | `array` | No |  |
-| `name` | `string` | No |  |
+| `benefits` | `array` | No | Benefits of performing this exercise |
+| `category` | `string` | No | Category of mental skill |
+| `description` | `string` | No | Detailed description of the exercise |
+| `difficulty` | `string` | No | Difficulty level of the exercise |
+| `duration` | `int` | No | Exercise duration in minutes |
+| `id` | `string` | No | Unique identifier for the exercise |
+| `instructions` | `array` | No | Step-by-step instructions |
+| `name` | `string` | No | Name of the exercise |
 
 ### Operations
 
@@ -155,14 +155,14 @@ $training_program = $client->TrainingProgram();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `duration` | `int` | No |  |
-| `exercises` | `array` | No |  |
-| `id` | `string` | No |  |
-| `level` | `string` | No |  |
-| `name` | `string` | No |  |
-| `objectives` | `array` | No |  |
-| `sport` | `string` | No |  |
+| `description` | `string` | No | Detailed description of the program |
+| `duration` | `int` | No | Program duration in weeks |
+| `exercises` | `array` | No | Exercise IDs included in the program |
+| `id` | `string` | No | Unique identifier for the training program |
+| `level` | `string` | No | Skill level required for the program |
+| `name` | `string` | No | Name of the training program |
+| `objectives` | `array` | No | List of learning objectives |
+| `sport` | `string` | No | Sport type the program is designed for |
 
 ### Operations
 

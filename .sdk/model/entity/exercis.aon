@@ -8,41 +8,49 @@ main: kit: entity: exercis: {
     {
       name: "benefits"
       req: false
+      short: "Benefits of performing this exercise"
       type: "`$ARRAY`"
     }
     {
       name: "category"
       req: false
+      short: "Category of mental skill"
       type: "`$STRING`"
     }
     {
       name: "description"
       req: false
+      short: "Detailed description of the exercise"
       type: "`$STRING`"
     }
     {
       name: "difficulty"
       req: false
+      short: "Difficulty level of the exercise"
       type: "`$STRING`"
     }
     {
       name: "duration"
       req: false
+      short: "Exercise duration in minutes"
       type: "`$INTEGER`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the exercise"
       type: "`$STRING`"
     }
     {
       name: "instructions"
       req: false
+      short: "Step-by-step instructions"
       type: "`$ARRAY`"
     }
     {
       name: "name"
       req: false
+      short: "Name of the exercise"
       type: "`$STRING`"
     }
   ]

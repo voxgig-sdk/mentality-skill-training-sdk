@@ -36,48 +36,56 @@
               "active": true,
               "name": "benefits",
               "req": false,
+              "short": "Benefits of performing this exercise",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Category of mental skill",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the exercise",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "difficulty",
               "req": false,
+              "short": "Difficulty level of the exercise",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "duration",
               "req": false,
+              "short": "Exercise duration in minutes",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the exercise",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "instructions",
               "req": false,
+              "short": "Step-by-step instructions",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the exercise",
               "type": "`$STRING`"
             }
           ],
@@ -148,48 +156,56 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the program",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "duration",
               "req": false,
+              "short": "Program duration in weeks",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "exercises",
               "req": false,
+              "short": "Exercise IDs included in the program",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the training program",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "level",
               "req": false,
+              "short": "Skill level required for the program",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the training program",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "objectives",
               "req": false,
+              "short": "List of learning objectives",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "sport",
               "req": false,
+              "short": "Sport type the program is designed for",
               "type": "`$STRING`"
             }
           ],

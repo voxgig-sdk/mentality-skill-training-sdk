@@ -6,7 +6,7 @@ The Golang SDK for the MentalitySkillTraining API — an entity-oriented client 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Exercis(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -261,14 +261,14 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"benefits"` |  |
-| `"category"` |  |
-| `"description"` |  |
-| `"difficulty"` |  |
-| `"duration"` |  |
-| `"id"` |  |
-| `"instructions"` |  |
-| `"name"` |  |
+| `"benefits"` | Benefits of performing this exercise |
+| `"category"` | Category of mental skill |
+| `"description"` | Detailed description of the exercise |
+| `"difficulty"` | Difficulty level of the exercise |
+| `"duration"` | Exercise duration in minutes |
+| `"id"` | Unique identifier for the exercise |
+| `"instructions"` | Step-by-step instructions |
+| `"name"` | Name of the exercise |
 
 Operations: List.
 
@@ -278,14 +278,14 @@ API path: `/api/exercises`
 
 | Field | Description |
 | --- | --- |
-| `"description"` |  |
-| `"duration"` |  |
-| `"exercises"` |  |
-| `"id"` |  |
-| `"level"` |  |
-| `"name"` |  |
-| `"objectives"` |  |
-| `"sport"` |  |
+| `"description"` | Detailed description of the program |
+| `"duration"` | Program duration in weeks |
+| `"exercises"` | Exercise IDs included in the program |
+| `"id"` | Unique identifier for the training program |
+| `"level"` | Skill level required for the program |
+| `"name"` | Name of the training program |
+| `"objectives"` | List of learning objectives |
+| `"sport"` | Sport type the program is designed for |
 
 Operations: List.
 
@@ -310,14 +310,14 @@ Create an instance: `exercis := client.Exercis(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefits` | `[]any` |  |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `difficulty` | `string` |  |
-| `duration` | `int` |  |
-| `id` | `string` |  |
-| `instructions` | `[]any` |  |
-| `name` | `string` |  |
+| `benefits` | `[]any` | Benefits of performing this exercise |
+| `category` | `string` | Category of mental skill |
+| `description` | `string` | Detailed description of the exercise |
+| `difficulty` | `string` | Difficulty level of the exercise |
+| `duration` | `int` | Exercise duration in minutes |
+| `id` | `string` | Unique identifier for the exercise |
+| `instructions` | `[]any` | Step-by-step instructions |
+| `name` | `string` | Name of the exercise |
 
 #### Example: List
 
@@ -344,14 +344,14 @@ Create an instance: `trainingProgram := client.TrainingProgram(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `duration` | `int` |  |
-| `exercises` | `[]any` |  |
-| `id` | `string` |  |
-| `level` | `string` |  |
-| `name` | `string` |  |
-| `objectives` | `[]any` |  |
-| `sport` | `string` |  |
+| `description` | `string` | Detailed description of the program |
+| `duration` | `int` | Program duration in weeks |
+| `exercises` | `[]any` | Exercise IDs included in the program |
+| `id` | `string` | Unique identifier for the training program |
+| `level` | `string` | Skill level required for the program |
+| `name` | `string` | Name of the training program |
+| `objectives` | `[]any` | List of learning objectives |
+| `sport` | `string` | Sport type the program is designed for |
 
 #### Example: List
 

@@ -128,14 +128,14 @@ const exercis = client.Exercis()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `benefits` | `any[]` | No |  |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `difficulty` | `string` | No |  |
-| `duration` | `number` | No |  |
-| `id` | `string` | No |  |
-| `instructions` | `any[]` | No |  |
-| `name` | `string` | No |  |
+| `benefits` | `any[]` | No | Benefits of performing this exercise |
+| `category` | `string` | No | Category of mental skill |
+| `description` | `string` | No | Detailed description of the exercise |
+| `difficulty` | `string` | No | Difficulty level of the exercise |
+| `duration` | `number` | No | Exercise duration in minutes |
+| `id` | `string` | No | Unique identifier for the exercise |
+| `instructions` | `any[]` | No | Step-by-step instructions |
+| `name` | `string` | No | Name of the exercise |
 
 ### Operations
 
@@ -185,14 +185,14 @@ const training_program = client.TrainingProgram()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `duration` | `number` | No |  |
-| `exercises` | `any[]` | No |  |
-| `id` | `string` | No |  |
-| `level` | `string` | No |  |
-| `name` | `string` | No |  |
-| `objectives` | `any[]` | No |  |
-| `sport` | `string` | No |  |
+| `description` | `string` | No | Detailed description of the program |
+| `duration` | `number` | No | Program duration in weeks |
+| `exercises` | `any[]` | No | Exercise IDs included in the program |
+| `id` | `string` | No | Unique identifier for the training program |
+| `level` | `string` | No | Skill level required for the program |
+| `name` | `string` | No | Name of the training program |
+| `objectives` | `any[]` | No | List of learning objectives |
+| `sport` | `string` | No | Sport type the program is designed for |
 
 ### Operations
 

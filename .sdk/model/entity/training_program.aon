@@ -8,41 +8,49 @@ main: kit: entity: training_program: {
     {
       name: "description"
       req: false
+      short: "Detailed description of the program"
       type: "`$STRING`"
     }
     {
       name: "duration"
       req: false
+      short: "Program duration in weeks"
       type: "`$INTEGER`"
     }
     {
       name: "exercises"
       req: false
+      short: "Exercise IDs included in the program"
       type: "`$ARRAY`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the training program"
       type: "`$STRING`"
     }
     {
       name: "level"
       req: false
+      short: "Skill level required for the program"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "Name of the training program"
       type: "`$STRING`"
     }
     {
       name: "objectives"
       req: false
+      short: "List of learning objectives"
       type: "`$ARRAY`"
     }
     {
       name: "sport"
       req: false
+      short: "Sport type the program is designed for"
       type: "`$STRING`"
     }
   ]

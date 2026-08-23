@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'MentalitySkillTraining',
+        slug: "mentality-skill-training",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -59,34 +70,42 @@ class Config {
       "fields": [
         {
           "name": "benefits",
+          "short": "Benefits of performing this exercise",
           "type": "`$ARRAY`"
         },
         {
           "name": "category",
+          "short": "Category of mental skill",
           "type": "`$STRING`"
         },
         {
           "name": "description",
+          "short": "Detailed description of the exercise",
           "type": "`$STRING`"
         },
         {
           "name": "difficulty",
+          "short": "Difficulty level of the exercise",
           "type": "`$STRING`"
         },
         {
           "name": "duration",
+          "short": "Exercise duration in minutes",
           "type": "`$INTEGER`"
         },
         {
           "name": "id",
+          "short": "Unique identifier for the exercise",
           "type": "`$STRING`"
         },
         {
           "name": "instructions",
+          "short": "Step-by-step instructions",
           "type": "`$ARRAY`"
         },
         {
           "name": "name",
+          "short": "Name of the exercise",
           "type": "`$STRING`"
         }
       ],
@@ -142,34 +161,42 @@ class Config {
       "fields": [
         {
           "name": "description",
+          "short": "Detailed description of the program",
           "type": "`$STRING`"
         },
         {
           "name": "duration",
+          "short": "Program duration in weeks",
           "type": "`$INTEGER`"
         },
         {
           "name": "exercises",
+          "short": "Exercise IDs included in the program",
           "type": "`$ARRAY`"
         },
         {
           "name": "id",
+          "short": "Unique identifier for the training program",
           "type": "`$STRING`"
         },
         {
           "name": "level",
+          "short": "Skill level required for the program",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "Name of the training program",
           "type": "`$STRING`"
         },
         {
           "name": "objectives",
+          "short": "List of learning objectives",
           "type": "`$ARRAY`"
         },
         {
           "name": "sport",
+          "short": "Sport type the program is designed for",
           "type": "`$STRING`"
         }
       ],

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "MentalitySkillTraining",
+			"slug": "mentality-skill-training",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,34 +37,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "benefits",
+						"short": "Benefits of performing this exercise",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "category",
+						"short": "Category of mental skill",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the exercise",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "difficulty",
+						"short": "Difficulty level of the exercise",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "duration",
+						"short": "Exercise duration in minutes",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the exercise",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "instructions",
+						"short": "Step-by-step instructions",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the exercise",
 						"type": "`$STRING`",
 					},
 				},
@@ -117,34 +128,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the program",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "duration",
+						"short": "Program duration in weeks",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "exercises",
+						"short": "Exercise IDs included in the program",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the training program",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "level",
+						"short": "Skill level required for the program",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the training program",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "objectives",
+						"short": "List of learning objectives",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "sport",
+						"short": "Sport type the program is designed for",
 						"type": "`$STRING`",
 					},
 				},

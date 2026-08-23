@@ -232,14 +232,14 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `benefits` |  |
-| `category` |  |
-| `description` |  |
-| `difficulty` |  |
-| `duration` |  |
-| `id` |  |
-| `instructions` |  |
-| `name` |  |
+| `benefits` | Benefits of performing this exercise |
+| `category` | Category of mental skill |
+| `description` | Detailed description of the exercise |
+| `difficulty` | Difficulty level of the exercise |
+| `duration` | Exercise duration in minutes |
+| `id` | Unique identifier for the exercise |
+| `instructions` | Step-by-step instructions |
+| `name` | Name of the exercise |
 
 Operations: List.
 
@@ -249,14 +249,14 @@ API path: `/api/exercises`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `duration` |  |
-| `exercises` |  |
-| `id` |  |
-| `level` |  |
-| `name` |  |
-| `objectives` |  |
-| `sport` |  |
+| `description` | Detailed description of the program |
+| `duration` | Program duration in weeks |
+| `exercises` | Exercise IDs included in the program |
+| `id` | Unique identifier for the training program |
+| `level` | Skill level required for the program |
+| `name` | Name of the training program |
+| `objectives` | List of learning objectives |
+| `sport` | Sport type the program is designed for |
 
 Operations: List.
 
@@ -281,14 +281,14 @@ Create an instance: `local exercis = client:Exercis(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `benefits` | `table` |  |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `difficulty` | `string` |  |
-| `duration` | `number` |  |
-| `id` | `string` |  |
-| `instructions` | `table` |  |
-| `name` | `string` |  |
+| `benefits` | `table` | Benefits of performing this exercise |
+| `category` | `string` | Category of mental skill |
+| `description` | `string` | Detailed description of the exercise |
+| `difficulty` | `string` | Difficulty level of the exercise |
+| `duration` | `number` | Exercise duration in minutes |
+| `id` | `string` | Unique identifier for the exercise |
+| `instructions` | `table` | Step-by-step instructions |
+| `name` | `string` | Name of the exercise |
 
 #### Example: List
 
@@ -311,14 +311,14 @@ Create an instance: `local training_program = client:TrainingProgram(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `duration` | `number` |  |
-| `exercises` | `table` |  |
-| `id` | `string` |  |
-| `level` | `string` |  |
-| `name` | `string` |  |
-| `objectives` | `table` |  |
-| `sport` | `string` |  |
+| `description` | `string` | Detailed description of the program |
+| `duration` | `number` | Program duration in weeks |
+| `exercises` | `table` | Exercise IDs included in the program |
+| `id` | `string` | Unique identifier for the training program |
+| `level` | `string` | Skill level required for the program |
+| `name` | `string` | Name of the training program |
+| `objectives` | `table` | List of learning objectives |
+| `sport` | `string` | Sport type the program is designed for |
 
 #### Example: List
 
