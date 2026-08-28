@@ -28,14 +28,8 @@ class Exercis
 /** Request payload for Exercis#list. */
 class ExercisListMatch
 {
-    public ?array $benefits = null;
     public ?string $category = null;
-    public ?string $description = null;
-    public ?string $difficulty = null;
     public ?int $duration = null;
-    public ?string $id = null;
-    public ?array $instructions = null;
-    public ?string $name = null;
 }
 
 /** TrainingProgram entity data model. */
@@ -54,13 +48,7 @@ class TrainingProgram
 /** Request payload for TrainingProgram#list. */
 class TrainingProgramListMatch
 {
-    public ?string $description = null;
-    public ?int $duration = null;
-    public ?array $exercises = null;
-    public ?string $id = null;
     public ?string $level = null;
-    public ?string $name = null;
-    public ?array $objectives = null;
     public ?string $sport = null;
 }
 

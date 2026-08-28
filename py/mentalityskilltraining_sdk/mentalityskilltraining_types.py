@@ -28,14 +28,8 @@ class Exercis(TypedDict, total=False):
 
 
 class ExercisListMatch(TypedDict, total=False):
-    benefits: list
     category: str
-    description: str
-    difficulty: str
     duration: int
-    id: str
-    instructions: list
-    name: str
 
 
 class TrainingProgram(TypedDict, total=False):
@@ -50,11 +44,5 @@ class TrainingProgram(TypedDict, total=False):
 
 
 class TrainingProgramListMatch(TypedDict, total=False):
-    description: str
-    duration: int
-    exercises: list
-    id: str
     level: str
-    name: str
-    objectives: list
     sport: str

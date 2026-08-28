@@ -26,14 +26,8 @@ type Exercis struct {
 
 // ExercisListMatch is the typed request payload for Exercis.ListTyped.
 type ExercisListMatch struct {
-	Benefits *[]any `json:"benefits,omitempty"`
 	Category *string `json:"category,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Difficulty *string `json:"difficulty,omitempty"`
 	Duration *int `json:"duration,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Instructions *[]any `json:"instructions,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // TrainingProgram is the typed data model for the training_program entity.
@@ -50,13 +44,7 @@ type TrainingProgram struct {
 
 // TrainingProgramListMatch is the typed request payload for TrainingProgram.ListTyped.
 type TrainingProgramListMatch struct {
-	Description *string `json:"description,omitempty"`
-	Duration *int `json:"duration,omitempty"`
-	Exercises *[]any `json:"exercises,omitempty"`
-	Id *string `json:"id,omitempty"`
 	Level *string `json:"level,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Objectives *[]any `json:"objectives,omitempty"`
 	Sport *string `json:"sport,omitempty"`
 }
 

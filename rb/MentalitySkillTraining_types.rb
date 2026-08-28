@@ -47,38 +47,14 @@ Exercis = Struct.new(
 
 # Request payload for Exercis#list.
 #
-# @!attribute [rw] benefits
-#   @return [Array, nil]
-#
 # @!attribute [rw] category
-#   @return [String, nil]
-#
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] difficulty
 #   @return [String, nil]
 #
 # @!attribute [rw] duration
 #   @return [Integer, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] instructions
-#   @return [Array, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
 ExercisListMatch = Struct.new(
-  :benefits,
   :category,
-  :description,
-  :difficulty,
   :duration,
-  :id,
-  :instructions,
-  :name,
   keyword_init: true
 )
 
@@ -121,37 +97,13 @@ TrainingProgram = Struct.new(
 
 # Request payload for TrainingProgram#list.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] duration
-#   @return [Integer, nil]
-#
-# @!attribute [rw] exercises
-#   @return [Array, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
 # @!attribute [rw] level
 #   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] objectives
-#   @return [Array, nil]
 #
 # @!attribute [rw] sport
 #   @return [String, nil]
 TrainingProgramListMatch = Struct.new(
-  :description,
-  :duration,
-  :exercises,
-  :id,
   :level,
-  :name,
-  :objectives,
   :sport,
   keyword_init: true
 )

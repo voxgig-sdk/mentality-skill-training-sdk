@@ -17,14 +17,8 @@ export interface Exercis {
 }
 
 export interface ExercisListMatch {
-  benefits?: any[]
   category?: string
-  description?: string
-  difficulty?: string
   duration?: number
-  id?: string
-  instructions?: any[]
-  name?: string
 }
 
 export interface TrainingProgram {
@@ -39,13 +33,7 @@ export interface TrainingProgram {
 }
 
 export interface TrainingProgramListMatch {
-  description?: string
-  duration?: number
-  exercises?: any[]
-  id?: string
   level?: string
-  name?: string
-  objectives?: any[]
   sport?: string
 }
 
