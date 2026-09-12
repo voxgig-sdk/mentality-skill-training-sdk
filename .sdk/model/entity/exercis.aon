@@ -86,9 +86,13 @@ main: kit: entity: exercis: {
           }
           method: "GET"
           orig: "/api/exercises"
-          parts: [
-            "api"
-            "exercises"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "exercises"
+            }
           ]
           select: {
             exist: [

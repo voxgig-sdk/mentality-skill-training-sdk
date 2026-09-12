@@ -99,6 +99,10 @@ class MentalitySkillTrainingConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'exercis',
           'op' => [
             'list' => [
@@ -125,9 +129,13 @@ class MentalitySkillTrainingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/exercises',
-                  'parts' => [
-                    'api',
-                    'exercises',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'exercises',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -138,6 +146,10 @@ class MentalitySkillTrainingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'exercises',
                   ],
                 ],
               ],
@@ -190,6 +202,10 @@ class MentalitySkillTrainingConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'training_program',
           'op' => [
             'list' => [
@@ -216,9 +232,13 @@ class MentalitySkillTrainingConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/training-programs',
-                  'parts' => [
-                    'api',
-                    'training-programs',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'training-programs',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -229,6 +249,10 @@ class MentalitySkillTrainingConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'training-programs',
                   ],
                 ],
               ],

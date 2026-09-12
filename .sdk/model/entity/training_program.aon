@@ -86,9 +86,13 @@ main: kit: entity: training_program: {
           }
           method: "GET"
           orig: "/api/training-programs"
-          parts: [
-            "api"
-            "training-programs"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "training-programs"
+            }
           ]
           select: {
             exist: [

@@ -85,6 +85,10 @@ module MentalitySkillTrainingConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "exercis",
           "op" => {
             "list" => {
@@ -111,9 +115,13 @@ module MentalitySkillTrainingConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/exercises",
-                  "parts" => [
-                    "api",
-                    "exercises",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "exercises",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -125,6 +133,10 @@ module MentalitySkillTrainingConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "exercises",
+                  ],
                 },
               ],
             },
@@ -176,6 +188,10 @@ module MentalitySkillTrainingConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "training_program",
           "op" => {
             "list" => {
@@ -202,9 +218,13 @@ module MentalitySkillTrainingConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/training-programs",
-                  "parts" => [
-                    "api",
-                    "training-programs",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "training-programs",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -216,6 +236,10 @@ module MentalitySkillTrainingConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "training-programs",
+                  ],
                 },
               ],
             },

@@ -1,6 +1,14 @@
 # MentalitySkillTraining SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -94,6 +102,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "exercis",
         "op": {
           "list": {
@@ -120,9 +132,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/exercises",
-                "parts": [
-                  "api",
-                  "exercises",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "exercises",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -134,6 +150,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "exercises",
+                ],
               },
             ],
           },
@@ -185,6 +205,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "training_program",
         "op": {
           "list": {
@@ -211,9 +235,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/training-programs",
-                "parts": [
-                  "api",
-                  "training-programs",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "training-programs",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -225,6 +253,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "training-programs",
+                ],
               },
             ],
           },
