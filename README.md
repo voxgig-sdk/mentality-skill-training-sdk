@@ -105,7 +105,7 @@ local results, err = client:Exercis():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
+| TypeScript | `@voxgig-sdk/mentality-skill-training-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
 | Python | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
 | PHP | `voxgig-sdk/mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/mentality-skill-training-sdk/go` | `go get github.com/voxgig-sdk/mentality-skill-training-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Exercis():list()
 ### TypeScript
 
 ```ts
-import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training'
+import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training-sdk'
 
 const client = new MentalitySkillTrainingSDK()
 
