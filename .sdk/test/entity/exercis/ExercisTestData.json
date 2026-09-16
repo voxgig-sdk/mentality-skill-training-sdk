@@ -6,7 +6,7 @@
         "category": "s51",
         "description": "s52",
         "difficulty": "s53",
-        "duration": "s54",
+        "duration": 84,
         "id": "EXERCIS00",
         "instructions": [],
         "name": "s57"
@@ -16,7 +16,7 @@
         "category": "sa1",
         "description": "sa2",
         "difficulty": "sa3",
-        "duration": "sa4",
+        "duration": 164,
         "id": "EXERCIS01",
         "instructions": [],
         "name": "sa7"
@@ -26,7 +26,7 @@
         "category": "sf1",
         "description": "sf2",
         "difficulty": "sf3",
-        "duration": "sf4",
+        "duration": 244,
         "id": "EXERCIS02",
         "instructions": [],
         "name": "sf7"
@@ -40,9 +40,118 @@
         "category": "s141",
         "description": "s142",
         "difficulty": "s143",
-        "duration": "s144",
+        "duration": 324,
         "instructions": [],
         "name": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/exercises": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getExercises",
+        "parameters": [
+          {
+            "description": "Filter exercises by category (focus, visualization, confidence, stress-management)",
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "enum": [
+                "focus",
+                "visualization",
+                "confidence",
+                "stress-management"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter exercises by duration in minutes",
+            "in": "query",
+            "name": "duration",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "benefits": {
+                        "description": "Benefits of performing this exercise",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "category": {
+                        "description": "Category of mental skill",
+                        "enum": [
+                          "focus",
+                          "visualization",
+                          "confidence",
+                          "stress-management"
+                        ],
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Detailed description of the exercise",
+                        "type": "string"
+                      },
+                      "difficulty": {
+                        "description": "Difficulty level of the exercise",
+                        "enum": [
+                          "easy",
+                          "moderate",
+                          "challenging"
+                        ],
+                        "type": "string"
+                      },
+                      "duration": {
+                        "description": "Exercise duration in minutes",
+                        "type": "integer"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the exercise",
+                        "type": "string"
+                      },
+                      "instructions": {
+                        "description": "Step-by-step instructions",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "name": {
+                        "description": "Name of the exercise",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of exercises"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

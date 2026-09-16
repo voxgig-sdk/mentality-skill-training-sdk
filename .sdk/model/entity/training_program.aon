@@ -84,6 +84,12 @@ main: kit: entity: training_program: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/training-programs"
+            json: "{\"operationId\":\"getTrainingPrograms\",\"parameters\":[{\"description\":\"Filter programs by sport type\",\"in\":\"query\",\"name\":\"sport\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter programs by skill level (beginner, intermediate, advanced)\",\"in\":\"query\",\"name\":\"level\",\"required\":false,\"schema\":{\"enum\":[\"beginner\",\"intermediate\",\"advanced\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Detailed description of the program\",\"type\":\"string\"},\"duration\":{\"description\":\"Program duration in weeks\",\"type\":\"integer\"},\"exercises\":{\"description\":\"Exercise IDs included in the program\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the training program\",\"type\":\"string\"},\"level\":{\"description\":\"Skill level required for the program\",\"enum\":[\"beginner\",\"intermediate\",\"advanced\"],\"type\":\"string\"},\"name\":{\"description\":\"Name of the training program\",\"type\":\"string\"},\"objectives\":{\"description\":\"List of learning objectives\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"sport\":{\"description\":\"Sport type the program is designed for\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of training programs\"},\"400\":{\"description\":\"Bad request\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/training-programs"
           segments: [

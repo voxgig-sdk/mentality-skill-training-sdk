@@ -3,7 +3,7 @@
     "training_program": {
       "TRAINING_PROGRAM00": {
         "description": "s50",
-        "duration": "s51",
+        "duration": 81,
         "exercises": [],
         "id": "TRAINING_PROGRAM00",
         "level": "s54",
@@ -13,7 +13,7 @@
       },
       "TRAINING_PROGRAM01": {
         "description": "sa0",
-        "duration": "sa1",
+        "duration": 161,
         "exercises": [],
         "id": "TRAINING_PROGRAM01",
         "level": "sa4",
@@ -23,7 +23,7 @@
       },
       "TRAINING_PROGRAM02": {
         "description": "sf0",
-        "duration": "sf1",
+        "duration": 241,
         "exercises": [],
         "id": "TRAINING_PROGRAM02",
         "level": "sf4",
@@ -37,12 +37,113 @@
     "training_program": {
       "training_program_ref01": {
         "description": "s140",
-        "duration": "s141",
+        "duration": 321,
         "exercises": [],
         "level": "s144",
         "name": "s145",
         "objectives": [],
         "sport": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/training-programs": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTrainingPrograms",
+        "parameters": [
+          {
+            "description": "Filter programs by sport type",
+            "in": "query",
+            "name": "sport",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter programs by skill level (beginner, intermediate, advanced)",
+            "in": "query",
+            "name": "level",
+            "required": false,
+            "schema": {
+              "enum": [
+                "beginner",
+                "intermediate",
+                "advanced"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Detailed description of the program",
+                        "type": "string"
+                      },
+                      "duration": {
+                        "description": "Program duration in weeks",
+                        "type": "integer"
+                      },
+                      "exercises": {
+                        "description": "Exercise IDs included in the program",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the training program",
+                        "type": "string"
+                      },
+                      "level": {
+                        "description": "Skill level required for the program",
+                        "enum": [
+                          "beginner",
+                          "intermediate",
+                          "advanced"
+                        ],
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Name of the training program",
+                        "type": "string"
+                      },
+                      "objectives": {
+                        "description": "List of learning objectives",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "sport": {
+                        "description": "Sport type the program is designed for",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of training programs"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

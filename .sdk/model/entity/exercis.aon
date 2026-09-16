@@ -84,6 +84,12 @@ main: kit: entity: exercis: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/exercises"
+            json: "{\"operationId\":\"getExercises\",\"parameters\":[{\"description\":\"Filter exercises by category (focus, visualization, confidence, stress-management)\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"enum\":[\"focus\",\"visualization\",\"confidence\",\"stress-management\"],\"type\":\"string\"}},{\"description\":\"Filter exercises by duration in minutes\",\"in\":\"query\",\"name\":\"duration\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"benefits\":{\"description\":\"Benefits of performing this exercise\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"category\":{\"description\":\"Category of mental skill\",\"enum\":[\"focus\",\"visualization\",\"confidence\",\"stress-management\"],\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the exercise\",\"type\":\"string\"},\"difficulty\":{\"description\":\"Difficulty level of the exercise\",\"enum\":[\"easy\",\"moderate\",\"challenging\"],\"type\":\"string\"},\"duration\":{\"description\":\"Exercise duration in minutes\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the exercise\",\"type\":\"string\"},\"instructions\":{\"description\":\"Step-by-step instructions\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the exercise\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of exercises\"},\"400\":{\"description\":\"Bad request\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/exercises"
           segments: [

@@ -1,12 +1,18 @@
 # MentalitySkillTraining SDK feature factory
 
 from mentalityskilltraining_sdk.feature.base_feature import MentalitySkillTrainingBaseFeature
+from mentalityskilltraining_sdk.feature.ratelimit_feature import MentalitySkillTrainingRatelimitFeature
+from mentalityskilltraining_sdk.feature.retry_feature import MentalitySkillTrainingRetryFeature
 from mentalityskilltraining_sdk.feature.test_feature import MentalitySkillTrainingTestFeature
+from mentalityskilltraining_sdk.feature.timeout_feature import MentalitySkillTrainingTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: MentalitySkillTrainingBaseFeature(),
+    "ratelimit": lambda: MentalitySkillTrainingRatelimitFeature(),
+    "retry": lambda: MentalitySkillTrainingRetryFeature(),
     "test": lambda: MentalitySkillTrainingTestFeature(),
+    "timeout": lambda: MentalitySkillTrainingTimeoutFeature(),
 }
 
 

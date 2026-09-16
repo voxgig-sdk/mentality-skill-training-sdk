@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MENTALITY_SKILL_TRAINING_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'exercis.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'exercis.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "benefits", "req": false, "short": "Benefits of performing this exercise", "type": "`$ARRAY`", "index$": 0 }, { "active": true, "name": "category", "req": false, "short": "Category of mental skill", "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "description", "req": false, "short": "Detailed description of the exercise", "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "difficulty", "req": false, "short": "Difficulty level of the exercise", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "duration", "req": false, "short": "Exercise duration in minutes", "type": "`$INTEGER`", "index$": 4 }, { "active": true, "name": "id", "req": false, "short": "Unique identifier for the exercise", "type": "`$STRING`", "index$": 5 }, { "active": true, "name": "instructions", "req": false, "short": "Step-by-step instructions", "type": "`$ARRAY`", "index$": 6 }, { "active": true, "name": "name", "req": false, "short": "Name of the exercise", "type": "`$STRING`", "index$": 7 }], "id": { "field": "id", "name": "id" }, "name": "exercis", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "category", "orig": "category", "reqd": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "query", "name": "duration", "orig": "duration", "reqd": false, "type": "`$INTEGER`", "index$": 1 }] }, "contract": { "id": "GET /api/exercises", "json": "{\"operationId\":\"getExercises\",\"parameters\":[{\"description\":\"Filter exercises by category (focus, visualization, confidence, stress-management)\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"enum\":[\"focus\",\"visualization\",\"confidence\",\"stress-management\"],\"type\":\"string\"}},{\"description\":\"Filter exercises by duration in minutes\",\"in\":\"query\",\"name\":\"duration\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"benefits\":{\"description\":\"Benefits of performing this exercise\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"category\":{\"description\":\"Category of mental skill\",\"enum\":[\"focus\",\"visualization\",\"confidence\",\"stress-management\"],\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the exercise\",\"type\":\"string\"},\"difficulty\":{\"description\":\"Difficulty level of the exercise\",\"enum\":[\"easy\",\"moderate\",\"challenging\"],\"type\":\"string\"},\"duration\":{\"description\":\"Exercise duration in minutes\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the exercise\",\"type\":\"string\"},\"instructions\":{\"description\":\"Step-by-step instructions\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the exercise\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of exercises\"},\"400\":{\"description\":\"Bad request\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/exercises", "segments": [{ "lit": "api" }, { "lit": "exercises" }], "select": { "exist": ["category", "duration"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "exercis", "name__orig": "exercis", "Name": "Exercis", "name_": "exercis", "name-": "exercis", "NAME": "EXERCIS", "index$": 0 }, { "active": true, "entity": "exercis", "key$": "BasicExercisFlow", "kind": "basic", "name": "BasicExercisFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "exercis_ref01" } }], "index$": 0 }] }, 'Exercis');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID': idmap,
         'MENTALITY_SKILL_TRAINING_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID'];
     const live = 'TRUE' === env.MENTALITY_SKILL_TRAINING_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.MentalitySkillTrainingSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -125,7 +123,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -137,7 +136,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.MENTALITY_SKILL_TRAINING_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;
