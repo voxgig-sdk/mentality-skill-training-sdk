@@ -105,12 +105,12 @@ local results, err = client:Exercis():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/mentality-skill-training-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
-| Python | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
-| PHP | `voxgig-sdk/mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
+| TypeScript | `@voxgig-sdk/mentality-skill-training-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/tags) |
+| Python | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/tags) |
+| PHP | `voxgig-sdk/mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/mentality-skill-training-sdk/go` | `go get github.com/voxgig-sdk/mentality-skill-training-sdk/go@latest` |
-| Ruby | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
-| Lua | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/releases) |
+| Ruby | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/tags) |
+| Lua | `voxgig-sdk-mentality-skill-training` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mentality-skill-training-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/mentality-skill-training-sdk/go-cli` | `go install github.com/voxgig-sdk/mentality-skill-training-sdk/go-cli/cmd/mentality-skill-training@latest` |
 | Go MCP server | `github.com/voxgig-sdk/mentality-skill-training-sdk/go-mcp` | `go get github.com/voxgig-sdk/mentality-skill-training-sdk/go-mcp@latest` |
 

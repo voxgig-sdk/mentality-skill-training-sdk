@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      exercis: {
-      },
-
-      training_program: {
-      },
-
+        exercis: {
+        },
+  
+        training_program: {
+        },
+  
     }
   }
 

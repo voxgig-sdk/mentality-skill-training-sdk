@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicExercisFlow.aon"
-@"BasicTrainingProgramFlow.aon"
+@"./BasicExercisFlow.aon"
+@"./BasicTrainingProgramFlow.aon"
