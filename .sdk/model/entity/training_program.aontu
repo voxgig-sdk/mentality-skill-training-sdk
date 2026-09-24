@@ -1,0 +1,127 @@
+# Entity: training_program
+
+main: kit: entity: training_program: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Detailed description of the program"
+      t: "`$STRING`"
+    }
+    duration: {
+      h: "Duration"
+      n: "duration"
+      r: false
+      sh: "Program duration in weeks"
+      t: "`$INTEGER`"
+    }
+    exercises: {
+      h: "Exercises"
+      n: "exercises"
+      r: false
+      sh: "Exercise IDs included in the program"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the training program"
+      t: "`$STRING`"
+    }
+    level: {
+      h: "Level"
+      n: "level"
+      r: false
+      sh: "Skill level required for the program"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the training program"
+      t: "`$STRING`"
+    }
+    objectives: {
+      h: "Objectives"
+      n: "objectives"
+      r: false
+      sh: "List of learning objectives"
+      t: "`$ARRAY`"
+    }
+    sport: {
+      h: "Sport"
+      n: "sport"
+      r: false
+      sh: "Sport type the program is designed for"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "training_program"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/training-programs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "level"
+                or: "level"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "sport"
+                or: "sport"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/training-programs"
+          q: {
+            exist: [
+              "level"
+              "sport"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "training-programs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

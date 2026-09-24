@@ -1,7 +1,7 @@
 // Typed models for the MentalitySkillTraining SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,14 +14,6 @@ import (
 
 // Exercis is the typed data model for the exercis entity.
 type Exercis struct {
-	Benefits *[]any `json:"benefits,omitempty"`
-	Category *string `json:"category,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Difficulty *string `json:"difficulty,omitempty"`
-	Duration *int `json:"duration,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Instructions *[]any `json:"instructions,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // ExercisListMatch is the typed request payload for Exercis.ListTyped.
@@ -32,14 +24,6 @@ type ExercisListMatch struct {
 
 // TrainingProgram is the typed data model for the training_program entity.
 type TrainingProgram struct {
-	Description *string `json:"description,omitempty"`
-	Duration *int `json:"duration,omitempty"`
-	Exercises *[]any `json:"exercises,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Level *string `json:"level,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Objectives *[]any `json:"objectives,omitempty"`
-	Sport *string `json:"sport,omitempty"`
 }
 
 // TrainingProgramListMatch is the typed request payload for TrainingProgram.ListTyped.

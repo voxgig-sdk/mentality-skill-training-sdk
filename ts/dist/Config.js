@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -115,43 +108,51 @@ class Config {
             "fields": [
                 {
                     "name": "benefits",
-                    "short": "Benefits of performing this exercise",
-                    "type": "`$ARRAY`"
+                    "title": "Benefits",
+                    "type": "`$ARRAY`",
+                    "short": "Benefits of performing this exercise"
                 },
                 {
                     "name": "category",
-                    "short": "Category of mental skill",
-                    "type": "`$STRING`"
+                    "title": "Category",
+                    "type": "`$STRING`",
+                    "short": "Category of mental skill"
                 },
                 {
                     "name": "description",
-                    "short": "Detailed description of the exercise",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Detailed description of the exercise"
                 },
                 {
                     "name": "difficulty",
-                    "short": "Difficulty level of the exercise",
-                    "type": "`$STRING`"
+                    "title": "Difficulty",
+                    "type": "`$STRING`",
+                    "short": "Difficulty level of the exercise"
                 },
                 {
                     "name": "duration",
-                    "short": "Exercise duration in minutes",
-                    "type": "`$INTEGER`"
+                    "title": "Duration",
+                    "type": "`$INTEGER`",
+                    "short": "Exercise duration in minutes"
                 },
                 {
                     "name": "id",
-                    "short": "Unique identifier for the exercise",
-                    "type": "`$STRING`"
+                    "title": "Id",
+                    "type": "`$STRING`",
+                    "short": "Unique identifier for the exercise"
                 },
                 {
                     "name": "instructions",
-                    "short": "Step-by-step instructions",
-                    "type": "`$ARRAY`"
+                    "title": "Instructions",
+                    "type": "`$ARRAY`",
+                    "short": "Step-by-step instructions"
                 },
                 {
                     "name": "name",
-                    "short": "Name of the exercise",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the exercise"
                 }
             ],
             "id": {
@@ -165,22 +166,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "category",
-                                        "orig": "category",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "duration",
-                                        "orig": "duration",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/exercises",
@@ -192,20 +177,37 @@ class Config {
                                     "lit": "exercises"
                                 }
                             ],
+                            "parts": [
+                                "api",
+                                "exercises"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "category",
+                                        "orig": "category",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "duration",
+                                        "orig": "duration",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "category",
                                     "duration"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "api",
-                                "exercises"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -218,43 +220,51 @@ class Config {
             "fields": [
                 {
                     "name": "description",
-                    "short": "Detailed description of the program",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Detailed description of the program"
                 },
                 {
                     "name": "duration",
-                    "short": "Program duration in weeks",
-                    "type": "`$INTEGER`"
+                    "title": "Duration",
+                    "type": "`$INTEGER`",
+                    "short": "Program duration in weeks"
                 },
                 {
                     "name": "exercises",
-                    "short": "Exercise IDs included in the program",
-                    "type": "`$ARRAY`"
+                    "title": "Exercises",
+                    "type": "`$ARRAY`",
+                    "short": "Exercise IDs included in the program"
                 },
                 {
                     "name": "id",
-                    "short": "Unique identifier for the training program",
-                    "type": "`$STRING`"
+                    "title": "Id",
+                    "type": "`$STRING`",
+                    "short": "Unique identifier for the training program"
                 },
                 {
                     "name": "level",
-                    "short": "Skill level required for the program",
-                    "type": "`$STRING`"
+                    "title": "Level",
+                    "type": "`$STRING`",
+                    "short": "Skill level required for the program"
                 },
                 {
                     "name": "name",
-                    "short": "Name of the training program",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Name of the training program"
                 },
                 {
                     "name": "objectives",
-                    "short": "List of learning objectives",
-                    "type": "`$ARRAY`"
+                    "title": "Objectives",
+                    "type": "`$ARRAY`",
+                    "short": "List of learning objectives"
                 },
                 {
                     "name": "sport",
-                    "short": "Sport type the program is designed for",
-                    "type": "`$STRING`"
+                    "title": "Sport",
+                    "type": "`$STRING`",
+                    "short": "Sport type the program is designed for"
                 }
             ],
             "id": {
@@ -268,22 +278,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "level",
-                                        "orig": "level",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "sport",
-                                        "orig": "sport",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/training-programs",
@@ -295,20 +289,37 @@ class Config {
                                     "lit": "training-programs"
                                 }
                             ],
+                            "parts": [
+                                "api",
+                                "training-programs"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "level",
+                                        "orig": "level",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "sport",
+                                        "orig": "sport",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "level",
                                     "sport"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "api",
-                                "training-programs"
-                            ]
+                            }
                         }
                     ]
                 }

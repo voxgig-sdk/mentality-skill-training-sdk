@@ -117,43 +117,51 @@ def make_config():
         "fields": [
           {
             "name": "benefits",
-            "short": "Benefits of performing this exercise",
+            "title": "Benefits",
             "type": "`$ARRAY`",
+            "short": "Benefits of performing this exercise",
           },
           {
             "name": "category",
-            "short": "Category of mental skill",
+            "title": "Category",
             "type": "`$STRING`",
+            "short": "Category of mental skill",
           },
           {
             "name": "description",
-            "short": "Detailed description of the exercise",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the exercise",
           },
           {
             "name": "difficulty",
-            "short": "Difficulty level of the exercise",
+            "title": "Difficulty",
             "type": "`$STRING`",
+            "short": "Difficulty level of the exercise",
           },
           {
             "name": "duration",
-            "short": "Exercise duration in minutes",
+            "title": "Duration",
             "type": "`$INTEGER`",
+            "short": "Exercise duration in minutes",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the exercise",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the exercise",
           },
           {
             "name": "instructions",
-            "short": "Step-by-step instructions",
+            "title": "Instructions",
             "type": "`$ARRAY`",
+            "short": "Step-by-step instructions",
           },
           {
             "name": "name",
-            "short": "Name of the exercise",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the exercise",
           },
         ],
         "id": {
@@ -167,22 +175,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "category",
-                      "orig": "category",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "duration",
-                      "orig": "duration",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/exercises",
@@ -194,20 +186,37 @@ def make_config():
                     "lit": "exercises",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "exercises",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "category",
+                      "orig": "category",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "duration",
+                      "orig": "duration",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "category",
                     "duration",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "api",
-                  "exercises",
-                ],
               },
             ],
           },
@@ -220,43 +229,51 @@ def make_config():
         "fields": [
           {
             "name": "description",
-            "short": "Detailed description of the program",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Detailed description of the program",
           },
           {
             "name": "duration",
-            "short": "Program duration in weeks",
+            "title": "Duration",
             "type": "`$INTEGER`",
+            "short": "Program duration in weeks",
           },
           {
             "name": "exercises",
-            "short": "Exercise IDs included in the program",
+            "title": "Exercises",
             "type": "`$ARRAY`",
+            "short": "Exercise IDs included in the program",
           },
           {
             "name": "id",
-            "short": "Unique identifier for the training program",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Unique identifier for the training program",
           },
           {
             "name": "level",
-            "short": "Skill level required for the program",
+            "title": "Level",
             "type": "`$STRING`",
+            "short": "Skill level required for the program",
           },
           {
             "name": "name",
-            "short": "Name of the training program",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Name of the training program",
           },
           {
             "name": "objectives",
-            "short": "List of learning objectives",
+            "title": "Objectives",
             "type": "`$ARRAY`",
+            "short": "List of learning objectives",
           },
           {
             "name": "sport",
-            "short": "Sport type the program is designed for",
+            "title": "Sport",
             "type": "`$STRING`",
+            "short": "Sport type the program is designed for",
           },
         ],
         "id": {
@@ -270,22 +287,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "level",
-                      "orig": "level",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "sport",
-                      "orig": "sport",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/training-programs",
@@ -297,20 +298,37 @@ def make_config():
                     "lit": "training-programs",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "training-programs",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "level",
+                      "orig": "level",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "sport",
+                      "orig": "sport",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "level",
                     "sport",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "api",
-                  "training-programs",
-                ],
               },
             ],
           },

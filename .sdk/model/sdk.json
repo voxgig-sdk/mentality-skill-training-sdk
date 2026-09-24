@@ -24,70 +24,144 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "exercis": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "benefits",
-              "req": false,
-              "short": "Benefits of performing this exercise",
-              "type": "`$ARRAY`"
+          "fields": {
+            "benefits": {
+              "a": true,
+              "h": "Benefits",
+              "n": "benefits",
+              "r": false,
+              "sh": "Benefits of performing this exercise",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "short": "Category of mental skill",
-              "type": "`$STRING`"
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "sh": "Category of mental skill",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Detailed description of the exercise",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Detailed description of the exercise",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "difficulty",
-              "req": false,
-              "short": "Difficulty level of the exercise",
-              "type": "`$STRING`"
+            "difficulty": {
+              "a": true,
+              "h": "Difficulty",
+              "n": "difficulty",
+              "r": false,
+              "sh": "Difficulty level of the exercise",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "duration",
-              "req": false,
-              "short": "Exercise duration in minutes",
-              "type": "`$INTEGER`"
+            "duration": {
+              "a": true,
+              "h": "Duration",
+              "n": "duration",
+              "r": false,
+              "sh": "Exercise duration in minutes",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the exercise",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the exercise",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "instructions",
-              "req": false,
-              "short": "Step-by-step instructions",
-              "type": "`$ARRAY`"
+            "instructions": {
+              "a": true,
+              "h": "Instructions",
+              "n": "instructions",
+              "r": false,
+              "sh": "Step-by-step instructions",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the exercise",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the exercise",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -99,37 +173,43 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/exercises",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "duration",
-                        "orig": "duration",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "duration",
+                        "or": "duration",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/exercises",
-                    "json": "{\"operationId\":\"getExercises\",\"parameters\":[{\"description\":\"Filter exercises by category (focus, visualization, confidence, stress-management)\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"enum\":[\"focus\",\"visualization\",\"confidence\",\"stress-management\"],\"type\":\"string\"}},{\"description\":\"Filter exercises by duration in minutes\",\"in\":\"query\",\"name\":\"duration\",\"required\":false,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"benefits\":{\"description\":\"Benefits of performing this exercise\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"category\":{\"description\":\"Category of mental skill\",\"enum\":[\"focus\",\"visualization\",\"confidence\",\"stress-management\"],\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the exercise\",\"type\":\"string\"},\"difficulty\":{\"description\":\"Difficulty level of the exercise\",\"enum\":[\"easy\",\"moderate\",\"challenging\"],\"type\":\"string\"},\"duration\":{\"description\":\"Exercise duration in minutes\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the exercise\",\"type\":\"string\"},\"instructions\":{\"description\":\"Step-by-step instructions\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Name of the exercise\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of exercises\"},\"400\":{\"description\":\"Bad request\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/exercises",
+                  "q": {
+                    "exist": [
+                      "category",
+                      "duration"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/exercises",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -137,13 +217,7 @@
                       "lit": "exercises"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "category",
-                      "duration"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -160,64 +234,72 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Detailed description of the program",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Detailed description of the program",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "duration",
-              "req": false,
-              "short": "Program duration in weeks",
-              "type": "`$INTEGER`"
+            "duration": {
+              "a": true,
+              "h": "Duration",
+              "n": "duration",
+              "r": false,
+              "sh": "Program duration in weeks",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "exercises",
-              "req": false,
-              "short": "Exercise IDs included in the program",
-              "type": "`$ARRAY`"
+            "exercises": {
+              "a": true,
+              "h": "Exercises",
+              "n": "exercises",
+              "r": false,
+              "sh": "Exercise IDs included in the program",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier for the training program",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier for the training program",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "level",
-              "req": false,
-              "short": "Skill level required for the program",
-              "type": "`$STRING`"
+            "level": {
+              "a": true,
+              "h": "Level",
+              "n": "level",
+              "r": false,
+              "sh": "Skill level required for the program",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Name of the training program",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Name of the training program",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "objectives",
-              "req": false,
-              "short": "List of learning objectives",
-              "type": "`$ARRAY`"
+            "objectives": {
+              "a": true,
+              "h": "Objectives",
+              "n": "objectives",
+              "r": false,
+              "sh": "List of learning objectives",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "sport",
-              "req": false,
-              "short": "Sport type the program is designed for",
-              "type": "`$STRING`"
+            "sport": {
+              "a": true,
+              "h": "Sport",
+              "n": "sport",
+              "r": false,
+              "sh": "Sport type the program is designed for",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -229,37 +311,43 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/training-programs",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "level",
-                        "orig": "level",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "level",
+                        "or": "level",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "sport",
-                        "orig": "sport",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "sport",
+                        "or": "sport",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/training-programs",
-                    "json": "{\"operationId\":\"getTrainingPrograms\",\"parameters\":[{\"description\":\"Filter programs by sport type\",\"in\":\"query\",\"name\":\"sport\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter programs by skill level (beginner, intermediate, advanced)\",\"in\":\"query\",\"name\":\"level\",\"required\":false,\"schema\":{\"enum\":[\"beginner\",\"intermediate\",\"advanced\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Detailed description of the program\",\"type\":\"string\"},\"duration\":{\"description\":\"Program duration in weeks\",\"type\":\"integer\"},\"exercises\":{\"description\":\"Exercise IDs included in the program\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the training program\",\"type\":\"string\"},\"level\":{\"description\":\"Skill level required for the program\",\"enum\":[\"beginner\",\"intermediate\",\"advanced\"],\"type\":\"string\"},\"name\":{\"description\":\"Name of the training program\",\"type\":\"string\"},\"objectives\":{\"description\":\"List of learning objectives\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"sport\":{\"description\":\"Sport type the program is designed for\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of training programs\"},\"400\":{\"description\":\"Bad request\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/training-programs",
+                  "q": {
+                    "exist": [
+                      "level",
+                      "sport"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/training-programs",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -267,13 +355,7 @@
                       "lit": "training-programs"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "level",
-                      "sport"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -702,13 +784,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -728,13 +810,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

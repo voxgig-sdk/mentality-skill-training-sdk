@@ -19,7 +19,6 @@ import type {
   TrainingProgramListMatch,
 } from '../MentalitySkillTrainingTypes'
 
-// TODO: needs Entity superclass
 class TrainingProgramEntity extends MentalitySkillTrainingEntityBase<TrainingProgram> {
 
   constructor(client: MentalitySkillTrainingSDK, entopts: any) {

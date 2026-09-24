@@ -43,7 +43,7 @@ local exerciss, err = client:Exercis():list()
 if err then error(err) end
 
 for _, item in ipairs(exerciss) do
-  print(item["id"], item["category"])
+  print(item["id"])
 end
 ```
 

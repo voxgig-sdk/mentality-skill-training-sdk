@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExercisEntity = void 0;
 const MentalitySkillTrainingEntityBase_1 = require("../MentalitySkillTrainingEntityBase");
-// TODO: needs Entity superclass
 class ExercisEntity extends MentalitySkillTrainingEntityBase_1.MentalitySkillTrainingEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

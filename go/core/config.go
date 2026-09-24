@@ -92,43 +92,51 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "benefits",
-						"short": "Benefits of performing this exercise",
+						"title": "Benefits",
 						"type": "`$ARRAY`",
+						"short": "Benefits of performing this exercise",
 					},
 					map[string]any{
 						"name": "category",
-						"short": "Category of mental skill",
+						"title": "Category",
 						"type": "`$STRING`",
+						"short": "Category of mental skill",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the exercise",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the exercise",
 					},
 					map[string]any{
 						"name": "difficulty",
-						"short": "Difficulty level of the exercise",
+						"title": "Difficulty",
 						"type": "`$STRING`",
+						"short": "Difficulty level of the exercise",
 					},
 					map[string]any{
 						"name": "duration",
-						"short": "Exercise duration in minutes",
+						"title": "Duration",
 						"type": "`$INTEGER`",
+						"short": "Exercise duration in minutes",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the exercise",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the exercise",
 					},
 					map[string]any{
 						"name": "instructions",
-						"short": "Step-by-step instructions",
+						"title": "Instructions",
 						"type": "`$ARRAY`",
+						"short": "Step-by-step instructions",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the exercise",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the exercise",
 					},
 				},
 				"id": map[string]any{
@@ -142,22 +150,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "category",
-											"orig": "category",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "duration",
-											"orig": "duration",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/exercises",
@@ -169,19 +161,36 @@ func MakeConfig() map[string]any {
 										"lit": "exercises",
 									},
 								},
+								"parts": []any{
+									"api",
+									"exercises",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "category",
+											"orig": "category",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "duration",
+											"orig": "duration",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"category",
 										"duration",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"exercises",
 								},
 							},
 						},
@@ -195,43 +204,51 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
-						"short": "Detailed description of the program",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Detailed description of the program",
 					},
 					map[string]any{
 						"name": "duration",
-						"short": "Program duration in weeks",
+						"title": "Duration",
 						"type": "`$INTEGER`",
+						"short": "Program duration in weeks",
 					},
 					map[string]any{
 						"name": "exercises",
-						"short": "Exercise IDs included in the program",
+						"title": "Exercises",
 						"type": "`$ARRAY`",
+						"short": "Exercise IDs included in the program",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the training program",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the training program",
 					},
 					map[string]any{
 						"name": "level",
-						"short": "Skill level required for the program",
+						"title": "Level",
 						"type": "`$STRING`",
+						"short": "Skill level required for the program",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the training program",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the training program",
 					},
 					map[string]any{
 						"name": "objectives",
-						"short": "List of learning objectives",
+						"title": "Objectives",
 						"type": "`$ARRAY`",
+						"short": "List of learning objectives",
 					},
 					map[string]any{
 						"name": "sport",
-						"short": "Sport type the program is designed for",
+						"title": "Sport",
 						"type": "`$STRING`",
+						"short": "Sport type the program is designed for",
 					},
 				},
 				"id": map[string]any{
@@ -245,22 +262,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "level",
-											"orig": "level",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sport",
-											"orig": "sport",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/training-programs",
@@ -272,19 +273,36 @@ func MakeConfig() map[string]any {
 										"lit": "training-programs",
 									},
 								},
+								"parts": []any{
+									"api",
+									"training-programs",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "level",
+											"orig": "level",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sport",
+											"orig": "sport",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"level",
 										"sport",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"training-programs",
 								},
 							},
 						},

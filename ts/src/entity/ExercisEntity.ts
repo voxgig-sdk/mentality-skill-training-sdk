@@ -19,7 +19,6 @@ import type {
   ExercisListMatch,
 } from '../MentalitySkillTrainingTypes'
 
-// TODO: needs Entity superclass
 class ExercisEntity extends MentalitySkillTrainingEntityBase<Exercis> {
 
   constructor(client: MentalitySkillTrainingSDK, entopts: any) {
