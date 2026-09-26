@@ -41,9 +41,9 @@ client = MentalitySkillTrainingSDK.test()
 
 ### Instance Methods
 
-#### `Exercis(data=None)`
+#### `Exercise(data=None)`
 
-Create a new `ExercisEntity` instance. Pass `None` for no initial data.
+Create a new `ExerciseEntity` instance. Pass `None` for no initial data.
 
 #### `TrainingProgram(data=None)`
 
@@ -81,10 +81,10 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 
 ---
 
-## ExercisEntity
+## ExerciseEntity
 
 ```python
-exercis = client.Exercis()
+exercise = client.Exercise()
 ```
 
 ### Fields
@@ -107,9 +107,9 @@ exercis = client.Exercis()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Exercis().list()
-for exercis in results:
-    print(exercis)
+results = client.Exercise().list()
+for exercise in results:
+    print(exercise)
 ```
 
 ### Common Methods
@@ -132,7 +132,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `ExercisEntity` instance with the same options.
+Create a new `ExerciseEntity` instance with the same options.
 
 #### `get_name() -> str`
 

@@ -2,7 +2,7 @@
 // MentalitySkillTraining Ts SDK
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.MentalitySkillTrainingSDK = exports.MentalitySkillTrainingEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
-const ExercisEntity_1 = require("./entity/ExercisEntity");
+const ExerciseEntity_1 = require("./entity/ExerciseEntity");
 const TrainingProgramEntity_1 = require("./entity/TrainingProgramEntity");
 const node_util_1 = require("node:util");
 const Config_1 = require("./Config");
@@ -211,12 +211,12 @@ class MentalitySkillTrainingSDK {
         }
         return res;
     }
-    // Entity access: `client.Exercis().list()` / `client.Exercis().load({ id })`.
+    // Entity access: `client.Exercise().list()` / `client.Exercise().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    Exercis(entopts) {
+    Exercise(entopts) {
         const self = this;
-        return new ExercisEntity_1.ExercisEntity(self, entopts);
+        return new ExerciseEntity_1.ExerciseEntity(self, entopts);
     }
     // Entity access: `client.TrainingProgram().list()` / `client.TrainingProgram().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

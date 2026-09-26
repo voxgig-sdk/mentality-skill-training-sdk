@@ -19,15 +19,15 @@ make build
 export MENTALITY_SKILL_TRAINING_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./mentality-skill-training-cli list exercis
+./mentality-skill-training-cli list exercise
 ./mentality-skill-training-cli list training_program
 
 # 5. Override the API base URL for a single call
-MENTALITY_SKILL_TRAINING_BASE=https://api.example.com ./mentality-skill-training-cli list exercis
+MENTALITY_SKILL_TRAINING_BASE=https://api.example.com ./mentality-skill-training-cli list exercise
 
 # 6. No arguments -> interactive REPL
 ./mentality-skill-training-cli
-mentality-skill-training> list exercis
+mentality-skill-training> list exercise
 mentality-skill-training> /quit
 ```
 
@@ -53,7 +53,7 @@ mentality-skill-training> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/mentality-skill-training-cli list exercis
+   ./dist/*/mentality-skill-training-cli list exercise
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -66,7 +66,7 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 ### List the records of an entity
 
 ```sh
-./mentality-skill-training-cli list exercis
+./mentality-skill-training-cli list exercise
 ```
 
 `list <entity>` returns the first page of records. `<entity>` is a bareword —
@@ -79,7 +79,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export MENTALITY_SKILL_TRAINING_APIKEY=sk_live_xxx            # API key
 export MENTALITY_SKILL_TRAINING_BASE=https://api.example.com  # optional: override the API base URL
-./mentality-skill-training-cli list exercis
+./mentality-skill-training-cli list exercise
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -91,7 +91,7 @@ evaluated as its own boru expression:
 
 ```text
 $ ./mentality-skill-training-cli
-mentality-skill-training> list exercis
+mentality-skill-training> list exercise
 mentality-skill-training> /help
 mentality-skill-training> /quit
 ```
@@ -118,7 +118,7 @@ The CLI registers these boru words, each bound to the SDK:
 |----------|-----------------------------------------------|--------------------------------|
 | `list`   | `list <entity>` · `list <query> <entity>`     | First page of records          |
 
-- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `exercis`).
+- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `exercise`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as
   `{id:1}`). A scalar is always wrapped as `{id:<value>}`.
 
@@ -161,7 +161,7 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 The 2 entities this SDK exposes (any is valid as `<entity>`):
 
-exercis training_program
+exercise training_program
 
 ## Explanation
 

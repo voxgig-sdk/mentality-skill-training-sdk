@@ -1,4 +1,4 @@
-export interface Exercis {
+export interface Exercise {
     benefits?: any[];
     category?: string;
     description?: string;
@@ -8,7 +8,7 @@ export interface Exercis {
     instructions?: any[];
     name?: string;
 }
-export interface ExercisListMatch {
+export interface ExerciseListMatch {
     category?: string;
     duration?: number;
 }

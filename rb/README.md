@@ -4,7 +4,7 @@
 
 The Ruby SDK for the MentalitySkillTraining API — an entity-oriented client using idiomatic Ruby conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Exercis` — with named operations (`list`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Exercise` — with named operations (`list`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -30,13 +30,13 @@ require_relative "MentalitySkillTraining_sdk"
 client = MentalitySkillTrainingSDK.new
 ```
 
-### 2. List exercis records
+### 2. List exercise records
 
 ```ruby
 begin
-  # list returns an Array of Exercis records — iterate directly.
-  exerciss = client.Exercis.list
-  exerciss.each do |item|
+  # list returns an Array of Exercise records — iterate directly.
+  exercises = client.Exercise.list
+  exercises.each do |item|
     puts "#{item["id"]} #{item["benefits"]}"
   end
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  exerciss = client.Exercis.list()
+  exercises = client.Exercise.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -121,8 +121,8 @@ client = MentalitySkillTrainingSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-exercis = client.Exercis.list()
-puts exercis
+exercise = client.Exercise.list()
+puts exercise
 ```
 
 ### Use a custom fetch function
@@ -198,7 +198,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Exercis` | `(data) -> ExercisEntity` | Create an Exercis entity instance. |
+| `Exercise` | `(data) -> ExerciseEntity` | Create an Exercise entity instance. |
 | `TrainingProgram` | `(data) -> TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface
@@ -234,7 +234,7 @@ returns a result `Hash` with these keys:
 
 ### Entities
 
-#### Exercis
+#### Exercise
 
 | Field | Description |
 | --- | --- |
@@ -273,9 +273,9 @@ API path: `/api/training-programs`
 ## Entities
 
 
-### Exercis
+### Exercise
 
-Create an instance: `exercis = client.Exercis`
+Create an instance: `exercise = client.Exercise`
 
 #### Operations
 
@@ -299,8 +299,8 @@ Create an instance: `exercis = client.Exercis`
 #### Example: List
 
 ```ruby
-# list returns an Array of Exercis records (raises on error).
-exerciss = client.Exercis.list
+# list returns an Array of Exercise records (raises on error).
+exercises = client.Exercise.list
 ```
 
 
@@ -496,11 +496,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-exercis = client.Exercis
-exercis.list()
+exercise = client.Exercise
+exercise.list()
 
-# exercis.data_get now returns the exercis data from the last list
-# exercis.match_get returns the last match criteria
+# exercise.data_get now returns the exercise data from the last list
+# exercise.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

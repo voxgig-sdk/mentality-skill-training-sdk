@@ -1,17 +1,17 @@
-# Exercis direct test
+# Exercise direct test
 
 require "minitest/autorun"
 require "json"
 require_relative "../MentalitySkillTraining_sdk"
 require_relative "runner"
 
-class ExercisDirectTest < Minitest::Test
-  def test_direct_list_exercis
-    setup = exercis_direct_setup([
+class ExerciseDirectTest < Minitest::Test
+  def test_direct_list_exercise
+    setup = exercise_direct_setup([
       { "id" => "direct01" },
       { "id" => "direct02" },
     ])
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-exercis", setup[:live] ? "live" : "unit")
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-exercise", setup[:live] ? "live" : "unit")
     if _should_skip
       skip(_reason || "skipped via sdk-test-control.json")
       return
@@ -54,13 +54,13 @@ class ExercisDirectTest < Minitest::Test
 end
 
 
-def exercis_direct_setup(mockres)
+def exercise_direct_setup(mockres)
   Runner.load_env_local
 
   calls = []
 
   env = Runner.env_override({
-    "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID" => {},
+    "MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID" => {},
     "MENTALITY_SKILL_TRAINING_TEST_LIVE" => "FALSE",
   })
 

@@ -41,9 +41,9 @@ client = MentalitySkillTrainingSDK.test
 
 ### Instance Methods
 
-#### `Exercis(data = nil)`
+#### `Exercise(data = nil)`
 
-Create a new `Exercis` entity instance. Pass `nil` for no initial data.
+Create a new `Exercise` entity instance. Pass `nil` for no initial data.
 
 #### `TrainingProgram(data = nil)`
 
@@ -87,10 +87,10 @@ same parameters as `direct()`. Raises on error.
 
 ---
 
-## ExercisEntity
+## ExerciseEntity
 
 ```ruby
-exercis = client.Exercis
+exercise = client.Exercise
 ```
 
 ### Fields
@@ -113,7 +113,7 @@ exercis = client.Exercis
 List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Exercis.list
+results = client.Exercise.list
 ```
 
 ### Common Methods
@@ -136,7 +136,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `ExercisEntity` instance with the same client and
+Create a new `ExerciseEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

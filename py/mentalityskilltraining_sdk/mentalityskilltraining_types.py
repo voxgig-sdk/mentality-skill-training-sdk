@@ -16,7 +16,7 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Exercis(TypedDict, total=False):
+class Exercise(TypedDict, total=False):
     benefits: list
     category: str
     description: str
@@ -27,7 +27,7 @@ class Exercis(TypedDict, total=False):
     name: str
 
 
-class ExercisListMatch(TypedDict, total=False):
+class ExerciseListMatch(TypedDict, total=False):
     category: str
     duration: int
 

@@ -1,4 +1,4 @@
-import { ExercisEntity } from './entity/ExercisEntity';
+import { ExerciseEntity } from './entity/ExerciseEntity';
 import { TrainingProgramEntity } from './entity/TrainingProgramEntity';
 export type * from './MentalitySkillTrainingTypes';
 import { inspect } from 'node:util';
@@ -45,7 +45,7 @@ declare class MentalitySkillTrainingSDK {
         data?: undefined;
     }>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
-    Exercis(entopts?: Record<string, any>): ExercisEntity;
+    Exercise(entopts?: Record<string, any>): ExerciseEntity;
     TrainingProgram(entopts?: Record<string, any>): TrainingProgramEntity;
     static test(testoptsarg?: any, sdkoptsarg?: any): MentalitySkillTrainingSDK;
     tester(testopts?: any, sdkopts?: any): MentalitySkillTrainingSDK;

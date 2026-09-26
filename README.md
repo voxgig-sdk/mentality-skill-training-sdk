@@ -20,14 +20,14 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as a small set of **semantic entities** — Exercis and TrainingProgram — that you
+This SDK exposes the API as a small set of **semantic entities** — Exercise and TrainingProgram — that you
 call directly, instead of assembling URL paths and query strings. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`):
 
 ```ts
 const client = new MentalitySkillTrainingSDK()
-const items = await client.Exercis().list()
+const items = await client.Exercise().list()
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -46,23 +46,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = MentalitySkillTrainingSDK.test({
   entity: {
-    exercis: {
+    exercise: {
       test01: { id: 'test01' },
     },
   },
 })
-const exerciss = await client.Exercis().list()
-// exerciss is an array of Exercis entities, populated with mock data
-// — call exerciss[0].data() for the record itself
-console.log(exerciss)
+const exercises = await client.Exercise().list()
+// exercises is an array of Exercise entities, populated with mock data
+// — call exercises[0].data() for the record itself
+console.log(exercises)
 ```
 
 ### Python
 
 ```python
 client = MentalitySkillTrainingSDK.test()
-exerciss = client.Exercis().list()
-print(exerciss)
+exercises = client.Exercise().list()
+print(exercises)
 ```
 
 ### PHP
@@ -70,16 +70,16 @@ print(exerciss)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = MentalitySkillTrainingSDK::test([
-    "entity" => ["exercis" => ["test01" => []]],
+    "entity" => ["exercise" => ["test01" => []]],
 ]);
-$exerciss = $client->Exercis()->list();
+$exercises = $client->Exercise()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Exercis(nil).List(
+result, err := client.Exercise(nil).List(
     nil, nil,
 )
 ```
@@ -89,16 +89,16 @@ result, err := client.Exercis(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = MentalitySkillTrainingSDK.test({
-  "entity" => { "exercis" => { "test01" => {} } },
+  "entity" => { "exercise" => { "test01" => {} } },
 })
-exerciss = client.Exercis.list()
+exercises = client.Exercise.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Exercis():list()
+local results, err = client:Exercise():list()
 ```
 
 ## Packages
@@ -123,10 +123,10 @@ import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training-
 
 const client = new MentalitySkillTrainingSDK()
 
-// List all exerciss (returns ExercisEntity[] — .data() for the record)
-const exerciss = await client.Exercis().list()
-for (const exercis of exerciss) {
-  console.log(exercis)
+// List all exercises (returns ExerciseEntity[] — .data() for the record)
+const exercises = await client.Exercise().list()
+for (const exercise of exercises) {
+  console.log(exercise)
 }
 ```
 
@@ -168,7 +168,7 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Exercis** | The Exercis entity (list). | `/api/exercises` |
+| **Exercise** | The Exercise entity (list). | `/api/exercises` |
 | **TrainingProgram** | The TrainingProgram entity (list). | `/api/training-programs` |
 
 The operations available across these entities are **list** — see each entity's
@@ -183,10 +183,10 @@ from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
 
 client = MentalitySkillTrainingSDK()
 
-# List all exerciss (returns a list, raises on error)
-exerciss = client.Exercis().list()
-for exercis in exerciss:
-    print(exercis)
+# List all exercises (returns a list, raises on error)
+exercises = client.Exercise().list()
+for exercise in exercises:
+    print(exercise)
 ```
 
 ### PHP
@@ -197,9 +197,9 @@ require_once 'mentalityskilltraining_sdk.php';
 
 $client = new MentalitySkillTrainingSDK();
 
-// List all exerciss (returns an array; throws on error)
-$exerciss = $client->Exercis()->list();
-print_r(array_map(fn($item) => $item->data_get(), $exerciss));
+// List all exercises (returns an array; throws on error)
+$exercises = $client->Exercise()->list();
+print_r(array_map(fn($item) => $item->data_get(), $exercises));
 ```
 
 ### Golang
@@ -209,12 +209,12 @@ import sdk "github.com/voxgig-sdk/mentality-skill-training-sdk/go"
 
 client := sdk.New()
 
-// List all exerciss
-exerciss, err := client.Exercis(nil).List(nil, nil)
+// List all exercises
+exercises, err := client.Exercise(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(exerciss)
+fmt.Println(exercises)
 ```
 
 ### Ruby
@@ -224,9 +224,9 @@ require_relative "MentalitySkillTraining_sdk"
 
 client = MentalitySkillTrainingSDK.new
 
-# List all exerciss (returns an Array; raises on error)
-exerciss = client.Exercis.list
-puts exerciss
+# List all exercises (returns an Array; raises on error)
+exercises = client.Exercise.list
+puts exercises
 ```
 
 ### Lua
@@ -236,9 +236,9 @@ local sdk = require("mentality-skill-training_sdk")
 
 local client = sdk.new()
 
--- List all exerciss
-local exerciss, err = client:Exercis():list()
-print(exerciss)
+-- List all exercises
+local exercises, err = client:Exercise():list()
+print(exercises)
 ```
 
 ## Direct and prepare

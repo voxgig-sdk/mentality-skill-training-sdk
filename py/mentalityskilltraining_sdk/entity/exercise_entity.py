@@ -1,16 +1,16 @@
-# MentalitySkillTraining SDK Exercis entity
+# MentalitySkillTraining SDK Exercise entity
 
 from __future__ import annotations
 
 from mentalityskilltraining_sdk.utility.voxgig_struct import voxgig_struct as vs
 from mentalityskilltraining_sdk.core import helpers
 from mentalityskilltraining_sdk.mentalityskilltraining_types import (
-    Exercis,
-    ExercisListMatch,
+    Exercise,
+    ExerciseListMatch,
 )
 
 
-class ExercisEntity:
+class ExerciseEntity:
 
     def __init__(self, client, entopts=None):
         if entopts is None:
@@ -22,7 +22,7 @@ class ExercisEntity:
         else:
             entopts["active"] = True
 
-        self._name = "exercis"
+        self._name = "exercise"
         self._client = client
         self._utility = client.get_utility()
         self._entopts = entopts
@@ -54,14 +54,14 @@ class ExercisEntity:
         opts = {}
         for k, v in self._entopts.items():
             opts[k] = v
-        return ExercisEntity(self._client, opts)
+        return ExerciseEntity(self._client, opts)
 
     def data_set(self, args=None):
         if args is not None:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self) -> Exercis:
+    def data_get(self) -> Exercise:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -70,7 +70,7 @@ class ExercisEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self) -> Exercis:
+    def match_get(self) -> Exercise:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
@@ -178,10 +178,10 @@ class ExercisEntity:
     
 
     
-    def list(self, reqmatch=None, ctrl=None) -> list[Exercis]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Exercise]:
         utility = self._utility
         # reqmatch is optional: an omitted match lists all records. Treat None
-        # as an empty match so client.Exercis().list() works with no args.
+        # as an empty match so client.Exercise().list() works with no args.
         if reqmatch is None:
             reqmatch = {}
         ctx = utility.make_context({

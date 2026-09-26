@@ -48,9 +48,9 @@ const client = MentalitySkillTrainingSDK.test()
 
 ### Instance Methods
 
-#### `Exercis(data?: object)`
+#### `Exercise(data?: object)`
 
-Create a new `Exercis` entity instance.
+Create a new `Exercise` entity instance.
 
 **Parameters:**
 
@@ -58,7 +58,7 @@ Create a new `Exercis` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `ExercisEntity` instance.
+**Returns:** `ExerciseEntity` instance.
 
 #### `TrainingProgram(data?: object)`
 
@@ -118,10 +118,10 @@ Alias for `MentalitySkillTrainingSDK.test()`.
 
 ---
 
-## ExercisEntity
+## ExerciseEntity
 
 ```ts
-const exercis = client.Exercis()
+const exercise = client.Exercise()
 ```
 
 ### Fields
@@ -144,7 +144,7 @@ const exercis = client.Exercis()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Exercis().list()
+const results = await client.Exercise().list()
 ```
 
 ### Common Methods
@@ -161,7 +161,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `ExercisEntity` instance with the same client and
+Create a new `ExerciseEntity` instance with the same client and
 options.
 
 #### `client()`

@@ -289,10 +289,10 @@ class MentalitySkillTrainingSDK
   end
 
 
-  # Canonical facade: client.Exercis.list / client.Exercis.load({ "id" => ... })
-  def Exercis(data = nil)
-    require_relative 'entity/exercis_entity'
-    ExercisEntity.new(self, data)
+  # Canonical facade: client.Exercise.list / client.Exercise.load({ "id" => ... })
+  def Exercise(data = nil)
+    require_relative 'entity/exercise_entity'
+    ExerciseEntity.new(self, data)
   end
 
 

@@ -4,7 +4,7 @@
 
 The Lua SDK for the MentalitySkillTraining API — an entity-oriented client using Lua conventions.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client:Exercis()` — each with the same small set of operations (`list`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Exercise()` — each with the same small set of operations (`list`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -33,16 +33,16 @@ local sdk = require("mentality-skill-training_sdk")
 local client = sdk.new()
 ```
 
-### 2. List exercis records
+### 2. List exercise records
 
 Entity operations return `(value, err)`. For `list`, `value` is the
 array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local exerciss, err = client:Exercis():list()
+local exercises, err = client:Exercise():list()
 if err then error(err) end
 
-for _, item in ipairs(exerciss) do
+for _, item in ipairs(exercises) do
   print(item["id"])
 end
 ```
@@ -54,7 +54,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local exerciss, err = client:Exercis():list()
+local exercises, err = client:Exercise():list()
 if err then error(err) end
 ```
 
@@ -112,7 +112,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Exercis():list()
+local result, err = client:Exercise():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -191,7 +191,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Exercis` | `(data) -> ExercisEntity` | Create an Exercis entity instance. |
+| `Exercise` | `(data) -> ExerciseEntity` | Create an Exercise entity instance. |
 | `TrainingProgram` | `(data) -> TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface
@@ -219,16 +219,16 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local exercis, err = client:Exercis():list()
+    local exercise, err = client:Exercise():list()
     if err then error(err) end
-    -- exercis is the record list
+    -- exercise is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
 
 ### Entities
 
-#### Exercis
+#### Exercise
 
 | Field | Description |
 | --- | --- |
@@ -267,9 +267,9 @@ API path: `/api/training-programs`
 ## Entities
 
 
-### Exercis
+### Exercise
 
-Create an instance: `local exercis = client:Exercis(nil)`
+Create an instance: `local exercise = client:Exercise(nil)`
 
 #### Operations
 
@@ -293,7 +293,7 @@ Create an instance: `local exercis = client:Exercis(nil)`
 #### Example: List
 
 ```lua
-local exerciss, err = client:Exercis():list()
+local exercises, err = client:Exercise():list()
 ```
 
 
@@ -488,11 +488,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local exercis = client:Exercis()
-exercis:list()
+local exercise = client:Exercise()
+exercise:list()
 
--- exercis:data_get() now returns the exercis data from the last list
--- exercis:match_get() returns the last match criteria
+-- exercise:data_get() now returns the exercise data from the last list
+-- exercise:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

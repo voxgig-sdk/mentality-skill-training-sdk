@@ -1,4 +1,4 @@
-# Exercis direct test
+# Exercise direct test
 
 import json
 import pytest
@@ -9,14 +9,14 @@ from mentalityskilltraining_sdk.core import helpers
 from test import runner
 
 
-class TestExercisDirect:
+class TestExerciseDirect:
 
-    def test_should_direct_list_exercis(self):
-        setup = _exercis_direct_setup([
+    def test_should_direct_list_exercise(self):
+        setup = _exercise_direct_setup([
             {"id": "direct01"},
             {"id": "direct02"},
         ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-exercis", "live" if setup["live"] else "unit")
+        _skip, _reason = runner.is_control_skipped("direct", "direct-list-exercise", "live" if setup["live"] else "unit")
         if _skip:
             # pytest already imported at module scope
             pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -52,13 +52,13 @@ class TestExercisDirect:
 
 
 
-def _exercis_direct_setup(mockres):
+def _exercise_direct_setup(mockres):
     runner.load_env_local()
 
     calls = []
 
     env = runner.env_override({
-        "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID": {},
+        "MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID": {},
         "MENTALITY_SKILL_TRAINING_TEST_LIVE": "FALSE",
     })
 

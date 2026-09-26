@@ -4,7 +4,7 @@
 
 The Python SDK for the MentalitySkillTraining API — an entity-oriented client following Pythonic conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Exercis()` — each
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Exercise()` — each
 carrying a small, uniform set of operations (`list`) instead of raw URL
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
@@ -36,16 +36,16 @@ from mentalityskilltraining_sdk import MentalitySkillTrainingSDK
 client = MentalitySkillTrainingSDK()
 ```
 
-### 2. List exercis records
+### 2. List exercise records
 
 `list()` returns a `list` of records (each a `dict`) and raises on
 error — iterate it directly.
 
 ```python
 try:
-    exerciss = client.Exercis().list()
-    for exercis in exerciss:
-        print(exercis)
+    exercises = client.Exercise().list()
+    for exercise in exercises:
+        print(exercise)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -57,8 +57,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    exerciss = client.Exercis().list()
-    print(exerciss)
+    exercises = client.Exercise().list()
+    print(exercises)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -126,8 +126,8 @@ client = MentalitySkillTrainingSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-exercis = client.Exercis().list()
-# exercis contains the mock response record
+exercise = client.Exercise().list()
+# exercise contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -203,7 +203,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Exercis` | `(data) -> ExercisEntity` | Create an Exercis entity instance. |
+| `Exercise` | `(data) -> ExerciseEntity` | Create an Exercise entity instance. |
 | `TrainingProgram` | `(data) -> TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface
@@ -240,7 +240,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 ### Entities
 
-#### Exercis
+#### Exercise
 
 | Field | Description |
 | --- | --- |
@@ -279,9 +279,9 @@ API path: `/api/training-programs`
 ## Entities
 
 
-### Exercis
+### Exercise
 
-Create an instance: `exercis = client.Exercis()`
+Create an instance: `exercise = client.Exercise()`
 
 #### Operations
 
@@ -305,7 +305,7 @@ Create an instance: `exercis = client.Exercis()`
 #### Example: List
 
 ```python
-exerciss = client.Exercis().list()
+exercises = client.Exercise().list()
 ```
 
 
@@ -499,11 +499,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-exercis = client.Exercis()
-exercis.list()
+exercise = client.Exercise()
+exercise.list()
 
-# exercis.data_get() now returns the exercis data from the last list
-# exercis.match_get() returns the last match criteria
+# exercise.data_get() now returns the exercise data from the last list
+# exercise.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

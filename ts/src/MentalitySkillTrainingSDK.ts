@@ -1,6 +1,6 @@
 // MentalitySkillTraining Ts SDK
 
-import { ExercisEntity } from './entity/ExercisEntity'
+import { ExerciseEntity } from './entity/ExerciseEntity'
 import { TrainingProgramEntity } from './entity/TrainingProgramEntity'
 
 export type * from './MentalitySkillTrainingTypes'
@@ -283,12 +283,12 @@ class MentalitySkillTrainingSDK {
 
 
 
-  // Entity access: `client.Exercis().list()` / `client.Exercis().load({ id })`.
+  // Entity access: `client.Exercise().list()` / `client.Exercise().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
-  Exercis(entopts?: Record<string, any>) {
+  Exercise(entopts?: Record<string, any>) {
     const self = this
-    return new ExercisEntity(self, entopts)
+    return new ExerciseEntity(self, entopts)
   }
 
 

@@ -91,12 +91,12 @@ module MentalitySkillTrainingConfig
           "content-type" => "application/json",
         },
         "entity" => {
-          "exercis" => {},
+          "exercise" => {},
           "training_program" => {},
         },
       },
       "entity" => {
-        "exercis" => {
+        "exercise" => {
           "fields" => [
             {
               "name" => "benefits",
@@ -151,7 +151,7 @@ module MentalitySkillTrainingConfig
             "field" => "id",
             "name" => "id",
           },
-          "name" => "exercis",
+          "name" => "exercise",
           "op" => {
             "list" => {
               "input" => "data",

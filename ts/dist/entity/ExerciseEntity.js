@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ExercisEntity = void 0;
+exports.ExerciseEntity = void 0;
 const MentalitySkillTrainingEntityBase_1 = require("../MentalitySkillTrainingEntityBase");
-class ExercisEntity extends MentalitySkillTrainingEntityBase_1.MentalitySkillTrainingEntityBase {
+class ExerciseEntity extends MentalitySkillTrainingEntityBase_1.MentalitySkillTrainingEntityBase {
     constructor(client, entopts) {
         super(client, entopts);
-        this.name = 'exercis';
-        this.name_ = 'exercis';
-        this.Name = 'Exercis';
+        this.name = 'exercise';
+        this.name_ = 'exercise';
+        this.Name = 'Exercise';
     }
     make() {
-        return new ExercisEntity(this._client, this.entopts());
+        return new ExerciseEntity(this._client, this.entopts());
     }
     async list(reqmatch, ctrl) {
         const utility = this._utility;
@@ -88,11 +88,11 @@ class ExercisEntity extends MentalitySkillTrainingEntityBase_1.MentalitySkillTra
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Exercis[]> return stays clean under strict null checks.
+                // Promise<Exercise[]> return stays clean under strict null checks.
                 return undefined;
             }
         }
     }
 }
-exports.ExercisEntity = ExercisEntity;
-//# sourceMappingURL=ExercisEntity.js.map
+exports.ExerciseEntity = ExerciseEntity;
+//# sourceMappingURL=ExerciseEntity.js.map

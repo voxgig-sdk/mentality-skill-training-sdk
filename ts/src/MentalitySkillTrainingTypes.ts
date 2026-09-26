@@ -5,7 +5,7 @@
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
-export interface Exercis {
+export interface Exercise {
   benefits?: any[]
   category?: string
   description?: string
@@ -16,7 +16,7 @@ export interface Exercis {
   name?: string
 }
 
-export interface ExercisListMatch {
+export interface ExerciseListMatch {
   category?: string
   duration?: number
 }

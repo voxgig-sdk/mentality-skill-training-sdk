@@ -349,15 +349,15 @@ end
 
 
 
--- Idiomatic facade: client:Exercis():list() / client:Exercis():load({ id = ... })
+-- Idiomatic facade: client:Exercise():list() / client:Exercise():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function MentalitySkillTrainingSDK:Exercis(data)
-  local EntityMod = require("entity.exercis_entity")
+function MentalitySkillTrainingSDK:Exercise(data)
+  local EntityMod = require("entity.exercise_entity")
   if data == nil then
-    if self._exercis == nil then
-      self._exercis = EntityMod.new(self, nil)
+    if self._exercise == nil then
+      self._exercise = EntityMod.new(self, nil)
     end
-    return self._exercis
+    return self._exercise
   end
   return EntityMod.new(self, data)
 end

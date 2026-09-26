@@ -9,7 +9,7 @@ const live_runner_1 = require("../../live-runner");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 (0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
-(0, node_test_1.describe)('ExercisDirect', async () => {
+(0, node_test_1.describe)('ExerciseDirect', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
     // `test.live.delayMs`; only sleeps when MENTALITY_SKILL_TRAINING_TEST_LIVE=TRUE.
     (0, node_test_1.afterEach)((0, utility_1.liveDelay)('MENTALITY_SKILL_TRAINING_TEST_LIVE'));
@@ -21,13 +21,13 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)('function' === typeof sdk.direct);
         (0, node_assert_1.default)('function' === typeof sdk.prepare);
     });
-    (0, node_test_1.test)('direct-list-exercis', async (t) => {
+    (0, node_test_1.test)('direct-list-exercise', async (t) => {
         if (liveScenariosActive()) {
             t.skip('Covered by live operation scenarios');
             return;
         }
         const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-exercis', setup.live))
+        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-exercise', setup.live))
             return;
         const { client, calls } = setup;
         const params = {};
@@ -67,7 +67,7 @@ function liveScenariosActive() { return false && process.env.MENTALITY_SKILL_TRA
 function directSetup(mockres) {
     const calls = [];
     const env = (0, utility_1.envOverride)({
-        'MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID': {},
+        'MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID': {},
         'MENTALITY_SKILL_TRAINING_TEST_LIVE': 'FALSE',
     });
     const live = 'TRUE' === env.MENTALITY_SKILL_TRAINING_TEST_LIVE;
@@ -77,7 +77,7 @@ function directSetup(mockres) {
         // test.client.options adds to the live client, it does not redirect it.
         const client = new __1.MentalitySkillTrainingSDK(Object.assign({}, (0, utility_1.liveClientOptions)(), { system: { fetch: transport.fetch },
         }));
-        let idmap = env['MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID'];
+        let idmap = env['MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID'];
         if ('string' === typeof idmap && idmap.startsWith('{')) {
             idmap = JSON.parse(idmap);
         }
@@ -114,4 +114,4 @@ function unwrapListData(data) {
     }
     return null;
 }
-//# sourceMappingURL=ExercisDirect.test.js.map
+//# sourceMappingURL=ExerciseDirect.test.js.map

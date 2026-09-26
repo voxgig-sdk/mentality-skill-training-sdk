@@ -10,9 +10,9 @@ import (
 	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/core"
 )
 
-func TestExercisDirect(t *testing.T) {
-	t.Run("direct-list-exercis", func(t *testing.T) {
-		setup := exercisDirectSetup([]any{
+func TestExerciseDirect(t *testing.T) {
+	t.Run("direct-list-exercise", func(t *testing.T) {
+		setup := exerciseDirectSetup([]any{
 			map[string]any{"id": "direct01"},
 			map[string]any{"id": "direct02"},
 		})
@@ -20,7 +20,7 @@ func TestExercisDirect(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-exercis", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-exercise", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -79,20 +79,20 @@ func TestExercisDirect(t *testing.T) {
 
 }
 
-type exercisDirectSetupResult struct {
+type exerciseDirectSetupResult struct {
 	client *sdk.MentalitySkillTrainingSDK
 	calls  *[]map[string]any
 	live   bool
 	idmap  map[string]any
 }
 
-func exercisDirectSetup(mockres any) *exercisDirectSetupResult {
+func exerciseDirectSetup(mockres any) *exerciseDirectSetupResult {
 	loadEnvLocal()
 
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID": map[string]any{},
+		"MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID": map[string]any{},
 		"MENTALITY_SKILL_TRAINING_TEST_LIVE":    "FALSE",
 	})
 
@@ -112,7 +112,7 @@ func exercisDirectSetup(mockres any) *exercisDirectSetupResult {
 		client := sdk.NewMentalitySkillTrainingSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID"]; ok {
+		if entidRaw, ok := env["MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {
@@ -120,7 +120,7 @@ func exercisDirectSetup(mockres any) *exercisDirectSetupResult {
 			}
 		}
 
-		return &exercisDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
+		return &exerciseDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
 	}
 
 	mockFetch := func(url string, init map[string]any) (map[string]any, error) {
@@ -145,7 +145,7 @@ func exercisDirectSetup(mockres any) *exercisDirectSetupResult {
 		},
 	})
 
-	return &exercisDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
+	return &exerciseDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
 }
 
 var _ = os.Getenv

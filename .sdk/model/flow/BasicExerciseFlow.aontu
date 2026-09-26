@@ -1,0 +1,22 @@
+# BasicExerciseFlow
+
+main: kit: flow: BasicExerciseFlow:
+{
+  entity: "exercise",
+  kind: "basic",
+  name: "BasicExerciseFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "exercise_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicExerciseFlow"
+}

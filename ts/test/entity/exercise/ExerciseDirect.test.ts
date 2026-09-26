@@ -20,7 +20,7 @@ import {
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
-describe('ExercisDirect', async () => {
+describe('ExerciseDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
   // `test.live.delayMs`; only sleeps when MENTALITY_SKILL_TRAINING_TEST_LIVE=TRUE.
@@ -36,10 +36,10 @@ describe('ExercisDirect', async () => {
   })
 
 
-  test('direct-list-exercis', async (t: any) => {
+  test('direct-list-exercise', async (t: any) => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-exercis', setup.live)) return
+    if (maybeSkipControl(t, 'direct', 'direct-list-exercise', setup.live)) return
     const { client, calls } = setup
 
     const params: any = {}
@@ -86,7 +86,7 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID': {},
+    'MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID': {},
     'MENTALITY_SKILL_TRAINING_TEST_LIVE': 'FALSE',
   })
 
@@ -100,7 +100,7 @@ function directSetup(mockres?: any) {
       Object.assign({}, liveClientOptions(), { system: { fetch: transport.fetch },
       }))
 
-    let idmap: any = env['MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID']
+    let idmap: any = env['MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

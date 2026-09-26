@@ -8,7 +8,7 @@
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
 
-# Exercis entity data model.
+# Exercise entity data model.
 #
 # @!attribute [rw] benefits
 #   @return [Array, nil]
@@ -33,7 +33,7 @@
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-Exercis = Struct.new(
+Exercise = Struct.new(
   :benefits,
   :category,
   :description,
@@ -45,14 +45,14 @@ Exercis = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Exercis#list.
+# Request payload for Exercise#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
 #
 # @!attribute [rw] duration
 #   @return [Integer, nil]
-ExercisListMatch = Struct.new(
+ExerciseListMatch = Struct.new(
   :category,
   :duration,
   keyword_init: true

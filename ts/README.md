@@ -5,7 +5,7 @@
 The TypeScript SDK for the MentalitySkillTraining API — a type-safe, entity-oriented client with full async/await support.
 
 The API is exposed as capitalised, semantic **Entities** — e.g.
-`client.Exercis()` — each with a small set of operations (`list`)
+`client.Exercise()` — each with a small set of operations (`list`)
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
@@ -33,17 +33,17 @@ import { MentalitySkillTrainingSDK } from '@voxgig-sdk/mentality-skill-training-
 const client = new MentalitySkillTrainingSDK()
 ```
 
-### 2. List exercis records
+### 2. List exercise records
 
-`list()` resolves to an array of Exercis ENTITIES — every operation
+`list()` resolves to an array of Exercise ENTITIES — every operation
 resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const exerciss = await client.Exercis().list()
+const exercises = await client.Exercise().list()
 
-for (const exercis of exerciss) {
-  console.log(exercis)
+for (const exercise of exercises) {
+  console.log(exercise)
 }
 ```
 
@@ -54,8 +54,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const exerciss = await client.Exercis().list()
-  console.log(exerciss)
+  const exercises = await client.Exercise().list()
+  console.log(exercises)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -121,10 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MentalitySkillTrainingSDK.test()
 
-const exercis = await client.Exercis().list()
-// exercis is the entity, populated with mock response data
-// — call exercis.data() for the record itself
-console.log(exercis)
+const exercise = await client.Exercise().list()
+// exercise is the entity, populated with mock response data
+// — call exercise.data() for the record itself
+console.log(exercise)
 ```
 
 You can also use the instance method:
@@ -139,7 +139,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Exercis()
+const entity = client.Exercise()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -222,7 +222,7 @@ new MentalitySkillTrainingSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `Exercis(data?)` | `ExercisEntity` | Create an Exercis entity instance. |
+| `Exercise(data?)` | `ExerciseEntity` | Create an Exercise entity instance. |
 | `TrainingProgram(data?)` | `TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 | `tester(testopts?, sdkopts?)` | `MentalitySkillTrainingSDK` | Create a test-mode client instance. |
 
@@ -289,7 +289,7 @@ The `prepare()` method returns:
 
 ### Entities
 
-#### Exercis
+#### Exercise
 
 | Field | Description |
 | --- | --- |
@@ -328,9 +328,9 @@ API path: `/api/training-programs`
 ## Entities
 
 
-### Exercis
+### Exercise
 
-Create an instance: `const exercis = client.Exercis()`
+Create an instance: `const exercise = client.Exercise()`
 
 #### Operations
 
@@ -354,7 +354,7 @@ Create an instance: `const exercis = client.Exercis()`
 #### Example: List
 
 ```ts
-const exerciss = await client.Exercis().list()
+const exercises = await client.Exercise().list()
 ```
 
 
@@ -541,11 +541,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const exercis = client.Exercis()
-await exercis.list()
+const exercise = client.Exercise()
+await exercise.list()
 
-// exercis.data() now returns the exercis data from the last `list`
-// exercis.match() returns the last match criteria
+// exercise.data() now returns the exercise data from the last `list`
+// exercise.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

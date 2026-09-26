@@ -47,9 +47,9 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `Exercis(data map[string]any) MentalitySkillTrainingEntity`
+#### `Exercise(data map[string]any) MentalitySkillTrainingEntity`
 
-Create a new `Exercis` entity instance. Pass `nil` for no initial data.
+Create a new `Exercise` entity instance. Pass `nil` for no initial data.
 
 #### `TrainingProgram(data map[string]any) MentalitySkillTrainingEntity`
 
@@ -91,11 +91,11 @@ same parameters as `Direct()`.
 
 ---
 
-## ExercisEntity
+## ExerciseEntity
 
 ```go
-exercis := client.Exercis(nil)
-fmt.Println(exercis.GetName()) // "exercis"
+exercise := client.Exercise(nil)
+fmt.Println(exercise.GetName()) // "exercise"
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ fmt.Println(exercis.GetName()) // "exercis"
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.Exercis(nil).List(nil, nil)
+results, err := client.Exercise(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -139,7 +139,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `ExercisEntity` instance with the same client and
+Create a new `ExerciseEntity` instance with the same client and
 options.
 
 #### `GetName() string`

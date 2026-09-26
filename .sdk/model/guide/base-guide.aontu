@@ -8,7 +8,7 @@ guide: {
   metrics: count: path: 2
   metrics: count: method: 2
 
-  entity: exercis: {
+  entity: exercise: {
     path: "/api/exercises": {
       op: list: method: *GET
     }

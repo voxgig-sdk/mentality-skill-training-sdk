@@ -15,28 +15,28 @@ import type {
 } from '../types'
 
 import type {
-  Exercis,
-  ExercisListMatch,
+  Exercise,
+  ExerciseListMatch,
 } from '../MentalitySkillTrainingTypes'
 
-class ExercisEntity extends MentalitySkillTrainingEntityBase<Exercis> {
+class ExerciseEntity extends MentalitySkillTrainingEntityBase<Exercise> {
 
   constructor(client: MentalitySkillTrainingSDK, entopts: any) {
     super(client, entopts)
-    this.name = 'exercis'
-    this.name_ = 'exercis'
-    this.Name = 'Exercis'
+    this.name = 'exercise'
+    this.name_ = 'exercise'
+    this.Name = 'Exercise'
   }
 
 
-  make(this: ExercisEntity) {
-    return new ExercisEntity(this._client, this.entopts())
+  make(this: ExerciseEntity) {
+    return new ExerciseEntity(this._client, this.entopts())
   }
 
 
 
 
-  async list(this: any, reqmatch?: ExercisListMatch, ctrl?: Control): Promise<ExercisEntity[]> {
+  async list(this: any, reqmatch?: ExerciseListMatch, ctrl?: Control): Promise<ExerciseEntity[]> {
 
     const utility = this._utility
 
@@ -138,7 +138,7 @@ class ExercisEntity extends MentalitySkillTrainingEntityBase<Exercis> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<Exercis[]> return stays clean under strict null checks.
+        // Promise<Exercise[]> return stays clean under strict null checks.
         return undefined as any
       }
     }
@@ -152,5 +152,5 @@ class ExercisEntity extends MentalitySkillTrainingEntityBase<Exercis> {
 
 
 export {
-  ExercisEntity
+  ExerciseEntity
 }

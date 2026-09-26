@@ -341,21 +341,21 @@ class MentalitySkillTrainingSDK
     }
 
 
-    private $_exercis = null;
+    private $_exercise = null;
 
-    // Canonical facade: $client->Exercis()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->exercis()
+    // Canonical facade: $client->Exercise()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->exercise()
     // resolves here too.
-    public function Exercis($data = null)
+    public function Exercise($data = null)
     {
-        require_once __DIR__ . '/entity/exercis_entity.php';
+        require_once __DIR__ . '/entity/exercise_entity.php';
         if ($data === null) {
-            if ($this->_exercis === null) {
-                $this->_exercis = new ExercisEntity($this, null);
+            if ($this->_exercise === null) {
+                $this->_exercise = new ExerciseEntity($this, null);
             }
-            return $this->_exercis;
+            return $this->_exercise;
         }
-        return new ExercisEntity($this, $data);
+        return new ExerciseEntity($this, $data);
     }
 
 

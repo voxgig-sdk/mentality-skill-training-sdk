@@ -12,8 +12,8 @@ declare(strict_types=1);
 // registered on the composer classmap autoload. The SDK boundary exchanges
 // assoc-arrays; these classes name the shapes for tooling and typed callers.
 
-/** Exercis entity data model. */
-class Exercis
+/** Exercise entity data model. */
+class Exercise
 {
     public ?array $benefits = null;
     public ?string $category = null;
@@ -25,8 +25,8 @@ class Exercis
     public ?string $name = null;
 }
 
-/** Request payload for Exercis#list. */
-class ExercisListMatch
+/** Request payload for Exercise#list. */
+class ExerciseListMatch
 {
     public ?string $category = null;
     public ?int $duration = null;

@@ -83,12 +83,12 @@ func MakeConfig() map[string]any {
 				"content-type": "application/json",
 			},
 			"entity": map[string]any{
-				"exercis": map[string]any{},
+				"exercise": map[string]any{},
 				"training_program": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
-			"exercis": map[string]any{
+			"exercise": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "benefits",
@@ -143,7 +143,7 @@ func MakeConfig() map[string]any {
 					"field": "id",
 					"name": "id",
 				},
-				"name": "exercis",
+				"name": "exercise",
 				"op": map[string]any{
 					"list": map[string]any{
 						"input": "data",

@@ -4,7 +4,7 @@
 
 The Golang SDK for the MentalitySkillTraining API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client.Exercis(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Exercise(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List exercis records — the value is the array of records itself.
-    exerciss, err := client.Exercis(nil).List(nil, nil)
+    // List exercise records — the value is the array of records itself.
+    exercises, err := client.Exercise(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range exerciss.([]any) {
+    for _, item := range exercises.([]any) {
         fmt.Println(item)
     }
 }
@@ -68,12 +68,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-exerciss, err := client.Exercis(nil).List(nil, nil)
+exercises, err := client.Exercise(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = exerciss
+_ = exercises
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-exercis, err := client.Exercis(nil).List(
+exercise, err := client.Exercise(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(exercis) // the returned mock data
+fmt.Println(exercise) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -220,7 +220,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Exercis` | `(data map[string]any) MentalitySkillTrainingEntity` | Create an Exercis entity instance. |
+| `Exercise` | `(data map[string]any) MentalitySkillTrainingEntity` | Create an Exercise entity instance. |
 | `TrainingProgram` | `(data map[string]any) MentalitySkillTrainingEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface (MentalitySkillTrainingEntity)
@@ -248,16 +248,16 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    exercis, err := client.Exercis(nil).List(map[string]any{/* fields */}, nil)
+    exercise, err := client.Exercise(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // exercis is the returned record
+    // exercise is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
-#### Exercis
+#### Exercise
 
 | Field | Description |
 | --- | --- |
@@ -296,9 +296,9 @@ API path: `/api/training-programs`
 ## Entities
 
 
-### Exercis
+### Exercise
 
-Create an instance: `exercis := client.Exercis(nil)`
+Create an instance: `exercise := client.Exercise(nil)`
 
 #### Operations
 
@@ -322,11 +322,11 @@ Create an instance: `exercis := client.Exercis(nil)`
 #### Example: List
 
 ```go
-exerciss, err := client.Exercis(nil).List(nil, nil)
+exercises, err := client.Exercise(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(exerciss) // the array of records
+fmt.Println(exercises) // the array of records
 ```
 
 
@@ -521,11 +521,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-exercis := client.Exercis(nil)
-exercis.List(nil, nil)
+exercise := client.Exercise(nil)
+exercise.List(nil, nil)
 
-// exercis.Data() now returns the exercis data from the last list
-// exercis.Match() returns the last match criteria
+// exercise.Data() now returns the exercise data from the last list
+// exercise.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

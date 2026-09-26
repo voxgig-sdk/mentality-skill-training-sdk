@@ -20,7 +20,7 @@ import (
 const prompt = "mentality-skill-training"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "exercis training_program"
+const entitiesHelp = "exercise training_program"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

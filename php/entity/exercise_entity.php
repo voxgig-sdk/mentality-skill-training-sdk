@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-// MentalitySkillTraining SDK Exercis entity
+// MentalitySkillTraining SDK Exercise entity
 
 require_once __DIR__ . '/../utility/struct/Struct.php';
 require_once __DIR__ . '/../core/Helpers.php';
 
 use Voxgig\Struct\Struct;
 
-class ExercisEntity
+class ExerciseEntity
 {
     private string $_name;
     private $_client;
@@ -30,7 +30,7 @@ class ExercisEntity
             $entopts["active"] = true;
         }
 
-        $this->_name = "exercis";
+        $this->_name = "exercise";
         $this->_client = $client;
         $this->_utility = $client->get_utility();
         $this->_entopts = $entopts;
@@ -74,11 +74,11 @@ class ExercisEntity
     public function make(): self
     {
         $opts = $this->_entopts;
-        return new ExercisEntity($this->_client, $opts);
+        return new ExerciseEntity($this->_client, $opts);
     }
 
     /**
-     * @param Exercis|array $args Exercis data (assoc-array) to store.
+     * @param Exercise|array $args Exercise data (assoc-array) to store.
      */
     public function data_set($args): void
     {
@@ -89,7 +89,7 @@ class ExercisEntity
     }
 
     /**
-     * @return Exercis|array The current Exercis data as an assoc-array.
+     * @return Exercise|array The current Exercise data as an assoc-array.
      */
     public function data_get()
     {
@@ -98,7 +98,7 @@ class ExercisEntity
     }
 
     /**
-     * @param array $args Match filter (any subset of Exercis fields).
+     * @param array $args Match filter (any subset of Exercise fields).
      */
     public function match_set($args): void
     {
@@ -109,7 +109,7 @@ class ExercisEntity
     }
 
     /**
-     * @return array The current match filter (any subset of Exercis fields).
+     * @return array The current match filter (any subset of Exercise fields).
      */
     public function match_get()
     {
@@ -245,12 +245,12 @@ class ExercisEntity
 
     
     /**
-     * List Exercis items matching the given filter.
+     * List Exercise items matching the given filter.
      *
-     * @param ExercisListMatch|array|null $reqmatch Match filter (any subset
-     *   of Exercis fields) as an assoc-array; ExercisListMatch names the shape.
+     * @param ExerciseListMatch|array|null $reqmatch Match filter (any subset
+     *   of Exercise fields) as an assoc-array; ExerciseListMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return Exercis[]|array A list of Exercis items as assoc-arrays at
+     * @return Exercise[]|array A list of Exercise items as assoc-arrays at
      *   the SDK boundary; throws MentalitySkillTrainingError on failure (item-5 convention).
      */
     public function list(?array $reqmatch = null, $ctrl = null): mixed

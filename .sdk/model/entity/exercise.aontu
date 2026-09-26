@@ -1,6 +1,6 @@
-# Entity: exercis
+# Entity: exercise
 
-main: kit: entity: exercis: {
+main: kit: entity: exercise: {
 
   alias: field: {}
 
@@ -68,7 +68,7 @@ main: kit: entity: exercis: {
     name: "id"
   }
 
-  name: "exercis"
+  name: "exercise"
   op: {
     list: {
       name: "list"

@@ -77,8 +77,8 @@ func runOp(client *sdk.MentalitySkillTrainingSDK, op string, query *eng.Value, e
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.MentalitySkillTrainingSDK, name string) (sdk.MentalitySkillTrainingEntity, error) {
 	switch strings.ToLower(name) {
-	case "exercis":
-		return client.Exercis(nil), nil
+	case "exercise":
+		return client.Exercise(nil), nil
 	case "training_program":
 		return client.TrainingProgram(nil), nil
 

@@ -1,41 +1,41 @@
 {
   "existing": {
-    "exercis": {
-      "EXERCIS00": {
+    "exercise": {
+      "EXERCISE00": {
         "benefits": [],
         "category": "s51",
         "description": "s52",
         "difficulty": "s53",
         "duration": 84,
-        "id": "EXERCIS00",
+        "id": "EXERCISE00",
         "instructions": [],
         "name": "s57"
       },
-      "EXERCIS01": {
+      "EXERCISE01": {
         "benefits": [],
         "category": "sa1",
         "description": "sa2",
         "difficulty": "sa3",
         "duration": 164,
-        "id": "EXERCIS01",
+        "id": "EXERCISE01",
         "instructions": [],
         "name": "sa7"
       },
-      "EXERCIS02": {
+      "EXERCISE02": {
         "benefits": [],
         "category": "sf1",
         "description": "sf2",
         "difficulty": "sf3",
         "duration": 244,
-        "id": "EXERCIS02",
+        "id": "EXERCISE02",
         "instructions": [],
         "name": "sf7"
       }
     }
   },
   "new": {
-    "exercis": {
-      "exercis_ref01": {
+    "exercise": {
+      "exercise_ref01": {
         "benefits": [],
         "category": "s141",
         "description": "s142",

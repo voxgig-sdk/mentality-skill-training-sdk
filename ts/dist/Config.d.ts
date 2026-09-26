@@ -69,12 +69,12 @@ declare class Config {
             "content-type": string;
         };
         entity: {
-            exercis: {};
+            exercise: {};
             training_program: {};
         };
     };
     entity: {
-        exercis: {
+        exercise: {
             fields: {
                 name: string;
                 title: string;

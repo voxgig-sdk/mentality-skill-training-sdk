@@ -326,11 +326,11 @@ func (sdk *MentalitySkillTrainingSDK) Graphql(
 }
 
 
-// Exercis returns a Exercis entity bound to this client.
-// Idiomatic usage: client.Exercis(nil).List(nil, nil) or
-// client.Exercis(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *MentalitySkillTrainingSDK) Exercis(data map[string]any) MentalitySkillTrainingEntity {
-	return NewExercisEntityFunc(sdk, data)
+// Exercise returns a Exercise entity bound to this client.
+// Idiomatic usage: client.Exercise(nil).List(nil, nil) or
+// client.Exercise(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *MentalitySkillTrainingSDK) Exercise(data map[string]any) MentalitySkillTrainingEntity {
+	return NewExerciseEntityFunc(sdk, data)
 }
 
 

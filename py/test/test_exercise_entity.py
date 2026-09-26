@@ -1,4 +1,4 @@
-# Exercis entity test
+# Exercise entity test
 
 import json
 import os
@@ -14,11 +14,11 @@ _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
 
 
-class TestExercisEntity:
+class TestExerciseEntity:
 
     def test_should_create_instance(self):
         testsdk = MentalitySkillTrainingSDK.test(None, None)
-        ent = testsdk.Exercis(None)
+        ent = testsdk.Exercise(None)
         assert ent is not None
 
     def test_should_stream(self):
@@ -28,7 +28,7 @@ class TestExercisEntity:
         # to the materialised list so stream always yields.
         seed = {
             "entity": {
-                "exercis": {
+                "exercise": {
                     "s1": {"id": "s1"},
                     "s2": {"id": "s2"},
                     "s3": {"id": "s3"},
@@ -38,7 +38,7 @@ class TestExercisEntity:
 
         # Fallback: streaming inactive -> yields the materialised list items.
         base = MentalitySkillTrainingSDK.test(seed, None)
-        seen = list(base.Exercis(None).stream("list", None, None))
+        seen = list(base.Exercise(None).stream("list", None, None))
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
@@ -48,7 +48,7 @@ class TestExercisEntity:
             sdk = MentalitySkillTrainingSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
             got = []
-            for item in sdk.Exercis(None).stream("list", None, None):
+            for item in sdk.Exercise(None).stream("list", None, None):
                 if isinstance(item, list):
                     got.extend(item)
                 else:
@@ -56,13 +56,13 @@ class TestExercisEntity:
             assert len(got) == 3
 
     def test_should_run_basic_flow(self):
-        setup = _exercis_basic_setup(None)
+        setup = _exercise_basic_setup(None)
         # Per-op sdk-test-control.json skip — basic test exercises a flow with
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
         for _op in ["list"]:
-            _skip, _reason = runner.is_control_skipped("entityOp", "exercis." + _op, "live" if _live else "unit")
+            _skip, _reason = runner.is_control_skipped("entityOp", "exercise." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
@@ -70,29 +70,29 @@ class TestExercisEntity:
         # without an *_ENTID env override, those IDs hit the live API and 4xx.
         if setup.get("synthetic_only"):
             pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID JSON to run live")
+                        "set MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID JSON to run live")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
-        exercis_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.exercis")))
-        exercis_ref01_data = None
-        if len(exercis_ref01_data_raw) > 0:
-            exercis_ref01_data = helpers.to_map(exercis_ref01_data_raw[0][1])
+        exercise_ref01_data_raw = vs.items(helpers.to_map(
+            vs.getpath(setup["data"], "existing.exercise")))
+        exercise_ref01_data = None
+        if len(exercise_ref01_data_raw) > 0:
+            exercise_ref01_data = helpers.to_map(exercise_ref01_data_raw[0][1])
 
         # LIST
-        exercis_ref01_ent = client.Exercis(None)
-        exercis_ref01_match = {}
+        exercise_ref01_ent = client.Exercise(None)
+        exercise_ref01_match = {}
 
-        exercis_ref01_list_result = exercis_ref01_ent.list(exercis_ref01_match, None)
-        assert isinstance(exercis_ref01_list_result, list)
+        exercise_ref01_list_result = exercise_ref01_ent.list(exercise_ref01_match, None)
+        assert isinstance(exercise_ref01_list_result, list)
 
 
 
-def _exercis_basic_setup(extra):
+def _exercise_basic_setup(extra):
     runner.load_env_local()
 
-    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/exercis/ExercisTestData.json")
+    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/exercise/ExerciseTestData.json")
     with open(entity_data_file, "r") as f:
         entity_data_source = f.read()
 
@@ -105,7 +105,7 @@ def _exercis_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["exercis01", "exercis02", "exercis03"],
+        ["exercise01", "exercise02", "exercise03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -118,17 +118,17 @@ def _exercis_basic_setup(extra):
     # mode is on without a real override, the basic test runs against synthetic
     # IDs from the fixture and 4xx's. We surface this so the test can skip.
     _entid_env_raw = os.environ.get(
-        "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID")
+        "MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
 
     env = runner.env_override({
-        "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID": idmap,
+        "MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID": idmap,
         "MENTALITY_SKILL_TRAINING_TEST_LIVE": "FALSE",
         "MENTALITY_SKILL_TRAINING_TEST_EXPLAIN": "FALSE",
     })
 
     idmap_resolved = helpers.to_map(
-        env.get("MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID"))
+        env.get("MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
 

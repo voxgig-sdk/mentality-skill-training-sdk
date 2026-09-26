@@ -1,9 +1,9 @@
-# MentalitySkillTraining SDK Exercis entity
+# MentalitySkillTraining SDK Exercise entity
 
 require_relative '../utility/struct/voxgig_struct'
 require_relative '../core/helpers'
 
-class ExercisEntity
+class ExerciseEntity
   def initialize(client, entopts = nil)
     entopts ||= {}
     if entopts["active"].nil?
@@ -14,7 +14,7 @@ class ExercisEntity
       entopts["active"] = true
     end
 
-    @_name = "exercis"
+    @_name = "exercise"
     @_client = client
     @_utility = client.get_utility
     @_entopts = entopts
@@ -48,7 +48,7 @@ class ExercisEntity
 
   def make
     opts = @_entopts.dup
-    ExercisEntity.new(@_client, opts)
+    ExerciseEntity.new(@_client, opts)
   end
 
   def data_set(args)
@@ -58,7 +58,7 @@ class ExercisEntity
     end
   end
 
-  # @return [Exercis, Hash] the current Exercis data
+  # @return [Exercise, Hash] the current Exercise data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -71,7 +71,7 @@ class ExercisEntity
     end
   end
 
-  # @return [Hash] the current match filter (any subset of Exercis fields)
+  # @return [Hash] the current match filter (any subset of Exercise fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -173,12 +173,12 @@ class ExercisEntity
   
 
   
-  # List Exercis items matching the given filter.
+  # List Exercise items matching the given filter.
   #
-  # @param reqmatch [ExercisListMatch, Hash, nil] match filter (any subset of
-  #   Exercis fields); defaults to nil, treated as an empty match that lists all.
+  # @param reqmatch [ExerciseListMatch, Hash, nil] match filter (any subset of
+  #   Exercise fields); defaults to nil, treated as an empty match that lists all.
   # @param ctrl [Object, nil] optional per-call control
-  # @return [Array<Exercis>, Array] the matching Exercis items; raises MentalitySkillTrainingError on failure
+  # @return [Array<Exercise>, Array] the matching Exercise items; raises MentalitySkillTrainingError on failure
   def list(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

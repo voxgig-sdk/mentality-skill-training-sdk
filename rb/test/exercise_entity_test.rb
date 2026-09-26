@@ -1,14 +1,14 @@
-# Exercis entity test
+# Exercise entity test
 
 require "minitest/autorun"
 require "json"
 require_relative "../MentalitySkillTraining_sdk"
 require_relative "runner"
 
-class ExercisEntityTest < Minitest::Test
+class ExerciseEntityTest < Minitest::Test
   def test_create_instance
     testsdk = MentalitySkillTrainingSDK.test(nil, nil)
-    ent = testsdk.Exercis(nil)
+    ent = testsdk.Exercise(nil)
     assert !ent.nil?
   end
 
@@ -19,7 +19,7 @@ class ExercisEntityTest < Minitest::Test
   def test_stream
     seed = {
       "entity" => {
-        "exercis" => {
+        "exercise" => {
           "s1" => { "id" => "s1" },
           "s2" => { "id" => "s2" },
           "s3" => { "id" => "s3" },
@@ -29,7 +29,7 @@ class ExercisEntityTest < Minitest::Test
 
     # Fallback: streaming inactive -> yields the materialised list items.
     base = MentalitySkillTrainingSDK.test(seed, nil)
-    seen = base.Exercis(nil).stream("list", nil, nil).to_a
+    seen = base.Exercise(nil).stream("list", nil, nil).to_a
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
@@ -37,7 +37,7 @@ class ExercisEntityTest < Minitest::Test
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = MentalitySkillTrainingSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
-      sdk.Exercis(nil).stream("list", nil, nil).each do |item|
+      sdk.Exercise(nil).stream("list", nil, nil).each do |item|
         if item.is_a?(Array)
           got.concat(item)
         else
@@ -49,11 +49,11 @@ class ExercisEntityTest < Minitest::Test
   end
 
   def test_basic_flow
-    setup = exercis_basic_setup(nil)
+    setup = exercise_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
     ["list"].each do |_op|
-      _should_skip, _reason = Runner.is_control_skipped("entityOp", "exercis." + _op, _live ? "live" : "unit")
+      _should_skip, _reason = Runner.is_control_skipped("entityOp", "exercise." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
         return
@@ -62,33 +62,33 @@ class ExercisEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID JSON to run live"
       return
     end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
-    exercis_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.exercis")))
-    exercis_ref01_data = nil
-    if exercis_ref01_data_raw.length > 0
-      exercis_ref01_data = Helpers.to_map(exercis_ref01_data_raw[0][1])
+    exercise_ref01_data_raw = Vs.items(Helpers.to_map(
+      Vs.getpath(setup[:data], "existing.exercise")))
+    exercise_ref01_data = nil
+    if exercise_ref01_data_raw.length > 0
+      exercise_ref01_data = Helpers.to_map(exercise_ref01_data_raw[0][1])
     end
 
     # LIST
-    exercis_ref01_ent = client.Exercis(nil)
-    exercis_ref01_match = {}
+    exercise_ref01_ent = client.Exercise(nil)
+    exercise_ref01_match = {}
 
-    exercis_ref01_list_result = exercis_ref01_ent.list(exercis_ref01_match, nil)
-    assert exercis_ref01_list_result.is_a?(Array)
+    exercise_ref01_list_result = exercise_ref01_ent.list(exercise_ref01_match, nil)
+    assert exercise_ref01_list_result.is_a?(Array)
 
   end
 end
 
-def exercis_basic_setup(extra)
+def exercise_basic_setup(extra)
   Runner.load_env_local
 
-  entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "exercis", "ExercisTestData.json")
+  entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "exercise", "ExerciseTestData.json")
   entity_data_source = File.read(entity_data_file)
   entity_data = JSON.parse(entity_data_source)
 
@@ -99,7 +99,7 @@ def exercis_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["exercis01", "exercis02", "exercis03"],
+    ["exercise01", "exercise02", "exercise03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -111,17 +111,17 @@ def exercis_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID"]
+  entid_env_raw = ENV["MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID" => idmap,
+    "MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID" => idmap,
     "MENTALITY_SKILL_TRAINING_TEST_LIVE" => "FALSE",
     "MENTALITY_SKILL_TRAINING_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID"])
+    env["MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end

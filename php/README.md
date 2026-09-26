@@ -4,7 +4,7 @@
 
 The PHP SDK for the MentalitySkillTraining API — an entity-oriented client using PHP conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Exercis()` — with named operations (`list`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Exercise()` — with named operations (`list`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -31,13 +31,13 @@ require_once 'mentalityskilltraining_sdk.php';
 $client = new MentalitySkillTrainingSDK();
 ```
 
-### 2. List exercis records
+### 2. List exercise records
 
 ```php
 try {
     // list() returns entity instances; data_get() reads each record.
-    $exerciss = $client->Exercis()->list();
-    foreach ($exerciss as $record) {
+    $exercises = $client->Exercise()->list();
+    foreach ($exercises as $record) {
         $item = $record->data_get();
         echo $item["id"] . " " . $item["benefits"] . "\n";
     }
@@ -54,7 +54,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $exerciss = $client->Exercis()->list();
+    $exercises = $client->Exercise()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -128,8 +128,8 @@ $client = MentalitySkillTrainingSDK::test();
 
 // list() returns entity instances (throws on error);
 // call data_get() for the mock record.
-$exercis = $client->Exercis()->list();
-print_r(array_map(fn($item) => $item->data_get(), $exercis));
+$exercise = $client->Exercise()->list();
+print_r(array_map(fn($item) => $item->data_get(), $exercise));
 ```
 
 ### Use a custom fetch function
@@ -208,7 +208,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Exercis` | `($data): ExercisEntity` | Create an Exercis entity instance. |
+| `Exercise` | `($data): ExerciseEntity` | Create an Exercise entity instance. |
 | `TrainingProgram` | `($data): TrainingProgramEntity` | Create a TrainingProgram entity instance. |
 
 ### Entity interface
@@ -245,7 +245,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
 
-#### Exercis
+#### Exercise
 
 | Field | Description |
 | --- | --- |
@@ -284,9 +284,9 @@ API path: `/api/training-programs`
 ## Entities
 
 
-### Exercis
+### Exercise
 
-Create an instance: `$exercis = $client->Exercis();`
+Create an instance: `$exercise = $client->Exercise();`
 
 #### Operations
 
@@ -310,8 +310,8 @@ Create an instance: `$exercis = $client->Exercis();`
 #### Example: List
 
 ```php
-// list() returns an array of Exercis records (throws on error).
-$exerciss = $client->Exercis()->list();
+// list() returns an array of Exercise records (throws on error).
+$exercises = $client->Exercise()->list();
 ```
 
 
@@ -507,11 +507,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$exercis = $client->Exercis();
-$exercis->list();
+$exercise = $client->Exercise();
+$exercise->list();
 
-// $exercis->data_get() now returns the exercis data from the last list
-// $exercis->match_get() returns the last match criteria
+// $exercise->data_get() now returns the exercise data from the last list
+// $exercise->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

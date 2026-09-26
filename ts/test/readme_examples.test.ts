@@ -37,7 +37,7 @@ const SDK_NAME = 'MentalitySkillTrainingSDK'
 
 // A fixture for every entity, so list()/load() resolve offline with no
 // network. Snippet client construction is rewritten to seed this.
-const TEST_SEED = {"entity":{"exercis":{"test01":{"id":"test01"}},"training_program":{"test01":{"id":"test01"}}}}
+const TEST_SEED = {"entity":{"exercise":{"test01":{"id":"test01"}},"training_program":{"test01":{"id":"test01"}}}}
 const SEED_ARG = JSON.stringify(TEST_SEED)
 const SEEDED_CTOR = SDK_NAME + '.test(' + SEED_ARG + ')'
 

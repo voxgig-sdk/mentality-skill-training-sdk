@@ -1,4 +1,4 @@
--- Exercis entity test
+-- Exercise entity test
 
 local json = require("dkjson")
 local vs = require("utility.struct.struct")
@@ -8,10 +8,10 @@ local runner = require("test.runner")
 
 local _test_dir = debug.getinfo(1, "S").source:match("^@(.+/)")  or "./"
 
-describe("ExercisEntity", function()
+describe("ExerciseEntity", function()
   it("should create instance", function()
     local testsdk = sdk.test(nil, nil)
-    local ent = testsdk:Exercis(nil)
+    local ent = testsdk:Exercise(nil)
     assert.is_not_nil(ent)
   end)
 
@@ -22,7 +22,7 @@ describe("ExercisEntity", function()
   it("should stream", function()
     local seed = {
       entity = {
-        ["exercis"] = {
+        ["exercise"] = {
           s1 = { id = "s1" },
           s2 = { id = "s2" },
           s3 = { id = "s3" },
@@ -33,7 +33,7 @@ describe("ExercisEntity", function()
     -- Fallback: streaming inactive -> yields the materialised list items.
     local base = sdk.test(seed, nil)
     local seen = {}
-    for item in base:Exercis(nil):stream("list", nil, nil) do
+    for item in base:Exercise(nil):stream("list", nil, nil) do
       table.insert(seen, item)
     end
     assert.are.equal(3, #seen)
@@ -43,7 +43,7 @@ describe("ExercisEntity", function()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
-      for item in streamsdk:Exercis(nil):stream("list", nil, nil) do
+      for item in streamsdk:Exercise(nil):stream("list", nil, nil) do
         if vs.islist(item) then
           for _, sub in ipairs(item) do
             table.insert(got, sub)
@@ -57,11 +57,11 @@ describe("ExercisEntity", function()
   end)
 
   it("should run basic flow", function()
-    local setup = exercis_basic_setup(nil)
+    local setup = exercise_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
     for _, _op in ipairs({"list"}) do
-      local _should_skip, _reason = runner.is_control_skipped("entityOp", "exercis." .. _op, _live and "live" or "unit")
+      local _should_skip, _reason = runner.is_control_skipped("entityOp", "exercise." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
         return
@@ -70,37 +70,37 @@ describe("ExercisEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID JSON to run live")
       return
     end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
-    local exercis_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.exercis")))
-    local exercis_ref01_data = nil
-    if #exercis_ref01_data_raw > 0 then
-      exercis_ref01_data = helpers.to_map(exercis_ref01_data_raw[1][2])
+    local exercise_ref01_data_raw = vs.items(helpers.to_map(
+      vs.getpath(setup.data, "existing.exercise")))
+    local exercise_ref01_data = nil
+    if #exercise_ref01_data_raw > 0 then
+      exercise_ref01_data = helpers.to_map(exercise_ref01_data_raw[1][2])
     end
 
     -- LIST
-    local exercis_ref01_ent = client:Exercis(nil)
-    local exercis_ref01_match = {}
+    local exercise_ref01_ent = client:Exercise(nil)
+    local exercise_ref01_match = {}
 
-    local exercis_ref01_list_result, err = exercis_ref01_ent:list(exercis_ref01_match, nil)
+    local exercise_ref01_list_result, err = exercise_ref01_ent:list(exercise_ref01_match, nil)
     assert.is_nil(err)
-    assert.is_table(exercis_ref01_list_result)
+    assert.is_table(exercise_ref01_list_result)
 
   end)
 end)
 
-function exercis_basic_setup(extra)
+function exercise_basic_setup(extra)
   runner.load_env_local()
 
-  local entity_data_file = _test_dir .. "../../.sdk/test/entity/exercis/ExercisTestData.json"
+  local entity_data_file = _test_dir .. "../../.sdk/test/entity/exercise/ExerciseTestData.json"
   local f = io.open(entity_data_file, "r")
   if f == nil then
-    error("failed to read exercis test data: " .. entity_data_file)
+    error("failed to read exercise test data: " .. entity_data_file)
   end
   local entity_data_source = f:read("*a")
   f:close()
@@ -114,7 +114,7 @@ function exercis_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "exercis01", "exercis02", "exercis03" },
+    { "exercise01", "exercise02", "exercise03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",
@@ -126,17 +126,17 @@ function exercis_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID")
+  local entid_env_raw = os.getenv("MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID"] = idmap,
+    ["MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID"] = idmap,
     ["MENTALITY_SKILL_TRAINING_TEST_LIVE"] = "FALSE",
     ["MENTALITY_SKILL_TRAINING_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID"])
+    env["MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end

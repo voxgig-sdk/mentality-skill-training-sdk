@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-// Exercis direct test
+// Exercise direct test
 
 require_once __DIR__ . '/../mentalityskilltraining_sdk.php';
 require_once __DIR__ . '/Runner.php';
 
 use PHPUnit\Framework\TestCase;
 
-class ExercisDirectTest extends TestCase
+class ExerciseDirectTest extends TestCase
 {
-    public function test_direct_list_exercis(): void
+    public function test_direct_list_exercise(): void
     {
-        $setup = exercis_direct_setup([
+        $setup = exercise_direct_setup([
             ["id" => "direct01"],
             ["id" => "direct02"],
         ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-exercis", $setup["live"] ? "live" : "unit");
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-exercise", $setup["live"] ? "live" : "unit");
         if ($_shouldSkip) {
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
@@ -59,14 +59,14 @@ class ExercisDirectTest extends TestCase
 }
 
 
-function exercis_direct_setup($mockres)
+function exercise_direct_setup($mockres)
 {
     Runner::load_env_local();
 
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID" => [],
+        "MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID" => [],
         "MENTALITY_SKILL_TRAINING_TEST_LIVE" => "FALSE",
     ]);
 

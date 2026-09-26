@@ -12,7 +12,7 @@ An entity groups related API operations. An operation can have several routes wi
 
 ## What the API provides
 
-### Exercis
+### Exercise
 
 Results: Successful response with list of exercises.
 
@@ -46,7 +46,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 
 | Entity | SDK operation | HTTP route | Authentication |
 | --- | --- | --- | --- |
-| Exercis | `list` | `GET /api/exercises` | See reference |
+| Exercise | `list` | `GET /api/exercises` | See reference |
 | TrainingProgram | `list` | `GET /api/training-programs` | See reference |
 
 ## Connect to the API
@@ -95,7 +95,7 @@ Use the MCP server to expose supported API operations to an MCP client.
 
 Repository directory: `go-mcp/`. Not published. Build from the go-mcp directory.
 
-- `mentality-skill-training_list`: List records for an entity. Supported entities: `exercis`, `training_program`.
+- `mentality-skill-training_list`: List records for an entity. Supported entities: `exercise`, `training_program`.
 - `mentality-skill-training_load`: Load one record for an entity. No active entity supports this operation.
 
 ## Operational features

@@ -307,10 +307,10 @@ class MentalitySkillTrainingSDK:
         return res
 
 
-    def Exercis(self, data=None) -> "ExercisEntity":
-        """Entity factory: client.Exercis().list() / client.Exercis().load({"id": ...})."""
-        from mentalityskilltraining_sdk.entity.exercis_entity import ExercisEntity
-        return ExercisEntity(self, data)
+    def Exercise(self, data=None) -> "ExerciseEntity":
+        """Entity factory: client.Exercise().list() / client.Exercise().load({"id": ...})."""
+        from mentalityskilltraining_sdk.entity.exercise_entity import ExerciseEntity
+        return ExerciseEntity(self, data)
 
 
     def TrainingProgram(self, data=None) -> "TrainingProgramEntity":
@@ -346,5 +346,5 @@ class MentalitySkillTrainingSDK:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from mentalityskilltraining_sdk.entity.exercis_entity import ExercisEntity
+    from mentalityskilltraining_sdk.entity.exercise_entity import ExerciseEntity
     from mentalityskilltraining_sdk.entity.training_program_entity import TrainingProgramEntity

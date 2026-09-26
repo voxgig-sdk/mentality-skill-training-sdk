@@ -1,4 +1,4 @@
--- Exercis direct test
+-- Exercise direct test
 
 local json = require("dkjson")
 local vs = require("utility.struct.struct")
@@ -6,13 +6,13 @@ local sdk = require("mentality-skill-training_sdk")
 local helpers = require("core.helpers")
 local runner = require("test.runner")
 
-describe("ExercisDirect", function()
-  it("should direct-list-exercis", function()
-    local setup = exercis_direct_setup({
+describe("ExerciseDirect", function()
+  it("should direct-list-exercise", function()
+    local setup = exercise_direct_setup({
       { id = "direct01" },
       { id = "direct02" },
     })
-    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-exercis", setup.live and "live" or "unit")
+    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-exercise", setup.live and "live" or "unit")
     if _should_skip then
       pending(_reason or "skipped via sdk-test-control.json")
       return
@@ -55,13 +55,13 @@ describe("ExercisDirect", function()
 end)
 
 
-function exercis_direct_setup(mockres)
+function exercise_direct_setup(mockres)
   runner.load_env_local()
 
   local calls = {}
 
   local env = runner.env_override({
-    ["MENTALITY_SKILL_TRAINING_TEST_EXERCIS_ENTID"] = {},
+    ["MENTALITY_SKILL_TRAINING_TEST_EXERCISE_ENTID"] = {},
     ["MENTALITY_SKILL_TRAINING_TEST_LIVE"] = "FALSE",
   })
 

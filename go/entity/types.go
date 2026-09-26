@@ -12,12 +12,12 @@ import (
 	"github.com/voxgig-sdk/mentality-skill-training-sdk/go/core"
 )
 
-// Exercis is the typed data model for the exercis entity.
-type Exercis struct {
+// Exercise is the typed data model for the exercise entity.
+type Exercise struct {
 }
 
-// ExercisListMatch is the typed request payload for Exercis.ListTyped.
-type ExercisListMatch struct {
+// ExerciseListMatch is the typed request payload for Exercise.ListTyped.
+type ExerciseListMatch struct {
 	Category *string `json:"category,omitempty"`
 	Duration *int `json:"duration,omitempty"`
 }

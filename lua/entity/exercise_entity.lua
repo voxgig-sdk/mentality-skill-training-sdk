@@ -1,13 +1,13 @@
--- MentalitySkillTraining SDK Exercis entity
+-- MentalitySkillTraining SDK Exercise entity
 
 local vs = require("utility.struct.struct")
 local helpers = require("core.helpers")
 
-local ExercisEntity = {}
-ExercisEntity.__index = ExercisEntity
+local ExerciseEntity = {}
+ExerciseEntity.__index = ExerciseEntity
 
 
-function ExercisEntity.new(client, entopts)
+function ExerciseEntity.new(client, entopts)
   entopts = entopts or {}
   if entopts["active"] == nil then
     entopts["active"] = true
@@ -17,8 +17,8 @@ function ExercisEntity.new(client, entopts)
     entopts["active"] = true
   end
 
-  local self = setmetatable({}, ExercisEntity)
-  self._name = "exercis"
+  local self = setmetatable({}, ExerciseEntity)
+  self._name = "exercise"
   self._client = client
   self._utility = client:get_utility()
   self._entopts = entopts
@@ -37,34 +37,34 @@ function ExercisEntity.new(client, entopts)
 end
 
 
-function ExercisEntity:get_name()
+function ExerciseEntity:get_name()
   return self._name
 end
 
 
-function ExercisEntity:make()
+function ExerciseEntity:make()
   local opts = {}
   for k, v in pairs(self._entopts) do
     opts[k] = v
   end
-  return ExercisEntity.new(self._client, opts)
+  return ExerciseEntity.new(self._client, opts)
 end
 
 
 -- Every operation resolves to the entity; `remove` additionally marks
 -- it. The instance KEEPS the data it held — a caller can still read what
 -- was deleted — but it is no longer a live record. See AGENTS.md.
-function ExercisEntity:mark_deleted()
+function ExerciseEntity:mark_deleted()
   self._deleted = true
 end
 
 
-function ExercisEntity:deleted()
+function ExerciseEntity:deleted()
   return true == self._deleted
 end
 
 
-function ExercisEntity:data_set(args)
+function ExerciseEntity:data_set(args)
   if args ~= nil then
     self._data = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetData")
@@ -72,13 +72,13 @@ function ExercisEntity:data_set(args)
 end
 
 
-function ExercisEntity:data_get()
+function ExerciseEntity:data_get()
   self._utility.feature_hook(self._entctx, "GetData")
   return vs.clone(self._data)
 end
 
 
-function ExercisEntity:match_set(args)
+function ExerciseEntity:match_set(args)
   if args ~= nil then
     self._match = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetMatch")
@@ -86,7 +86,7 @@ function ExercisEntity:match_set(args)
 end
 
 
-function ExercisEntity:match_get()
+function ExerciseEntity:match_get()
   self._utility.feature_hook(self._entctx, "GetMatch")
   return vs.clone(self._match)
 end
@@ -102,7 +102,7 @@ end
 --   - outbound (upload): an iterable `body` in callopts is attached to the
 --     request so the transport can stream the payload;
 --   - `ctrl` (pipeline control) and `signal` (cancellation) honoured.
-function ExercisEntity:stream(action, args, callopts)
+function ExerciseEntity:stream(action, args, callopts)
   local utility = self._utility
   callopts = callopts or {}
   local signal = callopts["signal"]
@@ -232,11 +232,11 @@ end
 
 
 
----@param reqmatch ExercisListMatch
+---@param reqmatch ExerciseListMatch
 ---@param ctrl? table
----@return Exercis[]
+---@return Exercise[]
 ---@return string? err
-function ExercisEntity:list(reqmatch, ctrl)
+function ExerciseEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
     opname = "list",
@@ -264,7 +264,7 @@ end
 
 
 
-function ExercisEntity:_run_op(ctx, post_done)
+function ExerciseEntity:_run_op(ctx, post_done)
   local utility = self._utility
 
   utility.feature_hook(ctx, "PrePoint")
@@ -341,4 +341,4 @@ function ExercisEntity:_run_op(ctx, post_done)
 end
 
 
-return ExercisEntity
+return ExerciseEntity

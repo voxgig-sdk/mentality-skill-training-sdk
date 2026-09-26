@@ -41,8 +41,8 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewExercisEntityFunc = func(client *core.MentalitySkillTrainingSDK, entopts map[string]any) core.MentalitySkillTrainingEntity {
-		return entity.NewExercisEntity(client, entopts)
+	core.NewExerciseEntityFunc = func(client *core.MentalitySkillTrainingSDK, entopts map[string]any) core.MentalitySkillTrainingEntity {
+		return entity.NewExerciseEntity(client, entopts)
 	}
 	core.NewTrainingProgramEntityFunc = func(client *core.MentalitySkillTrainingSDK, entopts map[string]any) core.MentalitySkillTrainingEntity {
 		return entity.NewTrainingProgramEntity(client, entopts)

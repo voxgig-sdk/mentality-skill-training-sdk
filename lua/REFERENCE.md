@@ -40,9 +40,9 @@ local client = sdk.test()
 
 ### Instance Methods
 
-#### `Exercis(data)`
+#### `Exercise(data)`
 
-Create a new `Exercis` entity instance. Pass `nil` for no initial data.
+Create a new `Exercise` entity instance. Pass `nil` for no initial data.
 
 #### `TrainingProgram(data)`
 
@@ -84,10 +84,10 @@ same parameters as `direct()`.
 
 ---
 
-## ExercisEntity
+## ExerciseEntity
 
 ```lua
-local exercis = client:Exercis(nil)
+local exercise = client:Exercise(nil)
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ local exercis = client:Exercis(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Exercis():list()
+local results, err = client:Exercise():list()
 ```
 
 ### Common Methods
@@ -133,7 +133,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `ExercisEntity` instance with the same client and
+Create a new `ExerciseEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

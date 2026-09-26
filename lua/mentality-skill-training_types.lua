@@ -6,7 +6,7 @@
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
 
----@class Exercis
+---@class Exercise
 ---@field benefits? table
 ---@field category? string
 ---@field description? string
@@ -16,7 +16,7 @@
 ---@field instructions? table
 ---@field name? string
 
----@class ExercisListMatch
+---@class ExerciseListMatch
 ---@field category? string
 ---@field duration? number
 

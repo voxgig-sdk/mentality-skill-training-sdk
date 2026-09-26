@@ -15,7 +15,7 @@ import (
 // reqdata map passed through to the SDK. For load, `query` should be
 // `{"id": <value>}`. For list, omit `query` or pass an empty map.
 type Args struct {
-	Entity string         `json:"entity" jsonschema:"exercis | training_program"`
+	Entity string         `json:"entity" jsonschema:"exercise | training_program"`
 	Query  map[string]any `json:"query,omitempty" jsonschema:"optional match map e.g. {\"id\":1} for load, omit for list"`
 }
 
@@ -76,8 +76,8 @@ func runOp(client *sdk.MentalitySkillTrainingSDK, op string, args Args) (*mcp.Ca
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.MentalitySkillTrainingSDK, name string) (sdk.MentalitySkillTrainingEntity, error) {
 	switch strings.ToLower(name) {
-	case "exercis":
-		return client.Exercis(nil), nil
+	case "exercise":
+		return client.Exercise(nil), nil
 	case "training_program":
 		return client.TrainingProgram(nil), nil
 

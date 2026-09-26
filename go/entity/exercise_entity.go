@@ -6,7 +6,7 @@ import (
 	vs "github.com/voxgig-sdk/mentality-skill-training-sdk/go/utility/struct"
 )
 
-type ExercisEntity struct {
+type ExerciseEntity struct {
 	name    string
 	client  *core.MentalitySkillTrainingSDK
 	utility *core.Utility
@@ -17,7 +17,7 @@ type ExercisEntity struct {
 	deleted bool
 }
 
-func NewExercisEntity(client *core.MentalitySkillTrainingSDK, entopts map[string]any) *ExercisEntity {
+func NewExerciseEntity(client *core.MentalitySkillTrainingSDK, entopts map[string]any) *ExerciseEntity {
 	if entopts == nil {
 		entopts = map[string]any{}
 	}
@@ -29,8 +29,8 @@ func NewExercisEntity(client *core.MentalitySkillTrainingSDK, entopts map[string
 		entopts["active"] = true
 	}
 
-	e := &ExercisEntity{
-		name:    "exercis",
+	e := &ExerciseEntity{
+		name:    "exercise",
 		client:  client,
 		utility: client.GetUtility(),
 		entopts: entopts,
@@ -48,28 +48,28 @@ func NewExercisEntity(client *core.MentalitySkillTrainingSDK, entopts map[string
 	return e
 }
 
-func (e *ExercisEntity) GetName() string { return e.name }
+func (e *ExerciseEntity) GetName() string { return e.name }
 
-func (e *ExercisEntity) MarkDeleted() {
+func (e *ExerciseEntity) MarkDeleted() {
 	e.deleted = true
 }
 
 
 // Deleted reports whether a successful Remove has resolved on this instance.
-func (e *ExercisEntity) Deleted() bool {
+func (e *ExerciseEntity) Deleted() bool {
 	return e.deleted
 }
 
 
-func (e *ExercisEntity) Make() core.Entity {
+func (e *ExerciseEntity) Make() core.Entity {
 	opts := map[string]any{}
 	for k, v := range e.entopts {
 		opts[k] = v
 	}
-	return NewExercisEntity(e.client, opts)
+	return NewExerciseEntity(e.client, opts)
 }
 
-func (e *ExercisEntity) Data(args ...any) any {
+func (e *ExerciseEntity) Data(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.data = core.ToMapAny(vs.Clone(args[0]))
 		if e.data == nil {
@@ -83,7 +83,7 @@ func (e *ExercisEntity) Data(args ...any) any {
 	return out
 }
 
-func (e *ExercisEntity) Match(args ...any) any {
+func (e *ExerciseEntity) Match(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.match = core.ToMapAny(vs.Clone(args[0]))
 		if e.match == nil {
@@ -98,27 +98,27 @@ func (e *ExercisEntity) Match(args ...any) any {
 }
 
 // DataTyped is the statically-typed accessor for this entity's data. With no
-// argument it returns the current data as an Exercis; with an argument it
+// argument it returns the current data as an Exercise; with an argument it
 // sets the data and returns the stored value. It delegates to the untyped Data
 // (identical runtime) and converts at the typed boundary.
-func (e *ExercisEntity) DataTyped(data ...Exercis) Exercis {
+func (e *ExerciseEntity) DataTyped(data ...Exercise) Exercise {
 	if len(data) > 0 {
-		return typedFrom[Exercis](e.Data(asMap(data[0])))
+		return typedFrom[Exercise](e.Data(asMap(data[0])))
 	}
-	return typedFrom[Exercis](e.Data())
+	return typedFrom[Exercise](e.Data())
 }
 
 // MatchTyped mirrors DataTyped for the entity's match filter. The match is a
-// partial of the entity, so it round-trips through Exercis (all fields
+// partial of the entity, so it round-trips through Exercise (all fields
 // optional at the wire level).
-func (e *ExercisEntity) MatchTyped(match ...Exercis) Exercis {
+func (e *ExerciseEntity) MatchTyped(match ...Exercise) Exercise {
 	if len(match) > 0 {
-		return typedFrom[Exercis](e.Match(asMap(match[0])))
+		return typedFrom[Exercise](e.Match(asMap(match[0])))
 	}
-	return typedFrom[Exercis](e.Match())
+	return typedFrom[Exercise](e.Match())
 }
 
-func (e *ExercisEntity) Stream(action string, args map[string]any, callopts map[string]any) <-chan any {
+func (e *ExerciseEntity) Stream(action string, args map[string]any, callopts map[string]any) <-chan any {
 	out := make(chan any)
 
 	if callopts == nil {
@@ -242,13 +242,13 @@ func (e *ExercisEntity) Stream(action string, args map[string]any, callopts map[
 	return out
 }
 
-func (e *ExercisEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ExerciseEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
 
 
 
-func (e *ExercisEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *ExerciseEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":   "list",
@@ -268,34 +268,34 @@ func (e *ExercisEntity) List(reqmatch map[string]any, ctrl map[string]any) (any,
 }
 
 // ListTyped is the statically-typed variant of List: it takes an
-// ExercisListMatch and returns []Exercis. It delegates to the untyped
+// ExerciseListMatch and returns []Exercise. It delegates to the untyped
 // List (identical runtime) and converts at the typed boundary.
-func (e *ExercisEntity) ListTyped(reqmatch ExercisListMatch, ctrl map[string]any) ([]Exercis, error) {
+func (e *ExerciseEntity) ListTyped(reqmatch ExerciseListMatch, ctrl map[string]any) ([]Exercise, error) {
 	res, err := e.List(asMap(reqmatch), ctrl)
 	if err != nil {
 		return nil, err
 	}
-	return typedSliceFrom[Exercis](res), nil
+	return typedSliceFrom[Exercise](res), nil
 }
 
 
 
-func (e *ExercisEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ExerciseEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("create", e.name)
 }
 
 
-func (e *ExercisEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ExerciseEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("update", e.name)
 }
 
 
-func (e *ExercisEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ExerciseEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("remove", e.name)
 }
 
 
-func (e *ExercisEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
+func (e *ExerciseEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
 	utility := e.utility
 
 	utility.FeatureHook(ctx, "PrePoint")

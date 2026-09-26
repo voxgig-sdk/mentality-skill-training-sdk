@@ -41,9 +41,9 @@ $client = MentalitySkillTrainingSDK::test();
 
 ### Instance Methods
 
-#### `Exercis($data = null)`
+#### `Exercise($data = null)`
 
-Create a new `ExercisEntity` instance. Pass `null` for no initial data.
+Create a new `ExerciseEntity` instance. Pass `null` for no initial data.
 
 #### `TrainingProgram($data = null)`
 
@@ -86,10 +86,10 @@ Prepare a fetch definition without sending the request. Returns the
 
 ---
 
-## ExercisEntity
+## ExerciseEntity
 
 ```php
-$exercis = $client->Exercis();
+$exercise = $client->Exercise();
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ $exercis = $client->Exercis();
 List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Exercis()->list();
+$results = $client->Exercise()->list();
 ```
 
 ### Common Methods
@@ -133,9 +133,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): ExercisEntity`
+#### `make(): ExerciseEntity`
 
-Create a new `ExercisEntity` instance with the same client and
+Create a new `ExerciseEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

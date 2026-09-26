@@ -12,7 +12,7 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewExercisEntityFunc func(client *MentalitySkillTrainingSDK, entopts map[string]any) MentalitySkillTrainingEntity
+var NewExerciseEntityFunc func(client *MentalitySkillTrainingSDK, entopts map[string]any) MentalitySkillTrainingEntity
 
 var NewTrainingProgramEntityFunc func(client *MentalitySkillTrainingSDK, entopts map[string]any) MentalitySkillTrainingEntity
 
